@@ -17,28 +17,37 @@
         <h3 class="font-semibold">Jai Shri Ram - 🙎‍ <%=user.name%>
         </h3>
         <h3 class="font-semibold">Welcome to Shri Ramnaam Bank</h3>
-        <a class="text-sm px-3 py-2 rounded-full font-semibold text-red-600 text-center bg-[#EC971F]" href="/logout">Log Out</a>
+        <a class="text-sm px-3 py-2 rounded-full font-semibold text-red-600 text-center bg-[#EC971F]" href="/logout">Log
+          Out</a>
       </div>
 
       <div class="row-2 p-6 flex flex-wrap gap-28 border-b-2">
         <div class="previous-count flex flex-col items-center gap-2">
           <h1>Previous Ramnaam count / Mala count</h1>
-          <span class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold"><%=user.prevCount%></span>
+          <span class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold">
+            <%=user.prevCount%>
+          </span>
         </div>
 
         <div class="current-count flex flex-col items-center gap-2">
           <h1>Current Ramnaam count / Mala count</h1>
-          <span id="currentCount" class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold"><%=user.currCount%></span>
+          <span id="currentCount" class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold">
+            <%=user.currCount%>
+          </span>
         </div>
 
         <div class="total-count flex flex-col items-center gap-2">
           <h1>Total Ramnaam count / Mala count</h1>
-          <span class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold"><%=user.totalCount%></span>
+          <span class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold">
+            <%=user.totalCount%>
+          </span>
         </div>
 
         <div class="rank flex flex-col items-center gap-2">
           <h1>Rank amongst Ramnaam Bhakt</h1>
-          <span class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold"><%=user.rank%></span>
+          <span class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold">
+            <%=user.rank%>
+          </span>
         </div>
       </div>
 
@@ -61,27 +70,31 @@
   </div>
 
   <script>
-    // Function to append a character to the textarea
+
     function appendCharacter(char) {
+
       var textarea = document.getElementById('ramTextarea');
-      
-      // Get the last three words from the textarea
-      var lastThreeWords = textarea.value.trim().split(/\s+/).slice(-3).join(' ');
-  
-      // Check if the last three words contain 'RAM'
-      if (lastThreeWords.includes('RAM')) {
-        // If present, increase the current count and update the textarea with 'राम'
-        '<% user.currCount += 1 %>'; // Increment current count in EJS
-        document.getElementById('currentCount').innerText = '<%= user.currCount %>'; // Update current count in HTML
-        textarea.value += ' राम ';
-      }
-  
-      // Append the clicked character to the textarea
+
       textarea.value += char;
+
+      let inputString = textarea.value;
+      let regex = /\b(?:ram|RAM)\b|\B(?:ram|RAM)\B/g;
+      let replacementCount = 0;
+
+      let modifiedString = inputString.replace(regex, function (match) {
+        replacementCount++;
+        return "राम";
+      });
+
+    `<%= user.currCount %>`+= replacementCount 
+    document.getElementById('currentCount').innerText = `<%= user.currCount %>`;
+    
+    textarea.value = modifiedString;
+   
     }
   </script>
-  
-  
+
+
 </body>
 
 </html>
