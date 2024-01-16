@@ -1,0 +1,30 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: gilroy;
+}
+html,body{
+  height: 100%;
+  width: 100%;
+}
+.main{
+  height: 100%;
+  width: 100%;
+  background-image: url('https://ramnaambank.com/images/backgroundimg.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 40px;
+}
+.container{
+  height: 100%;
+  width: 100%;
+  background-color: #6D1E1E;
+}
+.row-4 button{
+  font-size: 40px;
+  font-weight: 700;
+  background-color: #eaba4a;
+  border-radius: 5px;
+  padding: 10px 20px;
+}
