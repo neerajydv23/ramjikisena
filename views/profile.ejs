@@ -1,73 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="/stylesheets/style.css" />
-    <link
-    href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css"
-    rel="stylesheet"
-/>
-    <script src="https://cdn.tailwindcss.com"></script>
-  </head>
-  <body>
-    <div class="main">
-      <div class="container text-white">
-        <div
-          class="row-1 flex items-center justify-between p-6 text-white border-b-2"
-        >
-          <h3 class="font-semibold">Jai Shri Ram - 🙎‍ <%=user.name%></h3>
-          <h3 class="font-semibold">Welcome to Shri Ramnaam Bank</h3>
-          <a
-            class="text-sm px-3 py-2 rounded-full font-semibold text-red-600 text-center bg-[#EC971F]"
-            href="/logout"
-            >Log Out</a
-          >
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+  <div class="main">
+    <div class="container text-white">
+      <div class="row-1 flex items-center justify-between p-6 text-white border-b-2">
+        <h3 class="font-semibold">Jai Shri Ram - 🙎‍ <%=user.name%>
+        </h3>
+        <h3 class="font-semibold">Welcome to Shri Ramnaam Bank</h3>
+        <a class="text-sm px-3 py-2 rounded-full font-semibold text-red-600 text-center bg-[#EC971F]" href="/logout">Log Out</a>
+      </div>
+
+      <div class="row-2 p-6 flex flex-wrap gap-28 border-b-2">
+        <div class="previous-count flex flex-col items-center gap-2">
+          <h1>Previous Ramnaam count / Mala count</h1>
+          <span class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold"><%=user.prevCount%></span>
         </div>
 
-        <div class="row-2 p-6 flex flex-wrap gap-28 border-b-2">
-          <div class="previous-count flex flex-col items-center gap-2 ">
-            <h1>Previous Ramnaam count / Mala count</h1>
-            <span class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold ">13</span>
-          </div>
-
-          <div class="current-count flex flex-col items-center gap-2 ">
-            <h1>Current Ramnaam count / Mala count</h1>
-            <span class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold ">13</span>
-          </div>
-
-          <div class="total-count flex flex-col items-center gap-2 ">
-            <h1>Total Ramnaam count / Mala count</h1>
-            <span class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold ">13</span>
-          </div>
-
-          <div class="rank flex flex-col items-center gap-2 ">
-            <h1>Rank amongst Ramnaam Bhakt</h1>
-            <span class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold ">13</span>
-          </div>
+        <div class="current-count flex flex-col items-center gap-2">
+          <h1>Current Ramnaam count / Mala count</h1>
+          <span id="currentCount" class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold"><%=user.currCount%></span>
         </div>
 
-        <div class="row-3 p-6 w-full">
-            <textarea class="w-full p-3 border border-gray-300 rounded-md font-semibold text-red-600 focus:outline-none focus:border-blue-500" id="ramTextarea" name="textarea" rows="6" cols="60" placeholder="यहाँ पर राम नाम लिखें..."></textarea>
+        <div class="total-count flex flex-col items-center gap-2">
+          <h1>Total Ramnaam count / Mala count</h1>
+          <span class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold"><%=user.totalCount%></span>
         </div>
 
-        <div class="row-4 buttons flex justify-center gap-6">
-            <button class="r-button" onclick="appendToTextarea('R')">R</button>
-            <button class="a-button" onclick="appendToTextarea('A')">A</button>
-            <button class="m-button" onclick="appendToTextarea('M')">M</button>
-        </div>
-        
-        <div class="save-button flex justify-center mt-6">
-            <span class="text-2xl font-semibold bg-[#eaba4a] p-2 rounded-md mt-3 "><i class="ri-save-3-fill"></i> Save</span>
+        <div class="rank flex flex-col items-center gap-2">
+          <h1>Rank amongst Ramnaam Bhakt</h1>
+          <span class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold"><%=user.rank%></span>
         </div>
       </div>
+
+      <div class="row-3 p-6 w-full">
+        <textarea
+          class="w-full p-3 border border-gray-300 rounded-md font-semibold text-red-600 focus:outline-none focus:border-blue-500"
+          id="ramTextarea" name="ramTextarea" rows="6" cols="60" placeholder="यहाँ पर राम नाम लिखें..."></textarea>
+      </div>
+
+      <div class="row-4 buttons flex justify-center gap-6">
+        <button class="r-button" onclick="appendCharacter('R')">R</button>
+        <button class="a-button" onclick="appendCharacter('A')">A</button>
+        <button class="m-button" onclick="appendCharacter('M')">M</button>
+      </div>
+
+      <div class="save-button flex justify-center mt-6">
+        <span class="text-2xl font-semibold bg-[#eaba4a] p-2 rounded-md mt-3"><i class="ri-save-3-fill"></i> Save</span>
+      </div>
     </div>
-    <script>
-        function appendToTextarea(text) {
-          const textarea = document.getElementById('ramTextarea');
-          textarea.value += text;
-        }
-      </script>
-  </body>
+  </div>
+
+  <script>
+    // Function to append a character to the textarea
+    function appendCharacter(char) {
+      var textarea = document.getElementById('ramTextarea');
+      
+      // Get the last three words from the textarea
+      var lastThreeWords = textarea.value.trim().split(/\s+/).slice(-3).join(' ');
+  
+      // Check if the last three words contain 'RAM'
+      if (lastThreeWords.includes('RAM')) {
+        // If present, increase the current count and update the textarea with 'राम'
+        '<% user.currCount += 1 %>'; // Increment current count in EJS
+        document.getElementById('currentCount').innerText = '<%= user.currCount %>'; // Update current count in HTML
+        textarea.value += ' राम ';
+      }
+  
+      // Append the clicked character to the textarea
+      textarea.value += char;
+    }
+  </script>
+  
+  
+</body>
+
 </html>
