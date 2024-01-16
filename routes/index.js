@@ -19,6 +19,15 @@ router.get('/profile', isLoggedIn,function(req, res, next) {
   res.render('profile',{user:req.user});
 });
 
+router.get('/increment', isLoggedIn, async function(req, res, next) {
+  const user = await userModel.findOne({username:req.user.username});
+
+  user.currCount +=1;
+  await user.save();
+
+  res.json({newCount:user.currCount});
+});
+
 router.post('/register', function(req, res, next) {
 
   if (!req.body.username || !req.body.fullname || !req.body.email || !req.body.password) {

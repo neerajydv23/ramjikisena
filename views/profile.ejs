@@ -1,100 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
-  <link rel="stylesheet" href="/stylesheets/style.css" />
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-
-<body>
-  <div class="main">
-    <div class="container text-white">
-      <div class="row-1 flex items-center justify-between p-6 text-white border-b-2">
-        <h3 class="font-semibold">Jai Shri Ram - 🙎‍ <%=user.name%>
-        </h3>
-        <h3 class="font-semibold">Welcome to Shri Ramnaam Bank</h3>
-        <a class="text-sm px-3 py-2 rounded-full font-semibold text-red-600 text-center bg-[#EC971F]" href="/logout">Log
-          Out</a>
-      </div>
-
-      <div class="row-2 p-6 flex flex-wrap gap-28 border-b-2">
-        <div class="previous-count flex flex-col items-center gap-2">
-          <h1>Previous Ramnaam count / Mala count</h1>
-          <span class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold">
-            <%=user.prevCount%>
-          </span>
+  <body>
+    <div class="main">
+      <div class="container text-white">
+        <div
+          class="row-1 flex items-center justify-between p-6 text-white border-b-2"
+        >
+          <h3 class="font-semibold">Jai Shri Ram - 🙎‍ <%=user.name%></h3>
+          <h3 class="font-semibold">Welcome to Shri Ramnaam Bank</h3>
+          <a
+            class="text-sm px-3 py-2 rounded-full font-semibold text-red-600 text-center bg-[#EC971F]"
+            href="/logout"
+            >Log Out</a
+          >
         </div>
 
-        <div class="current-count flex flex-col items-center gap-2">
-          <h1>Current Ramnaam count / Mala count</h1>
-          <span id="currentCount" class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold">
-            <%=user.currCount%>
-          </span>
+        <div class="row-2 p-6 flex flex-wrap gap-28 border-b-2">
+          <div class="previous-count flex flex-col items-center gap-2">
+            <h1>Previous Ramnaam count / Mala count</h1>
+            <span
+              class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold"
+            >
+              <%=user.prevCount%>
+            </span>
+          </div>
+
+          <div class="current-count flex flex-col items-center gap-2">
+            <h1>Current Ramnaam count / Mala count</h1>
+            <span
+              id="currentCount"
+              class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold"
+            >
+              <%=user.currCount%>
+            </span>
+          </div>
+
+          <div class="total-count flex flex-col items-center gap-2">
+            <h1>Total Ramnaam count / Mala count</h1>
+            <span
+              class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold"
+            >
+              <%=user.totalCount%>
+            </span>
+          </div>
+
+          <div class="rank flex flex-col items-center gap-2">
+            <h1>Rank amongst Ramnaam Bhakt</h1>
+            <span
+              class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold"
+            >
+              <%=user.rank%>
+            </span>
+          </div>
         </div>
 
-        <div class="total-count flex flex-col items-center gap-2">
-          <h1>Total Ramnaam count / Mala count</h1>
-          <span class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold">
-            <%=user.totalCount%>
-          </span>
+        <div class="row-3 p-6 w-full">
+          <textarea
+            class="w-full p-3 border border-gray-300 rounded-md font-semibold text-red-600 focus:outline-none focus:border-blue-500"
+            id="ramTextarea"
+            name="ramTextarea"
+            rows="6"
+            cols="60"
+            placeholder="यहाँ पर राम नाम लिखें..."
+          ></textarea>
         </div>
 
-        <div class="rank flex flex-col items-center gap-2">
-          <h1>Rank amongst Ramnaam Bhakt</h1>
-          <span class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold">
-            <%=user.rank%>
-          </span>
+        <div class="row-4 buttons flex justify-center gap-6">
+          <button class="r-button" onclick="appendCharacter('R')">R</button>
+          <button class="a-button" onclick="appendCharacter('A')">A</button>
+          <button class="m-button" onclick="appendCharacter('M')">M</button>
         </div>
-      </div>
 
-      <div class="row-3 p-6 w-full">
-        <textarea
-          class="w-full p-3 border border-gray-300 rounded-md font-semibold text-red-600 focus:outline-none focus:border-blue-500"
-          id="ramTextarea" name="ramTextarea" rows="6" cols="60" placeholder="यहाँ पर राम नाम लिखें..."></textarea>
-      </div>
-
-      <div class="row-4 buttons flex justify-center gap-6">
-        <button class="r-button" onclick="appendCharacter('R')">R</button>
-        <button class="a-button" onclick="appendCharacter('A')">A</button>
-        <button class="m-button" onclick="appendCharacter('M')">M</button>
-      </div>
-
-      <div class="save-button flex justify-center mt-6">
-        <span class="text-2xl font-semibold bg-[#eaba4a] p-2 rounded-md mt-3"><i class="ri-save-3-fill"></i> Save</span>
+        <div class="save-button flex justify-center mt-6">
+          <span class="text-2xl font-semibold bg-[#eaba4a] p-2 rounded-md mt-3"
+            ><i class="ri-save-3-fill"></i> Save</span
+          >
+        </div>
       </div>
     </div>
-  </div>
 
-  <script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.5/axios.min.js"
+      integrity="sha512-TjBzDQIDnc6pWyeM1bhMnDxtWH0QpOXMcVooglXrali/Tj7W569/wd4E8EDjk1CwOAOPSJon1VfcEt1BI4xIrA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
 
-    function appendCharacter(char) {
+    <script>
+              var userInput = "";
+      function appendCharacter(char) {
 
-      var textarea = document.getElementById('ramTextarea');
+        var textarea = document.getElementById("ramTextarea");
 
-      textarea.value += char;
+        textarea.value += char;
 
-      let inputString = textarea.value;
-      let regex = /\b(?:ram|RAM)\b|\B(?:ram|RAM)\B/g;
-      let replacementCount = 0;
+        userInput+=char;
 
-      let modifiedString = inputString.replace(regex, function (match) {
-        replacementCount++;
-        return "राम";
-      });
+        var lastThreeWords = userInput.slice(-3);
 
-    `<%= user.currCount %>`+= replacementCount 
-    document.getElementById('currentCount').innerText = `<%= user.currCount %>`;
-    
-    textarea.value = modifiedString;
-   
-    }
-  </script>
+        if(lastThreeWords === "RAM"){
+          userInput="";
+          textarea.value=""
+          axios
+            .get("http://localhost:3000/increment")
+            .then(function (response) {
+              // Update the current count on the client side
+              document.getElementById("currentCount").innerText =
+                response.data.newCount;
 
+              // Update the textarea with 'राम'
+              // textarea.value += " राम";
+              var count = response.data.newCount;
+              console.log(count);
+      for (var i = 0; i < count; i++) {
+        textarea.value += " राम";
+      }
+            })
+            .catch(function (error) {
+              console.error("Error incrementing count:", error);
+            });
+        }
 
-</body>
+        console.log(lastThreeWords);
 
+       
+      }
+    </script>
+  </body>
 </html>
