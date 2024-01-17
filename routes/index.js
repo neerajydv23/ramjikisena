@@ -23,9 +23,20 @@ router.get('/increment', isLoggedIn, async function(req, res, next) {
   const user = await userModel.findOne({username:req.user.username});
 
   user.currCount +=1;
+  user.totalCount+=1;
   await user.save();
 
-  res.json({newCount:user.currCount});
+  res.json({newCount:user.currCount,totalCount: user.totalCount});
+});
+
+router.get('/save', isLoggedIn, async function(req, res, next) {
+  const user = await userModel.findOne({username:req.user.username});
+
+  user.prevCount =user.currCount;
+  user.currCount=0;
+  await user.save();
+
+  res.json({newCount:user.currCount,prevCount: user.prevCount});
 });
 
 router.post('/register', function(req, res, next) {

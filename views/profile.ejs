@@ -15,52 +15,33 @@
   <body>
     <div class="main">
       <div class="container text-white">
-        <div
-          class="row-1 flex items-center justify-between p-6 text-white border-b-2"
-        >
+
+        <div class="row-1 flex items-center justify-between p-6 text-white border-b-2">
           <h3 class="font-semibold">Jai Shri Ram - 🙎‍ <%=user.name%></h3>
           <h3 class="font-semibold">Welcome to Shri Ramnaam Bank</h3>
-          <a
-            class="text-sm px-3 py-2 rounded-full font-semibold text-red-600 text-center bg-[#EC971F]"
-            href="/logout"
-            >Log Out</a
-          >
+          <a class="text-sm px-3 py-2 rounded-full font-semibold text-red-600 text-center bg-[#EC971F]"
+          href="/logout">Log Out</a>
         </div>
 
-        <div class="row-2 p-6 flex flex-wrap gap-28 border-b-2">
+        <div class="row-2 p-6  border-b-2">
           <div class="previous-count flex flex-col items-center gap-2">
             <h1>Previous Ramnaam count / Mala count</h1>
-            <span
-              class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold"
-            >
-              <%=user.prevCount%>
-            </span>
+            <span id="prevCount" class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold"><%=user.prevCount%></span>
           </div>
 
           <div class="current-count flex flex-col items-center gap-2">
             <h1>Current Ramnaam count / Mala count</h1>
-            <span
-              id="currentCount"
-              class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold"
-            >
-              <%=user.currCount%>
-            </span>
+            <span id="currentCount" class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold"><%=user.currCount%></span>
           </div>
 
           <div class="total-count flex flex-col items-center gap-2">
             <h1>Total Ramnaam count / Mala count</h1>
-            <span
-              class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold"
-            >
-              <%=user.totalCount%>
-            </span>
+            <span id="totalCount" class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold"><%=user.totalCount%></span>
           </div>
 
           <div class="rank flex flex-col items-center gap-2">
             <h1>Rank amongst Ramnaam Bhakt</h1>
-            <span
-              class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold"
-            >
+            <span class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold">
               <%=user.rank%>
             </span>
           </div>
@@ -84,7 +65,7 @@
         </div>
 
         <div class="save-button flex justify-center mt-6">
-          <span class="text-2xl font-semibold bg-[#eaba4a] p-2 rounded-md mt-3"
+          <span class="text-2xl font-semibold bg-[#eaba4a] p-2 rounded-md mt-3 mb-3"
             ><i class="ri-save-3-fill"></i> Save</span
           >
         </div>
@@ -120,10 +101,13 @@
               document.getElementById("currentCount").innerText =
                 response.data.newCount;
 
+                //Updating the total Count
+                document.getElementById("totalCount").innerText =
+                response.data.totalCount;
+
               // Update the textarea with 'राम'
-              // textarea.value += " राम";
               var count = response.data.newCount;
-              console.log(count);
+              // console.log(count);
       for (var i = 0; i < count; i++) {
         textarea.value += " राम";
       }
@@ -134,9 +118,22 @@
         }
 
         console.log(lastThreeWords);
-
-       
       }
+    
+      const saveButton = document.querySelector(".save-button");
+      saveButton.addEventListener("click",function(){
+        axios.get("http://localhost:3000/save")
+        .then(function(response){
+          var textarea = document.getElementById("ramTextarea");
+          textarea.value="";
+          // Updating previous count
+          document.getElementById("prevCount").innerText = response.data.prevCount;
+
+          // Updating current count
+          document.getElementById("currentCount").innerText = response.data.newCount;
+        })
+      })
+    
     </script>
   </body>
 </html>
