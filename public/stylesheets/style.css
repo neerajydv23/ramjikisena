@@ -132,19 +132,26 @@ html,body{
   width: 100%;
   background-color: #6D1E1E;
 }
-
+.row-1 h3{
+  font-weight: 600;
+}
+.row-1 a{
+  background-color: #EC971F ;
+  padding: 5px 7px ;
+  border-radius: 5px;
+}
+.row-2{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+}
 .row-4 button{
   font-size: 40px;
   font-weight: 700;
   background-color: #eaba4a;
   border-radius: 5px;
   padding: 10px 20px;
-}
-
-.row-2{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
 }
 
 footer{
@@ -343,6 +350,36 @@ footer{
     font-size: 15px;
     justify-content: center;
   }
+  .help-icon {
+    padding: 15px 6px;
+    font-size: 12px;
+  }
+  .row-1{
+    flex-direction: column;
+    gap: 20px;
+  }
+  .row-1 h3{
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .row-1 a{
+    padding: 4px 5px ;
+    font-size: 12px;
+  }
+  .row-2{
+    justify-content: center;
+    align-items: center;
+  }
+  footer{
+    gap: 20px;
+    font-size: 14px;
+  }
+  .row-4 button{
+    font-size: 20px;
+  }
+  .save-button span{
+    font-size: 20px;
+  }
 }
 
 @media screen and (max-width: 410px) {
@@ -373,4 +410,17 @@ footer{
     font-size: 13px;
     justify-content: center;
   }
+  .row-1{
+    flex-direction: column;
+    gap: 20px;
+  }
+  .row-1 h3{
+    font-size: 14px;
+  }
+  .row-1 a{
+    padding: 4px 8px ;
+    text-align: center;
+    font-size: 12px;
+  }
+
 }

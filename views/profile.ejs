@@ -55,11 +55,11 @@
         <div class="container text-white">
 
           <div class="row-1 flex items-center justify-between p-6 text-white border-b-2">
-            <h3 class=" text-xl font-semibold">Jai Shri Ram - 🙎‍ <%=user.name%></h3>
-            <h3 class="text-xl font-semibold">Welcome to Shri Ramnaam Bank</h3>
-            <a class="text-md px-4 py-2 rounded-full font-semibold text-white text-center bg-[#EC971F]"
-            href="/logout">Log Out</a>
+            <h3>Jai Shri Ram - 🙎‍ <%=user.name%></h3>
+            <h3>Welcome to Shri Ramnaam Bank</h3>
+            <a href="/logout">Log Out</a>
           </div>
+          
   
           <div class="row-2 p-6  border-b-2">
             <div class="previous-count flex flex-col items-center gap-2">
@@ -179,17 +179,6 @@
         })
       })
 
-      document.querySelectorAll(".r-button, .a-button, .m-button").forEach(function (button) {
-    button.addEventListener("click", function (event) {
-      event.preventDefault();
-      appendCharacter(button.innerText);
-    });
-
-    button.addEventListener("touchend", function (event) {
-      event.preventDefault();
-      appendCharacter(button.innerText);
-    });
-  });
     
     </script>
   </body>
