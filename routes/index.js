@@ -39,6 +39,26 @@ router.get('/save', isLoggedIn, async function(req, res, next) {
   res.json({newCount:user.currCount,prevCount: user.prevCount});
 });
 
+router.get('/impTemples', isLoggedIn, function(req,res){
+  res.render('impTemples');
+})
+
+router.get('/mission', isLoggedIn, function(req,res){
+  res.render('mission');
+})
+
+router.get('/glory', isLoggedIn, function(req,res){
+  res.render('glory');
+})
+
+router.get('/feedback', isLoggedIn, function(req,res){
+  res.render('feedback');
+})
+
+router.get('/contact', isLoggedIn, function(req,res){
+  res.render('contact');
+})
+
 router.post('/register', function(req, res, next) {
 
   if (!req.body.username || !req.body.fullname || !req.body.email || !req.body.password) {

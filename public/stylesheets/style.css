@@ -9,21 +9,137 @@ html,body{
   width: 100%;
 }
 .main{
-  min-height: 100%;
+  min-height: 100vh;
   width: 100%;
   background-image: url('https://ramnaambank.com/images/backgroundimg.jpg');
   background-size: cover;
   background-position: center;
+}
+
+.help-icon {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #eaba4a;
+  color: #6D1E1E;
+  font-weight: 600;
+  padding: 25px 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+
+
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.nav-1{
+  display: flex;
+  justify-content: center;
+  background-color: #6D1E1E;
+  color: white;
+  padding: 15px 0;
+}
+.nav-1 h1{
+  display: flex;
+  gap: 10px;
+  white-space: nowrap; 
+  overflow: hidden; 
+  animation: marquee 10s linear infinite; 
+}
+
+.nav-2{
+  /* width: 100%; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 20px;
+  background-color: white;
+  color: #6D1E1E;
+}
+.nav-2 img{
+  height: 50px;
+}
+.nav-2 .left{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.nav-2 .left a{
+  font-size: 25px;
+  font-weight: 700;
+}
+
+
+
+.nav-2 .right{
+  font-weight: 600;
+  display: flex;
+  gap: 25px;
+  font-size: 18px;
+}
+.nav-2 .right a{
+  color: white;
+  background-color: #6D1E1E;
+  padding: 5px 12px;
+  border-radius: 5px;
+}
+@media screen and (max-width: 768px) {
+  .nav-2 .right{
+    display: flex;
+    gap: 10px;
+    font-size: 14px;
+    color: blue;
+  }
+}
+
+.ramji-photo{
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 20px;
+}
+.goto-div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  padding: 10px;
+  background-color: #6D1E1E;
+  color: white;
+}
+.goto-div h1{
+  font-size: 30px;
+  font-weight: 500;
+}
+.goto-div-items{
+  display: flex;
+  gap: 35px;
+  font-size: 17px;
+  font-weight: 600;
+  flex-wrap: wrap;
+}
+.main-content{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
 }
 .container{
   min-height: 100%;
   width: 100%;
   background-color: #6D1E1E;
 }
+
 .row-4 button{
   font-size: 40px;
   font-weight: 700;
@@ -36,4 +152,172 @@ html,body{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+}
+
+footer{
+  margin-top: 40px;
+  padding: 10px;
+  background-color: #6D1E1E;
+  color: white;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+
+/* impTemples css */
+
+.impTemples-content{
+  min-height: 100%;
+  width: 100%;
+  background-color: white;
+  padding-top: 10px;
+  padding: 40px;
+}
+
+.impTemples-content h1{
+  font-size: 30px;
+  color: red;
+  margin-bottom: 10px;
+  font-weight: 600;
+  text-align: center;
+}
+.impTemples-content h4{
+  margin-bottom: 6px;
+  color: #B22222;
+  font-weight: 450;
+}
+.impTemples-content .text-div{
+  margin-top: 20px;
+}
+.impTemples-content h2{
+  font-size: 18px;
+  color: #B22222;
+  font-weight: 700;
+}
+.impTemples-content p{
+  margin-top: 10px;
+  color: #B22222;
+  font-weight: 450;
+}
+
+/* mission css */
+.mission-content{
+  min-height: 100%;
+  width: 100%;
+  background-color: white;
+  padding-top: 10px;
+  padding: 40px;
+}
+
+.mission-content h1{
+  font-size: 30px;
+  color: red;
+  margin-bottom: 20px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.mission-content p{
+  font-size: 18px;
+  color: #B22222;
+
+  text-align: center;
+}
+
+/* glory css */
+
+.glory-content{
+  min-height: 100%;
+  width: 100%;
+  background-color: white;
+  padding-top: 10px;
+  padding: 40px;
+}
+
+.glory-content h1{
+  font-size: 30px;
+  color: red;
+  margin-bottom: 20px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.glory-content p{
+  font-size: 18px;
+  color: #B22222;
+  font-weight: 450;
+}
+
+/* feedback css */
+.feedback-content{
+  min-height: 100%;
+  width: 100%;
+  background-color: white;
+  padding-top: 10px;
+  padding: 40px;
+}
+
+.feedback-content h1{
+  font-size: 30px;
+  color: red;
+  margin-bottom: 20px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.feedback-content p{
+  font-size: 18px;
+  color: #B22222;
+  font-weight: 450;
+  line-height: 1.8;
+}
+.feedback-content h5{
+  margin-top: 15px;
+  text-align: center;
+  color: #B22222;
+  font-weight: 600;
+}
+.feedback-content .feedback-form{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.feedback-form input{
+  border: 1px solid black;
+}
+.feedback-form button{
+  color: white;
+  background-color: rgb(226, 111, 16);
+  padding: 5px;
+  border-radius: 5px;
+}
+
+/* contact css */
+.contact-content{
+  min-height: 100%;
+  width: 100%;
+  background-color: white;
+  padding-top: 10px;
+  padding: 40px;
+}
+
+.contact-content h1{
+  font-size: 30px;
+  color: red;
+  margin-bottom: 20px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.contact-content p{
+  font-size: 18px;
+  color: #B22222;
+  font-weight: 450;
+  line-height: 1.8;
+}
+.contact-content h2{
+  font-size: 17px;
+  color: #B22222;
+  font-weight: 600;
 }

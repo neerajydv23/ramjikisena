@@ -14,62 +14,107 @@
 
   <body>
     <div class="main">
-      <div class="container text-white">
+      <div class="help-icon">
+        <i class="ri-question-line"></i>
+        <a href="https://www.youtube.com/watch?v=IEo8RdFtTk0&t=921s">Help</a href="https://www.youtube.com/watch?v=IEo8RdFtTk0&t=921s">      </div>
 
-        <div class="row-1 flex items-center justify-between p-6 text-white border-b-2">
-          <h3 class="font-semibold">Jai Shri Ram - 🙎‍ <%=user.name%></h3>
-          <h3 class="font-semibold">Welcome to Shri Ramnaam Bank</h3>
-          <a class="text-sm px-3 py-2 rounded-full font-semibold text-red-600 text-center bg-[#EC971F]"
-          href="/logout">Log Out</a>
+      <div class="nav-1">
+        <h1>
+          Helpline<i class="ri-whatsapp-line"></i>
+          <a href=""><i class="ri-phone-fill"></i> +91-8109389682 </a>
+          <a href=""><i class="ri-mail-line"></i> ramnaambank@gmail.com </a> 
+          </h1>
+      </div>
+      <div class="nav-2">
+        <div class="left">
+          <img src="https://ramnaambank.com/images/logo.png" alt="">
+          <a href="/profile">Ramnaam Bank</a>
         </div>
-
-        <div class="row-2 p-6  border-b-2">
-          <div class="previous-count flex flex-col items-center gap-2">
-            <h1>Previous Ramnaam count / Mala count</h1>
-            <span id="prevCount" class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold"><%=user.prevCount%></span>
-          </div>
-
-          <div class="current-count flex flex-col items-center gap-2">
-            <h1>Current Ramnaam count / Mala count</h1>
-            <span id="currentCount" class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold"><%=user.currCount%></span>
-          </div>
-
-          <div class="total-count flex flex-col items-center gap-2">
-            <h1>Total Ramnaam count / Mala count</h1>
-            <span id="totalCount" class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold"><%=user.totalCount%></span>
-          </div>
-
-          <div class="rank flex flex-col items-center gap-2">
-            <h1>Rank amongst Ramnaam Bhakt</h1>
-            <span class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold">
-              <%=user.rank%>
-            </span>
-          </div>
-        </div>
-
-        <div class="row-3 p-6 w-full">
-          <textarea
-            class="w-full p-3 border border-gray-300 rounded-md font-semibold text-red-600 focus:outline-none focus:border-blue-500"
-            id="ramTextarea"
-            name="ramTextarea"
-            rows="6"
-            cols="60"
-            placeholder="यहाँ पर राम नाम लिखें..."
-          ></textarea>
-        </div>
-
-        <div class="row-4 buttons flex justify-center gap-6">
-          <button class="r-button" onclick="appendCharacter('R')">R</button>
-          <button class="a-button" onclick="appendCharacter('A')">A</button>
-          <button class="m-button" onclick="appendCharacter('M')">M</button>
-        </div>
-
-        <div class="save-button flex justify-center mt-6">
-          <span class="text-2xl font-semibold bg-[#eaba4a] p-2 rounded-md mt-3 mb-3"
-            ><i class="ri-save-3-fill"></i> Save</span
-          >
+        <div class="right">
+          <a href="/profile">Home</a>
+          <a href="/mission">About</a>
+          <a href="/contact">Contact</a>
         </div>
       </div>
+
+      <div class="ramji-photo">
+        <img src="https://ramnaambank.com/images/logo.png" alt="">
+      </div>
+
+      <div class="goto-div">
+        <h1>Daily Darshan & Ram naam Meditation 👉</h1>
+        <div class="goto-div-items">
+          <a href="/impTemples">🚩 Important temples of Ayodhya</a>
+          <a href="/mission">🎯 Mission of Ram Naam Bank</a>
+          <a href="/glory">📖 Glory of Ram naam</a>
+          <a href="/feedback">✍️ Writing experience & feedback</a>
+        </div>
+      </div>
+
+      <div class="main-content">
+        <div class="container text-white">
+
+          <div class="row-1 flex items-center justify-between p-6 text-white border-b-2">
+            <h3 class=" text-xl font-semibold">Jai Shri Ram - 🙎‍ <%=user.name%></h3>
+            <h3 class="text-xl font-semibold">Welcome to Shri Ramnaam Bank</h3>
+            <a class="text-md px-4 py-2 rounded-full font-semibold text-white text-center bg-[#EC971F]"
+            href="/logout">Log Out</a>
+          </div>
+  
+          <div class="row-2 p-6  border-b-2">
+            <div class="previous-count flex flex-col items-center gap-2">
+              <h1>Previous Ramnaam count / Mala count</h1>
+              <span id="prevCount" class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold"><%=user.prevCount%></span>
+            </div>
+  
+            <div class="current-count flex flex-col items-center gap-2">
+              <h1>Current Ramnaam count / Mala count</h1>
+              <span id="currentCount" class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold"><%=user.currCount%></span>
+            </div>
+  
+            <div class="total-count flex flex-col items-center gap-2">
+              <h1>Total Ramnaam count / Mala count</h1>
+              <span id="totalCount" class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold"><%=user.totalCount%></span>
+            </div>
+  
+            <div class="rank flex flex-col items-center gap-2">
+              <h1>Rank amongst Ramnaam Bhakt</h1>
+              <span class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold">
+                <%=user.rank%>
+              </span>
+            </div>
+          </div>
+  
+          <div class="row-3 p-6 w-full">
+            <textarea
+              class="w-full p-3 border border-gray-300 rounded-md font-semibold text-red-600 focus:outline-none focus:border-blue-500"
+              id="ramTextarea"
+              name="ramTextarea"
+              rows="6"
+              cols="60"
+              placeholder="यहाँ पर राम नाम लिखें..."
+            ></textarea>
+          </div>
+  
+          <div class="row-4 buttons flex justify-center gap-6">
+            <button class="r-button" onclick="appendCharacter('R')">R</button>
+            <button class="a-button" onclick="appendCharacter('A')">A</button>
+            <button class="m-button" onclick="appendCharacter('M')">M</button>
+          </div>
+  
+          <div class="save-button flex justify-center mt-6">
+            <span class="text-2xl font-semibold bg-[#eaba4a] p-2 rounded-md mt-3 mb-3"
+              ><i class="ri-save-3-fill"></i> Save</span
+            >
+          </div>
+        </div>
+      </div>
+    
+      <footer>
+        <a href=""><i class="ri-facebook-fill"></i> Facebook</a>
+        <a href=""><i class="ri-twitter-fill"></i> Twitter</a>
+        <a href=""><i class="ri-youtube-fill"></i> Youtube</a>
+      </footer>
     </div>
 
     <script
