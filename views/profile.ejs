@@ -112,7 +112,7 @@
             <button class="m-button" onclick="appendCharacter('M')">म</button>
           </div>
   
-          <div class="save-button flex justify-center mt-6 notranslate">
+          <div class="save-button flex justify-center mt-6 notranslate" style="cursor: pointer;">
             <span class="text-2xl font-semibold bg-[#eaba4a] p-2 rounded-md mt-3 mb-3"
               ><i class="ri-save-3-fill"></i> Save</span
             >
@@ -134,8 +134,8 @@
       referrerpolicy="no-referrer"
     ></script>
 
-              <!-- Google translator JS code starts -->
-              <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"> 
+                 <!-- Google translator JS code starts -->
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"> 
 
               </script>
     <script type="text/javascript"> 
@@ -160,6 +160,8 @@
                   <!-- Google translator JS code ends -->
 
     <script>
+      // for disabling the keyboard 
+      document.getElementById("ramTextarea").readOnly = true;
       // http://localhost:3000/increment
               var userInput = "";
       function appendCharacter(char) {
