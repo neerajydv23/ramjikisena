@@ -22,7 +22,17 @@ const userSchema = mongoose.Schema({
   email:String,
   password:String,
   profileImage:String,
-  contact:Number,
+  // contact:Number,
+
+  contact:{
+    type:String, 
+    unique:true,
+    validate: {
+    validator: function(v) {
+      return /^([0-9]{10}$)/.test(v);
+    }},
+    required: true
+    },
 
   
   prevCount:{
