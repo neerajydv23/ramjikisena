@@ -6,7 +6,6 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const expressSession = require('express-session')
 const flash = require('connect-flash');
-const { utcToZonedTime, format } = require('date-fns-tz');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
