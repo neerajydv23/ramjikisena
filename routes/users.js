@@ -23,6 +23,8 @@ const userSchema = mongoose.Schema({
   password:String,
   profileImage:String,
   contact:Number,
+
+  
   prevCount:{
     type:Number,
     default:"0"
