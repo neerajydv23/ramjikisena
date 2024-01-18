@@ -53,6 +53,7 @@
 
       <div class="lekhanHistory-content">
         <h1>Daily Ramnaam Counts</h1>
+        <hr>
         <ul>
         <% user.dailyCounts.forEach(function(dailyCount){ %>
             <li class="font-semibold"><%= dailyCount.date.toDateString() %> : <%= dailyCount.count %></li>

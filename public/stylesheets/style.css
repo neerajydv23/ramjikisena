@@ -417,6 +417,11 @@ footer{
   padding-top: 10px;
   padding: 40px;
   overflow-y: scroll;
+  background-color: white;
+}
+.lekhanHistory-content h1{
+  font-size: 25px;
+  color: red;
 }
 @media screen and (max-width: 604px) {
   .nav-1 h1{
