@@ -57,7 +57,15 @@
           <div class="row-1 flex items-center justify-between p-6 text-white border-b-2">
             <h3>Jai Shri Ram - 🙎‍ <%=user.name%></h3>
             <h3>Welcome to Shri Ramnaam Bank</h3>
-            <a href="/logout">Log Out</a>
+            <div class="row-1-buttons">
+              <!-- Google translator HTML code starts -->
+              <select onchange="languageChanger()" id="google_translate_element" class="text-black">
+                <option value="en">English</option>
+                <option value="hi">Hindi</option>
+              </select>
+              <!-- Google translator HTML code ends -->
+              <a href="/logout">Log Out</a>
+            </div>
           </div>
           
   
@@ -76,11 +84,12 @@
               <h1>Total Ramnaam count / Mala count</h1>
               <span id="totalCount" class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold"><%=user.totalCount%></span>
             </div>
-  
+           
             <div class="rank flex flex-col items-center gap-2">
-              <h1>Rank amongst Ramnaam Bhakt</h1>
+              <!-- <h1>Rank amongst Ramnaam Bhakt</h1> -->
+              <h1>Total Ramnaam Bhakt</h1>
               <span class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold">
-                <%=user.rank%>
+                <%=userCount%>
               </span>
             </div>
           </div>
@@ -123,6 +132,31 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
+
+              <!-- Google translator JS code starts -->
+              <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"> 
+
+              </script>
+    <script type="text/javascript"> 
+    function googleTranslateElementInit(){
+      new google.translate.TranslateElement({
+        pageLanguage: "en"
+      },'google_translate_element');
+    }
+    const languageChanger = () =>{
+      var language = document.getElementById("google_translate_element").value;
+      var selectField = document.querySelector("#google_translate_element select");
+      for(var i =0;i<selectField.children.length;i++){
+        var option = selectField.children[i];
+        if(option.value==language){
+          selectField.selectedIndex=i;
+          selectField.dispatchEvent(new Event('change'));
+          break;
+        }
+      }
+    }
+    </script>
+                  <!-- Google translator JS code ends -->
 
     <script>
               var userInput = "";
@@ -179,7 +213,8 @@
         })
       })
 
-    
+   
+
     </script>
   </body>
 </html>

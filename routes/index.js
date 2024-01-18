@@ -15,15 +15,19 @@ router.get('/register', function(req, res, next) {
   res.render('register', {error: req.flash('error')});
 });
 
-router.get('/profile', isLoggedIn,function(req, res, next) {
-  res.render('profile',{user:req.user});
+router.get('/profile', isLoggedIn, async function(req, res, next) {
+  const userCount = (await userModel.find()).length;
+  res.render('profile',{user:req.user,userCount});
 });
+
+
 
 router.get('/increment', isLoggedIn, async function(req, res, next) {
   const user = await userModel.findOne({username:req.user.username});
 
   user.currCount +=1;
   user.totalCount+=1;
+
   await user.save();
 
   res.json({newCount:user.currCount,totalCount: user.totalCount});
