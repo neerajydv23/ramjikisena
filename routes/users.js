@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
 const plm = require('passport-local-mongoose');
-const MockDate = require('mockdate');
-MockDate.set('2024-01-20T12:00:00Z');
 
 
 // mongoose.connect("mongodb://127.0.0.1:27017/ramnaambank");

@@ -4,10 +4,6 @@ const passport = require('passport');
 const localStrategy = require('passport-local');
 const userModel = require('./users')
 const cors = require('cors');
-const MockDate = require('mockdate');
-MockDate.set('2024-01-20T12:00:00Z');
-
-
 
 
 passport.use(new localStrategy(userModel.authenticate()))
