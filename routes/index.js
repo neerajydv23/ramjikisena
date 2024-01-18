@@ -4,6 +4,8 @@ const passport = require('passport');
 const localStrategy = require('passport-local');
 const userModel = require('./users')
 const cors = require('cors');
+const { utcToZonedTime, format } = require('date-fns-tz');
+
 
 passport.use(new localStrategy(userModel.authenticate()))
 
@@ -32,15 +34,23 @@ router.get('/increment', isLoggedIn, async function(req, res, next) {
   user.totalCount+=1;
 
   // Find or create the daily count for today
-  const today = new Date().toDateString();  // new date object bana rha current date ka
-  const dailyCount = user.dailyCounts.find((entry) => entry.date.toDateString() === today); // date jo barabar hai aaj ke 
+  // const today = new Date().toDateString();  // new date object bana rha current date ka
+  const todayUTC = new Date(); // This is in UTC
+  const todayIST = utcToZonedTime(todayUTC, 'Asia/Kolkata'); // Convert to IST
+  const today = format(todayIST, 'yyyy-MM-dd'); // Format for comparison
+
+  // const dailyCount = user.dailyCounts.find((entry) => entry.date.toDateString() === today); // date jo barabar hai aaj ke 
+  const dailyCount = user.dailyCounts.find((entry) => format(entry.date, 'yyyy-MM-dd') === today);
+
 
   if (dailyCount) {
     // If the entry for today exists, increment the count
     dailyCount.count += 1;
   } else {
     // If the entry for today doesn't exist, create a new entry
-    user.dailyCounts.push({ date: new Date(), count: 1 });
+    // user.dailyCounts.push({ date: new Date(), count: 1 });
+        // If the entry for today doesn't exist, create a new entry
+        user.dailyCounts.push({ date: todayIST, count: 1 });
   }
 
   await user.save();
