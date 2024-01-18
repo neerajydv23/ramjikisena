@@ -3,6 +3,7 @@ var router = express.Router();
 const passport = require('passport');
 const localStrategy = require('passport-local');
 const userModel = require('./users')
+const cors = require('cors');
 
 passport.use(new localStrategy(userModel.authenticate()))
 

@@ -159,6 +159,7 @@
                   <!-- Google translator JS code ends -->
 
     <script>
+      // http://localhost:3000/increment
               var userInput = "";
       function appendCharacter(char) {
 
@@ -174,7 +175,7 @@
           userInput="";
           textarea.value=""
           axios
-            .get("http://localhost:3000/increment")
+            .get("https://ramnaambank.onrender.com/increment")
             .then(function (response) {
               // Update the current count on the client side
               document.getElementById("currentCount").innerText =
