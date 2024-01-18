@@ -46,27 +46,27 @@ router.get('/save', isLoggedIn, async function(req, res, next) {
   res.json({newCount:user.currCount,prevCount: user.prevCount});
 });
 
-router.get('/impTemples', isLoggedIn, function(req,res){
+router.get('/impTemples', function(req,res){
   res.render('impTemples');
 })
 
-router.get('/mission', isLoggedIn, function(req,res){
+router.get('/mission', function(req,res){
   res.render('mission');
 })
 
-router.get('/about', isLoggedIn, function(req,res){
+router.get('/about', function(req,res){
   res.render('about');
 })
 
-router.get('/glory', isLoggedIn, function(req,res){
+router.get('/glory', function(req,res){
   res.render('glory');
 })
 
-router.get('/feedback', isLoggedIn, function(req,res){
+router.get('/feedback', function(req,res){
   res.render('feedback');
 })
 
-router.get('/contact', isLoggedIn, function(req,res){
+router.get('/contact', function(req,res){
   res.render('contact');
 })
 
