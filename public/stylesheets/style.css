@@ -411,6 +411,13 @@ footer{
 .about-sir img{
   height: 300px;
 }
+.lekhanHistory-content{
+  max-height: 70vh;
+  width: 100%;
+  padding-top: 10px;
+  padding: 40px;
+  overflow-y: scroll;
+}
 @media screen and (max-width: 604px) {
   .nav-1 h1{
     font-size: 14px;

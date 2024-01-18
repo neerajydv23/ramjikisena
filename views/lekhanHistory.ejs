@@ -51,11 +51,11 @@
         </div>
       </div>
 
-      <div class="mission-content">
+      <div class="lekhanHistory-content">
         <h1>Daily Ramnaam Counts</h1>
         <ul>
         <% user.dailyCounts.forEach(function(dailyCount){ %>
-            <li><%= dailyCount.date.toDateString() %> : <%= dailyCount.count %></li>
+            <li class="font-semibold"><%= dailyCount.date.toDateString() %> : <%= dailyCount.count %></li>
        <% })%>
     </ul>
       </div>
