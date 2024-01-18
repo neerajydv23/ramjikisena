@@ -58,8 +58,10 @@ router.get('/save', isLoggedIn, async function(req, res, next) {
   res.json({newCount:user.currCount,prevCount: user.prevCount});
 });
 
-router.get('/lekhanHistory', function(req,res){
-  res.render('lekhanHistory');
+router.get('/lekhanHistory', async function(req,res){
+  const user = await userModel.findOne({username:req.user.username});
+ 
+  res.render('lekhanHistory',{user});
 })
 
 router.get('/impTemples', function(req,res){
