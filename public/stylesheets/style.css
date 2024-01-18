@@ -141,12 +141,13 @@ html,body{
   width: 100%;
   display: flex;
   justify-content: space-between;
-  font-size: 20px;
+  font-size: 17px;
   font-weight: 600;
   color: white;
   background-color: #6D1E1E;
   padding: 15px;
   margin-top: 10px;
+  text-align: center;
 }
 .main-content{
   height: 100%;
@@ -453,6 +454,12 @@ footer{
     font-weight: 600;
     color: white;
   }
+  .count-info{
+    text-align: center;
+    font-size: 12px;
+    padding: 8px;
+    margin-top: 10px;
+  }
   .row-1{
     flex-direction: column;
     gap: 20px;
@@ -532,6 +539,12 @@ footer{
   }
   .ramji-slider-text{
     font-size: 14px;
+  }
+  .count-info{
+    text-align: center;
+    font-size: 8px;
+    padding: 8px;
+    margin-top: 10px;
   }
   .row-1{
     flex-direction: column;
