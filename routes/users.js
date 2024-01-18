@@ -22,8 +22,6 @@ const userSchema = mongoose.Schema({
   email:String,
   password:String,
   profileImage:String,
-  // contact:Number,
-
   contact:{
     type:String, 
     unique:true,
@@ -33,8 +31,6 @@ const userSchema = mongoose.Schema({
     }},
     required: true
     },
-
-  
   prevCount:{
     type:Number,
     default:"0"
@@ -50,7 +46,13 @@ const userSchema = mongoose.Schema({
   rank:{
     type:Number,
     default:"0"
-  }
+  },
+  dailyCounts: [
+    {
+      date: { type: Date, default: Date.now },
+      count: { type: Number, default: 0 },
+    },
+  ],
 });
 
 userSchema.plugin(plm);

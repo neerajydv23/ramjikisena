@@ -31,9 +31,21 @@ router.get('/increment', isLoggedIn, async function(req, res, next) {
   user.currCount +=1;
   user.totalCount+=1;
 
+  // Find or create the daily count for today
+  const today = new Date().toDateString();  // new date object bana rha current date ka
+  const dailyCount = user.dailyCounts.find((entry) => entry.date.toDateString() === today); // date jo barabar hai aaj ke 
+
+  if (dailyCount) {
+    // If the entry for today exists, increment the count
+    dailyCount.count += 1;
+  } else {
+    // If the entry for today doesn't exist, create a new entry
+    user.dailyCounts.push({ date: new Date(), count: 1 });
+  }
+
   await user.save();
 
-  res.json({newCount:user.currCount,totalCount: user.totalCount});
+  res.json({dailyCount: dailyCount,newCount:user.currCount,totalCount: user.totalCount});
 });
 
 router.get('/save', isLoggedIn, async function(req, res, next) {
@@ -45,6 +57,10 @@ router.get('/save', isLoggedIn, async function(req, res, next) {
 
   res.json({newCount:user.currCount,prevCount: user.prevCount});
 });
+
+router.get('/lekhanHistory', function(req,res){
+  res.render('lekhanHistory');
+})
 
 router.get('/impTemples', function(req,res){
   res.render('impTemples');
