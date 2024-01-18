@@ -3,28 +3,100 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>ramjikisena</title>
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+  <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-  <div class="w-full h-screen bg-center bg-cover bg-[url('https://ramnaambank.com/images/backgroundimg.jpg')] flex items-center justify-center">
-    <!-- <div class="w-full md:w-[50%] lg:w-[40%] xl:w-[30%] bg-white px-6 py-8 rounded-[30px] "> -->
-      <div  class="w-full md:w-[50%] lg:w-[40%] xl:w-[30%] bg-[#FBAA01] border-4 border-#5B1801 px-6 py-8 rounded-[30px]" style="border-color: #5B1801;" >
-        <h1 class="text-3xl text-center font-semibold text-zinc-700 capitalize tracking-tighter leading-2">राम नाम लेखन हेतु लॉगिन / रजिस्टर करे - Login/Register here</h1>
 
-        <%if(error.length>0){ %>
-          <p class="flash-error" style="color: red;font-weight: 400;text-transform: capitalize;margin: 7px 0;text-align: center;"><%=error%></p>
-        <% } %>
+  <div class="main">
+    <div class="help-icon">
+      <i class="ri-question-line"></i>
+      <a href="https://www.youtube.com/watch?v=IEo8RdFtTk0&t=921s">Help</a href="https://www.youtube.com/watch?v=IEo8RdFtTk0&t=921s">      </div>
 
-        <form action="/login" method="post">
-            <input class="border-2 rounded-md mt-6 w-full px-3 py-2" type="text" name="username" placeholder="लॉगिन आईडी / Login id">
-            <input class="border-2 rounded-md mt-4 w-full px-3 py-2" type="password" name="password" placeholder="पासवर्ड / Password">
-            <a class="mt-2 block text-sm font-semibold text-zinc-500 text-right" href="#">Forgot password?</a>
-            <input class="border-2 rounded-full mt-4 w-full px-3 py-2 bg-[#5B1801] text-white" type="submit" value="लॉगिन / Login">
-        </form>
-        <a class="block mt-7 text-sm px-3 py-2 border-2 rounded-full font-semibold text-white text-center bg-[#5B1801]" href="/register">रजिस्टर / Register</a>
+    <div class="nav-1">
+      <h1>
+        Helpline :
+        <a href=""><i class="ri-phone-fill"></i> +91-8109389682 </a>
+        <a href=""><i class="ri-mail-line"></i> ramnaambank@gmail.com </a>
+      </h1>
     </div>
-</div>
+    <div class="nav-2">
+      <div class="left">
+        <img src="/images/ramjikisena_logo.jpeg" alt="">
+        <a href="/profile">Ramji Ki Sena</a>
+      </div>
+      <div class="right">
+        <a href="/profile">Home</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+      </div>
+    </div>
 
+    <div class="ramji-photo">
+      <img src="/images/ramjikisena_logo.jpeg" alt="">
+    </div>
+
+    <div class="goto-div">
+      <h1>Daily Darshan & Ram naam Meditation 👉</h1>
+      <div class="goto-div-items">
+        <a href="/impTemples">🚩 Important temples of Ayodhya</a>
+        <a href="/mission">🎯 Our Mission </a>
+        <a href="/glory">📖 Glory of Ram naam</a>
+        <a href="/feedback">✍️ Writing experience & feedback</a>
+      </div>
+    </div>
+
+    <div class="index-content">
+      <div class="ramji-slider">
+        <div class="ramji-slider-text">
+          <h1>🚩जय श्री राम</h1>
+          <h1>🚩जय श्री हनुमान</h1>
+        </div>
+        <img src="/images/ramji-slider-1.jpeg" alt="">
+        <div class="count-info">
+          <h3>✍️ Total written Ramcount - 103 </h3>
+          <h3>🎯 Total visited devotees - 24</h3>
+          <h3>🎯 Total registered devotees - <%=userCount%> </h3>
+        </div>
+      </div>
+    </div>
+
+   
+    <div class="w-full h-screen bg-center bg-cover bg-[url('https://ramnaambank.com/images/backgroundimg.jpg')] flex items-center justify-center">
+      <!-- <div class="w-full md:w-[50%] lg:w-[40%] xl:w-[30%] bg-white px-6 py-8 rounded-[30px] "> -->
+        <div  class="w-full md:w-[50%] lg:w-[40%] xl:w-[30%] bg-[#FBAA01] border-4 border-#5B1801 px-6 py-8 rounded-[30px]" style="border-color: #5B1801;" >
+          <h1 class="text-3xl text-center font-semibold text-zinc-700 capitalize tracking-tighter leading-2">राम नाम लेखन हेतु लॉगिन / रजिस्टर करे - Login/Register here</h1>
+  
+          <%if(error.length>0){ %>
+            <p class="flash-error" style="color: red;font-weight: 400;text-transform: capitalize;margin: 7px 0;text-align: center;"><%=error%></p>
+          <% } %>
+  
+          <form action="/login" method="post">
+              <input class="border-2 rounded-md mt-6 w-full px-3 py-2" type="text" name="username" placeholder="लॉगिन आईडी / Login id">
+              <input class="border-2 rounded-md mt-4 w-full px-3 py-2" type="password" name="password" placeholder="पासवर्ड / Password">
+              <a class="mt-2 block text-sm font-semibold text-zinc-500 text-right" href="#">Forgot password?</a>
+              <input class="border-2 rounded-full mt-4 w-full px-3 py-2 bg-[#5B1801] text-white" type="submit" value="लॉगिन / Login">
+          </form>
+          <a class="block mt-7 text-sm px-3 py-2 border-2 rounded-full font-semibold text-white text-center bg-[#5B1801]" href="/register">रजिस्टर / Register</a>
+      </div>
+  </div>
+  
+
+  <footer>
+    <a href=""><i class="ri-facebook-fill"></i> Facebook</a>
+    <a href=""><i class="ri-twitter-fill"></i> Twitter</a>
+    <a href=""><i class="ri-youtube-fill"></i> Youtube</a>
+  </footer>
+
+  </div>
+
+
+
+  
 </body>
 </html>

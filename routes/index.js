@@ -8,8 +8,10 @@ const cors = require('cors');
 passport.use(new localStrategy(userModel.authenticate()))
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', {error: req.flash('error')});
+router.get('/', async function(req, res, next) {
+  const userCount = (await userModel.find()).length;
+
+  res.render('index', {userCount,error: req.flash('error')});
 });
 
 router.get('/register', function(req, res, next) {
@@ -50,6 +52,10 @@ router.get('/impTemples', isLoggedIn, function(req,res){
 
 router.get('/mission', isLoggedIn, function(req,res){
   res.render('mission');
+})
+
+router.get('/about', isLoggedIn, function(req,res){
+  res.render('about');
 })
 
 router.get('/glory', isLoggedIn, function(req,res){

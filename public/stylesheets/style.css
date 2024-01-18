@@ -31,28 +31,26 @@ html,body{
 
 
 
-@keyframes marquee {
+/* @keyframes marquee {
   0% {
     transform: translateX(100%);
   }
   100% {
     transform: translateX(-100%);
   }
-}
+} */
 
 .nav-1{
   display: flex;
   justify-content: center;
   background-color: #6D1E1E;
   color: white;
-  padding: 15px 0px;
+  padding: 15px 5px;
+  overflow: hidden;
 }
 .nav-1 h1{
   display: flex;
   gap: 10px;
-  white-space: nowrap; 
-  overflow: hidden; 
-  animation: marquee 10s linear infinite; 
 }
 
 .nav-2{
@@ -66,6 +64,7 @@ html,body{
 }
 .nav-2 img{
   height: 50px;
+  border-radius: 50%;
 }
 .nav-2 .left{
   display: flex;
@@ -98,6 +97,11 @@ html,body{
   align-items: center;
   padding: 20px;
 }
+.ramji-photo img{
+  height: 300px;
+  border-radius: 60px;
+}
+
 .goto-div{
   display: flex;
   flex-direction: column;
@@ -118,6 +122,31 @@ html,body{
   font-weight: 600;
   flex-wrap: wrap;
   justify-content: center;
+}
+.index-content{
+  min-height: 100%;
+  width: 100%;
+  padding-top: 10px;
+  padding: 40px;
+}
+.ramji-slider-text{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 25px;
+  font-weight: 600;
+  color: white;
+}
+.count-info{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+  font-weight: 600;
+  color: white;
+  background-color: #6D1E1E;
+  padding: 15px;
+  margin-top: 10px;
 }
 .main-content{
   height: 100%;
@@ -322,7 +351,72 @@ footer{
   font-weight: 600;
 }
 
+/* about css */
+.about-content{
+  min-height: 100%;
+  width: 100%;
+  background-color: white;
+  padding-top: 10px;
+  padding: 40px;
+}
+
+.about-content h1{
+  font-size: 30px;
+  color: red;
+  margin-bottom: 20px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.about-content p{
+  font-size: 18px;
+  color: #B22222;
+  font-weight: 550;
+  line-height: 1.8;
+}
+.about-content img{
+  height: 400px;
+}
+.about-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.about-img-1{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.about-img-1 span{
+  font-size: 30px;
+  font-weight: 600;
+  color: red;
+}
+
+.about-content .about-sir{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 20px;
+  margin-top: 50px;
+}
+.about-sir h2{
+  font-size: 20px;
+  font-weight: 600;
+  color: #B22222;
+}
+.about-sir img{
+  height: 300px;
+}
 @media screen and (max-width: 604px) {
+  .nav-1 h1{
+    font-size: 14px;
+    gap: 8px;
+    flex-direction: column;
+    align-items: center;
+  }
   .nav-2{
     padding: 5px;
   }
@@ -354,6 +448,11 @@ footer{
     padding: 15px 6px;
     font-size: 12px;
   }
+  .ramji-slider-text{
+    font-size: 19px;
+    font-weight: 600;
+    color: white;
+  }
   .row-1{
     flex-direction: column;
     gap: 20px;
@@ -380,9 +479,30 @@ footer{
   .save-button span{
     font-size: 20px;
   }
+  .ramji-photo img{
+    height: 200px;
+    border-radius: 50px;
+  }
+  .about-content img{
+    height: 300px;
+    object-fit: cover;
+  }
+  .about-sir img{
+    height: 200px;
+  }
+  .about-content .about-sir{
+    padding: 5px;
+  }
+  .about-sir h2{
+    font-size: 17px;
+  }
 }
 
 @media screen and (max-width: 410px) {
+  .nav-1 h1{
+    font-size: 10px;
+    gap: 2px;
+  }
   .nav-2{
     padding: 2px;
   }
@@ -410,6 +530,9 @@ footer{
     font-size: 13px;
     justify-content: center;
   }
+  .ramji-slider-text{
+    font-size: 14px;
+  }
   .row-1{
     flex-direction: column;
     gap: 20px;
@@ -421,6 +544,15 @@ footer{
     padding: 4px 8px ;
     text-align: center;
     font-size: 12px;
+  }
+  .about-content .about-sir{
+    padding: 0px;
+  }
+  .about-sir h2{
+    font-size: 15px;
+  }
+  .about-sir img{
+    height: 150px;
   }
 
 }
