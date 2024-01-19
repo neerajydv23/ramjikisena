@@ -80,15 +80,15 @@
             </div>
   
             <div class="total-count flex flex-col items-center gap-2">
-              <h1>Total Ramnaam count / Mala count</h1>
-              <span id="totalCount" class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold"><%=user.totalCount %> /<%= user.mala %></span>
+              <h1>Total Ramnaam count</h1>
+              <span id="totalCount" class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold"><%=user.totalCount %></span>
 
             </div>
            
             <div class="mala-count flex flex-col items-center gap-2">
               <!-- <h1>Rank amongst Ramnaam Bhakt</h1> -->
               <h1>Total Mala Count</h1>
-              <span class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold">
+              <span id="malaCount" class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold">
                 <%=user.mala%>
               </span>
             </div>
@@ -185,6 +185,10 @@
                 //Updating the total Count
                 document.getElementById("totalCount").innerText =
                 response.data.totalCount;
+
+                //updating mala count
+                document.getElementById("malaCount").innerText =
+                response.data.mala;
 
               // Update the textarea with 'राम'
               var count = response.data.newCount;
