@@ -16,20 +16,6 @@ html,body{
   background-position: center;
 }
 
-.help-icon {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #eaba4a;
-  color: #6D1E1E;
-  font-weight: 600;
-  padding: 25px 10px;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 20px;
-}
-
-
 
 /* @keyframes marquee {
   0% {
@@ -528,10 +514,7 @@ tr:nth-child(even) {
     font-size: 15px;
     justify-content: center;
   }
-  .help-icon {
-    padding: 15px 6px;
-    font-size: 12px;
-  }
+  
   .ramji-slider-text{
     font-size: 19px;
     font-weight: 600;
