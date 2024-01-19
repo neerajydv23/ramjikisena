@@ -54,11 +54,32 @@
       <div class="lekhanHistory-content">
         <h1>Daily Ramnaam Counts</h1>
         <hr>
-        <ul>
+        <!-- <ul>
         <% user.dailyCounts.forEach(function(dailyCount){ %>
             <li class="font-semibold"><%= dailyCount.date.toDateString() %> : <%= dailyCount.count %></li>
        <% })%>
-    </ul>
+    </ul> -->
+
+    <div class="history-table">
+      <table border="1">
+        <thead>
+          <tr style="color: #B22222;">
+            <th>Date</th>
+            <th>Total Count</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% const sortedDailyCounts = user.dailyCounts.slice().sort((a, b) => b.date - a.date); %>
+          <% sortedDailyCounts.forEach(function(dailyCount) { %>
+            <tr>
+              <td><%= dailyCount.date.toDateString() %></td>
+              <td><%= dailyCount.count %></td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    </div>
+
       </div>
 
       <footer>

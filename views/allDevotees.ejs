@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ramjikisena</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <div class="main">
+        <div class="help-icon">
+            <i class="ri-question-line"></i>
+            <a href="https://www.youtube.com/watch?v=IEo8RdFtTk0&t=921s">Help</a href="https://www.youtube.com/watch?v=IEo8RdFtTk0&t=921s">
+        </div>
+
+        <div class="nav-1">
+          <h1>
+            Helpline :
+            <a href=""><i class="ri-phone-fill"></i> +91-9981122493 </a>
+            <a href=""><i class="ri-mail-line"></i> shukla.ravi2@gmail.com </a>
+          </h1>
+        </div>
+        <div class="nav-2">
+            <div class="left">
+              <img src="/images/ramjikisena_logo.jpeg" alt="">
+              <a href="/profile">Ramji Ki Sena</a>
+            </div>
+            <div class="right">
+              <a href="/profile">Home</a>
+              <a href="/about">About</a>
+              <a href="/contact">Contact</a>
+            </div>
+          </div>
+
+          <div class="goto-div">
+            <h1>Daily Darshan & Ram naam Meditation 👉</h1>
+            <div class="goto-div-items">
+              <a href="/impTemples">🚩 Important temples of Ayodhya</a>
+              <a href="/mission">🎯 Our Mission </a>
+              <a href="/glory">📖 Glory of Ram naam</a>
+              <a href="/feedback">✍️ Writing experience & feedback</a>
+            </div>
+          </div>
+
+        <div class="allDevotees-content">
+
+            <h1>All Devotees</h1>
+
+            <div class="input-search">
+                <input id="search-devotees" type="text">
+            </div>
+
+            <div class="devotees-table">
+                <table border="1">
+                    <thead>
+                      <tr style="color: #B22222;">
+                        <th>Name</th>
+                        <th>Today's Count</th>
+                        <th>Total Count</th>
+                      </tr>
+                    </thead>
+                    <tbody id="userTableBody">
+                      <% allUsers.forEach(function(user) { %>
+                        <tr>
+                          <td><%= user.name %></td>
+                          <td><%= user.dailyCounts.length > 0 ? user.dailyCounts[user.dailyCounts.length - 1].count : 0 %></td>
+                          <td><%= user.totalCount %></td>
+                        </tr>
+                      <% }); %>
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+       
+
+        <footer>
+            <a href=""><i class="ri-facebook-fill"></i> Facebook</a>
+            <a href=""><i class="ri-twitter-fill"></i> Twitter</a>
+            <a href=""><i class="ri-youtube-fill"></i> Youtube</a>
+        </footer>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js" integrity="sha512-b94Z6431JyXY14iSXwgzeZurHHRNkLt9d6bAHt7BZT38eqV+GyngIi/tVye4jBKPYQ2lBdRs0glww4fmpuLRwA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+
+        const inp = document.querySelector("#search-devotees");
+        const userTableBody = document.getElementById("userTableBody");
+
+            inp.addEventListener("input",function(){
+            axios.get(`https://ramjikisena.onrender.com/name/${inp.value}`)
+            .then(function(response){
+                // Clear existing table rows
+                userTableBody.innerHTML = "";
+
+                response.data.forEach(function (user) {
+            // Append new rows based on the search result
+            const newRow = document.createElement("tr");
+            newRow.innerHTML = `
+              <td>${user.name}</td>
+              <td>${user.dailyCounts.length > 0 ? user.dailyCounts[user.dailyCounts.length - 1].count : 0}</td>
+              <td>${user.totalCount}</td>
+            `;
+            userTableBody.appendChild(newRow);
+          });
+        })
+                .catch(function (error) {
+                    console.error("Error fetching search results:", error);
+                                     });
+    });
+            
+
+    </script>
+</body>
+
+</html>

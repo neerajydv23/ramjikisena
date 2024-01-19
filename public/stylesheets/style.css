@@ -423,6 +423,73 @@ footer{
   font-size: 25px;
   color: red;
 }
+.history-table {
+  overflow-x: auto;
+  overflow-y: scroll;
+}
+.all-devotees {
+  color: white;
+  font-weight: 600;
+  font-size: 20px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+.all-devotees a{
+  background-color: #6D1E1E;
+  padding: 8px 12px;
+  border-radius: 5px;
+}
+.allDevotees-content{
+  min-height: 100%;
+  width: 100%;
+  background-color: white;
+  padding-top: 10px;
+  padding: 40px;
+  text-align: center;
+}
+
+.allDevotees-content h1{
+  font-size: 30px;
+  color: red;
+  margin-bottom: 20px;
+  font-weight: 600;
+  text-align: center;
+}
+
+
+.devotees-table {
+  margin-top: 20px;
+  overflow-x: auto;
+  overflow-y: scroll;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+th, td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+.input-search input{
+  border: 2px solid black;
+  padding: 5px;
+  border-radius: 5px;
+}
 @media screen and (max-width: 604px) {
   .nav-1 h1{
     font-size: 14px;
