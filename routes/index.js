@@ -107,14 +107,14 @@ router.get('/contact', function(req,res){
 
 router.post('/register', function(req, res, next) {
 
-  if (!req.body.username || !req.body.fullname || !req.body.email || !req.body.password) {
+  if (!req.body.username || !req.body.fullname || !req.body.password) {
     req.flash('error', 'All fields are required');
     return res.redirect('/register');
   }
 
   const data = new userModel({
     username:req.body.username,
-    email:req.body.email,
+    city:req.body.city,
     contact:req.body.contact,
     name:req.body.fullname
   })

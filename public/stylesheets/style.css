@@ -17,26 +17,28 @@ html,body{
 }
 
 
-/* @keyframes marquee {
+.marquee {
+  white-space: nowrap;
+  overflow: hidden;
+  animation: marquee 40s linear infinite;
+  font-weight: 600;
+}
+
+@keyframes marquee {
   0% {
     transform: translateX(100%);
   }
+
   100% {
     transform: translateX(-100%);
   }
-} */
+}
 
 .nav-1{
-  display: flex;
-  justify-content: center;
   background-color: #6D1E1E;
   color: white;
   padding: 15px 5px;
   overflow: hidden;
-}
-.nav-1 h1{
-  display: flex;
-  gap: 10px;
 }
 
 .nav-2{

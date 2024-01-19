@@ -20,7 +20,7 @@ Connection();
 const userSchema = mongoose.Schema({
   username: String,
   name:String,
-  email:String,
+  city:String,
   password:String,
   profileImage:String,
   contact:{
