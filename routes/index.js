@@ -43,7 +43,7 @@ router.get('/increment', isLoggedIn, async function(req, res, next) {
   user.currCount +=1;
   user.totalCount+=1;
 
-  user.mala = (user.totalCount / 108);
+  user.mala = (user.totalCount / 108).toFixed(1);
 
 
   // Find or create the daily count for today
@@ -62,7 +62,7 @@ router.get('/increment', isLoggedIn, async function(req, res, next) {
 
   await user.save();
 
-  res.json({mala,dailyCount: dailyCount,newCount:user.currCount,totalCount: user.totalCount});
+  res.json({mala:user.mala,dailyCount: dailyCount,newCount:user.currCount,totalCount: user.totalCount});
 });
 
 router.get('/save', isLoggedIn, async function(req, res, next) {
