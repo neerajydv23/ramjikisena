@@ -54,6 +54,10 @@ const userSchema = mongoose.Schema({
       count: { type: Number, default: 0 },
     },
   ],
+  mala:{
+    type:Number,
+    default:"0"
+  }
 });
 
 userSchema.plugin(plm);
