@@ -43,7 +43,7 @@ router.get('/increment', isLoggedIn, async function(req, res, next) {
   user.currCount +=1;
   user.totalCount+=1;
 
-  user.mala = (user.totalCount / 108).toFixed(1);
+  user.mala = (user.totalCount / 108).toFixed(2);
 
 
   // Find or create the daily count for today
