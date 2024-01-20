@@ -69,8 +69,8 @@ html,body{
   overflow: hidden;
 }
 
+
 .nav-2{
-  /* width: 100%; */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -178,21 +178,21 @@ html,body{
   width: 100%;
   background-color: #6D1E1E;
 }
-.row-1 h3{
+.container .row-1 h3{
   font-weight: 600;
 }
-.row-1 a{
+.container .row-1 a{
   background-color: #EC971F ;
   padding: 5px 7px ;
   border-radius: 5px;
 }
-.row-2{
+.container .row-2{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 10px;
 }
-.row-4 button{
+.container .row-4 button{
   font-size: 40px;
   font-weight: 700;
   background-color: #eaba4a;
@@ -200,7 +200,7 @@ html,body{
   padding: 10px 20px;
   transition: 0.5s all; 
 }
-.row-4 button:active{
+.container .row-4 button:active{
     transform: scale(0.7); 
 }
 footer{
@@ -420,10 +420,11 @@ footer{
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 50px;
 }
 .contact-chandra span{
   text-align: center;
-  font-size: 25px;
+  font-size: 22px;
   color: rgb(231, 22, 22);
   font-weight: 450;
 }
@@ -433,12 +434,14 @@ footer{
 }
 .services-chandra{
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   padding: 20px 40px;
   margin-top: 20px;
   flex-wrap: wrap;
+  gap: 50px;
 }
+
 .services-chandra h6{
   margin-bottom: 10px;
   font-weight: 500;
@@ -586,19 +589,19 @@ tr:nth-child(even) {
     padding: 8px;
     margin-top: 10px;
   }
-  .row-1{
+  .container .row-1{
     flex-direction: column;
     gap: 20px;
   }
-  .row-1 h3{
+  .container .row-1 h3{
     font-weight: 600;
     font-size: 14px;
   }
-  .row-1 a{
+  .container .row-1 a{
     padding: 4px 5px ;
     font-size: 12px;
   }
-  .row-2{
+  .container .row-2{
     justify-content: center;
     align-items: center;
   }
@@ -606,7 +609,7 @@ tr:nth-child(even) {
     gap: 20px;
     font-size: 14px;
   }
-  .row-4 button{
+  .container .row-4 button{
     font-size: 27px;
   }
   .save-button span{
@@ -628,6 +631,22 @@ tr:nth-child(even) {
   }
   .about-sir h2{
     font-size: 17px;
+  }
+  .services-chandra{
+    /* flex-direction: column; */
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    padding: 20px ;
+  }
+  .about-img-1 span{
+    font-size: 30px;
+  }
+  .contact-chandra{
+    margin-top: 10px;
+  }
+  .contact-chandra span{
+    font-size: 16px;
   }
 }
 
@@ -672,17 +691,36 @@ tr:nth-child(even) {
     padding: 8px;
     margin-top: 10px;
   }
-  .row-1{
+  .container .row-1{
     flex-direction: column;
     gap: 20px;
   }
-  .row-1 h3{
+  .container .row-1 h3{
     font-size: 14px;
   }
-  .row-1 a{
+  .container .row-1 a{
     padding: 4px 8px ;
     text-align: center;
     font-size: 12px;
+  }
+  .about-img{
+    margin-top: 20px;
+  }
+  .about-img img{
+    height: 250px;
+  }
+  .about-img-1 span{
+    font-size: 23px;
+  }
+  .contact-chandra span{
+    font-size: 11.5px;
+  }
+  .services-chandra{
+    gap: 10px;
+    padding: 0px ;
+  }
+  .services-chandra h6{
+    font-size: 13px;
   }
   .about-content .about-sir{
     padding: 0px;
