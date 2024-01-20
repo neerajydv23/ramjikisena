@@ -74,7 +74,7 @@ html,body{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  padding: 20px 30px;
   background-color: white;
   color: #6D1E1E;
 }
@@ -91,8 +91,6 @@ html,body{
   font-size: 25px;
   font-weight: 700;
 }
-
-
 
 .nav-2 .right{
   font-weight: 600;
@@ -113,10 +111,6 @@ html,body{
   align-items: center;
   /* padding: 20px */
 }
-/* .ramji-photo iframe{
-  width: 100%;
-  height: 80vh;
-} */
 
 .goto-div{
   display: flex;
@@ -192,7 +186,7 @@ html,body{
   justify-content: space-between;
   gap: 10px;
 }
-.container .row-4 button{
+/* .container .row-4 button{
   font-size: 40px;
   font-weight: 700;
   background-color: #eaba4a;
@@ -207,7 +201,75 @@ html,body{
     box-shadow: 0 0 15px rgba(167, 166, 166, 0.7);
     background-color: #B22222;
     color: #f1f1f1;
+} */
+
+.container .row-4 button{
+  font-size: 50px;
+  font-weight: 700;
+  border-radius: 5px;
+  padding: 10px 20px;
+  box-shadow: 0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(110,80,20,.4),
+  inset 0 -2px 5px 1px rgba(139,66,8,1),
+  inset 0 -1px 1px 3px rgba(250,227,133,1);
+  background-image: linear-gradient(160deg, #a54e07, #b47e11, #fef1a2, #bc881b, #a54e07);
+  border: 1px solid #a55d07;
+  color: rgb(120,50,5);
+  text-shadow: 0 2px 2px rgba(250, 227, 133, 1);
+  cursor: pointer;
+  transition: all .2s ease-in-out;
+  background-size: 100% 100%;
+  background-position:center;
 }
+.container .row-4 button:active{
+  transform: scale(0.7); 
+  box-shadow: 0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(110,80,20,.4),
+  inset 0 -2px 5px 1px #b17d10,
+    inset 0 -1px 1px 3px rgba(250,227,133,1);
+}
+.container .row-4 button:focus,
+.container .row-4 button:hover {
+  background-size: 150% 150%;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23),
+                inset 0 -2px 5px 1px #b17d10,
+                inset 0 -1px 1px 3px rgba(250,227,133,1);
+  border: 1px solid rgba(165,93,7,.6);
+  color: rgba(120,50,5,.8);
+}
+
+.save-button span{
+  margin: 10px 0;
+  font-size: 20px;
+  font-weight: 700;
+  border-radius: 5px;
+  padding: 10px ;
+  box-shadow: 0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(110,80,20,.4),
+  inset 0 -2px 5px 1px rgba(139,66,8,1),
+  inset 0 -1px 1px 3px rgba(250,227,133,1);
+  background-image: linear-gradient(160deg, #a54e07, #b47e11, #fef1a2, #bc881b, #a54e07);
+  border: 1px solid #a55d07;
+  color: rgb(120,50,5);
+  text-shadow: 0 2px 2px rgba(250, 227, 133, 1);
+  cursor: pointer;
+  transition: all .2s ease-in-out;
+  background-size: 100% 100%;
+  background-position:center;
+}
+.save-button span:active{
+  transform: scale(0.7); 
+  box-shadow: 0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(110,80,20,.4),
+  inset 0 -2px 5px 1px #b17d10,
+    inset 0 -1px 1px 3px rgba(250,227,133,1);
+}
+.save-button span:focus,
+.save-button span:hover {
+  background-size: 150% 150%;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23),
+                inset 0 -2px 5px 1px #b17d10,
+                inset 0 -1px 1px 3px rgba(250,227,133,1);
+  border: 1px solid rgba(165,93,7,.6);
+  color: rgba(120,50,5,.8);
+}
+
 footer{
   margin-top: 40px;
   padding: 10px;
@@ -499,6 +561,7 @@ footer{
   padding: 8px 12px;
   border-radius: 5px;
 }
+
 .allDevotees-content{
   height: 100%;
   width: 100%;
@@ -556,7 +619,7 @@ tr:nth-child(even) {
     align-items: center;
   }
   .nav-2{
-    padding: 5px;
+    padding:10px;
   }
   .nav-2 img{
     height: 40px;
@@ -569,7 +632,11 @@ tr:nth-child(even) {
   }
   .nav-2 .right a{
     font-size: 10px;
+    /* display: none; */
   }
+  /* .nav-2 .right i{
+    display: initial;
+  } */
   .goto-div{
     gap: 15px;
     /* padding: 10px; */
@@ -614,8 +681,11 @@ tr:nth-child(even) {
     gap: 20px;
     font-size: 14px;
   }
+  .container .row-4{
+    gap: 10px;
+  }
   .container .row-4 button{
-    font-size: 27px;
+    font-size: 37px;
   }
   .save-button span{
     font-size: 20px;
@@ -661,7 +731,7 @@ tr:nth-child(even) {
     gap: 2px;
   }
   .nav-2{
-    padding: 2px;
+    padding: 10px;
   }
   .nav-2 .left{
     gap: 5px;

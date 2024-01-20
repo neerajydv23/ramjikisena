@@ -1,227 +1,229 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ramjikisena</title>
-    <link rel="stylesheet" href="/stylesheets/style.css" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css"
-      rel="stylesheet"
-    />
-    <script src="https://cdn.tailwindcss.com"></script>
-  </head>
 
-  <body>
-    <div class="main">
-    
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ramjikisena</title>
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
 
-      <div class="nav-1">
-        <h1 class="marquee">
-          Helpline :
-          <a href=""><i class="ri-phone-fill"></i> +91-9981122493 </a>
-        </h1>
-      </div>
+<body>
+  <div class="main">
 
-      <div class="nav-2">
-        <div class="left">
-          <img src="/images/ramjikisena_logo.jpeg" alt="">
-          <a href="/profile">Ramji Ki Sena</a>
-        </div>
-        <div class="right notranslate">
-          <a href="/profile">Home</a>
-          <a href="/about">About</a>
-          <a href="/contact">Contact</a>
-        </div>
-      </div>
 
-      <div class="ramji-photo">  
-        <video src="/images/ram mandir video.mp4" autoplay loop muted></video>
-      </div>
-
-      <div class="goto-div">
-        <h1>Daily Darshan & Ram naam Meditation 👉</h1>
-        <div class="goto-div-items">
-          <a href="/impTemples">🚩 Important temples of Ayodhya</a>
-          <a href="/mission">🎯 Our Mission </a>
-          <a href="/glory">📖 Glory of Ram naam</a>
-          <a href="/feedback">✍️ Writing experience & feedback</a>
-        </div>
-      </div>
-
-      <div class="main-content">
-        <div class="container text-white">
-
-          <div class="row-1 flex items-center justify-between p-6 text-white border-b-2">
-            <h3>Jai Shri Ram - 🙎‍ <%=user.name%></h3>
-            <h3>Welcome to Ramji Ki Sena</h3>
-            <div class="row-1-buttons">
-              <!-- Google translator HTML code starts -->
-              <select onchange="languageChanger()" id="google_translate_element" class="text-black">
-                <option value="en">English</option>
-                <option value="hi">Hindi</option>
-              </select>
-              <!-- Google translator HTML code ends -->
-              <a href="/lekhanHistory">Lekhan History</a>
-              <a class="notranslate" href="/logout">Log Out</a>
-            </div>
-          </div>
-          
-  
-          <div class="row-2 p-6  border-b-2">
-            <div class="previous-count flex flex-col items-center gap-2">
-              <h1>Previous Ramnaam count </h1>
-              <span id="prevCount" class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold"><%=user.prevCount%></span>
-            </div>
-  
-            <div class="current-count flex flex-col items-center gap-2">
-              <h1>Current Ramnaam count</h1>
-              <span id="currentCount" class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold"><%=user.currCount%></span>
-            </div>
-  
-            <div class="total-count flex flex-col items-center gap-2">
-              <h1>Total Ramnaam count</h1>
-              <span id="totalCount" class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold"><%=user.totalCount %></span>
-
-            </div>
-           
-            <div class="mala-count flex flex-col items-center gap-2">
-              <!-- <h1>Rank amongst Ramnaam Bhakt</h1> -->
-              <h1>Total Mala Count</h1>
-              <span id="malaCount" class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold">
-                <%=user.mala%>
-              </span>
-            </div>
-          </div>
-  
-          <div class="row-3 p-6 w-full">
-            <textarea
-              class="w-full p-3 border border-gray-300 rounded-md font-semibold text-red-600 focus:outline-none focus:border-blue-500"
-              id="ramTextarea"
-              name="ramTextarea"
-              rows="6"
-              cols="60"
-              placeholder="यहाँ पर राम नाम लिखें..."
-            ></textarea>
-          </div>
-  
-          <div class="row-4 buttons flex justify-center gap-6 notranslate">
-            <button class="r-button" onclick="appendCharacter('R')">र</button>
-            <button class="a-button" onclick="appendCharacter('A')">I</button>
-            <button class="m-button" onclick="appendCharacter('M')">म</button>
-          </div>
-  
-          <div class="save-button flex justify-center mt-6 notranslate" style="cursor: pointer;">
-            <span class="text-2xl font-semibold bg-[#eaba4a] p-2 rounded-md mt-3 mb-3"
-              ><i class="ri-save-3-fill"></i> Save</span
-            >
-          </div>
-        </div>
-      </div>
-    
-      <div class="all-devotees notranslate">
-        <a href="/allDevotees">All Devotees</a>
-      </div >
-
+    <div class="nav-1">
+      <h1 class="marquee">
+        Helpline :
+        <a href=""><i class="ri-phone-fill"></i> +91-9981122493 </a>
+      </h1>
     </div>
 
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.5/axios.min.js"
-      integrity="sha512-TjBzDQIDnc6pWyeM1bhMnDxtWH0QpOXMcVooglXrali/Tj7W569/wd4E8EDjk1CwOAOPSJon1VfcEt1BI4xIrA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
+    <div class="nav-2">
+      <div class="left">
+        <img src="/images/ramjikisena_logo.jpeg" alt="">
+        <a href="/profile">Ramji Ki Sena</a>
+      </div>
+      <div class="right notranslate">
+        <a href="/profile">Home</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+        <!-- <i class="ri-menu-line"></i> -->
+      </div>
+  </div>
+     
 
-                 <!-- Google translator JS code starts -->
-    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"> 
+    <div class="ramji-photo">
+      <video src="/images/ram mandir video.mp4" autoplay loop muted></video>
+    </div>
 
-              </script>
-    <script type="text/javascript"> 
-    function googleTranslateElementInit(){
+    <div class="goto-div">
+      <h1>Daily Darshan & Ram naam Meditation 👉</h1>
+      <div class="goto-div-items">
+        <a href="/impTemples">🚩 Important temples of Ayodhya</a>
+        <a href="/mission">🎯 Our Mission </a>
+        <a href="/glory">📖 Glory of Ram naam</a>
+        <a href="/feedback">✍️ Writing experience & feedback</a>
+      </div>
+    </div>
+
+    <div class="main-content">
+      <div class="container text-white">
+
+        <div class="row-1 flex items-center justify-between p-6 text-white border-b-2">
+          <h3>Jai Shri Ram - 🙎‍ <%=user.name%>
+          </h3>
+          <h3>Welcome to Ramji Ki Sena</h3>
+          <div class="row-1-buttons">
+            <!-- Google translator HTML code starts -->
+            <select onchange="languageChanger()" id="google_translate_element" class="text-black">
+              <option value="en">English</option>
+              <option value="hi">Hindi</option>
+            </select>
+            <!-- Google translator HTML code ends -->
+            <a href="/lekhanHistory">Lekhan History</a>
+            <a class="notranslate" href="/logout">Log Out</a>
+          </div>
+        </div>
+
+
+        <div class="row-2 p-6  border-b-2">
+          <div class="previous-count flex flex-col items-center gap-2">
+            <h1>Previous Ramnaam count </h1>
+            <span id="prevCount" class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold">
+              <%=user.prevCount%>
+            </span>
+          </div>
+
+          <div class="current-count flex flex-col items-center gap-2">
+            <h1>Current Ramnaam count</h1>
+            <span id="currentCount" class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold">
+              <%=user.currCount%>
+            </span>
+          </div>
+
+          <div class="total-count flex flex-col items-center gap-2">
+            <h1>Total Ramnaam count</h1>
+            <span id="totalCount" class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold">
+              <%=user.totalCount %>
+            </span>
+
+          </div>
+
+          <div class="mala-count flex flex-col items-center gap-2">
+            <!-- <h1>Rank amongst Ramnaam Bhakt</h1> -->
+            <h1>Total Mala Count</h1>
+            <span id="malaCount" class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold">
+              <%=user.mala%>
+            </span>
+          </div>
+        </div>
+
+        <div class="row-3 p-6 w-full">
+          <textarea
+            class="w-full p-3 border border-gray-300 rounded-md font-semibold text-red-600 focus:outline-none focus:border-blue-500"
+            id="ramTextarea" name="ramTextarea" rows="6" cols="60" placeholder="यहाँ पर राम नाम लिखें..."></textarea>
+        </div>
+
+        <div class="row-4 buttons flex justify-center gap-6 notranslate">
+          <button class="r-button" onclick="appendCharacter('R')">र</button>
+          <button class="a-button" onclick="appendCharacter('A')">I</button>
+          <button class="m-button" onclick="appendCharacter('M')">म</button>
+        </div>
+
+        <div class="save-button flex justify-center mt-6 notranslate" style="cursor: pointer;">
+          <span ><i class="ri-save-3-fill"></i>
+            Save</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="all-devotees notranslate">
+      <a href="/allDevotees">ALL DEVOTEES</a>
+    </div>
+
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.5/axios.min.js"
+    integrity="sha512-TjBzDQIDnc6pWyeM1bhMnDxtWH0QpOXMcVooglXrali/Tj7W569/wd4E8EDjk1CwOAOPSJon1VfcEt1BI4xIrA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <!-- Google translator JS code starts -->
+  <script type="text/javascript"
+    src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+
+    </script>
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
       new google.translate.TranslateElement({
         pageLanguage: "en"
-      },'google_translate_element');
+      }, 'google_translate_element');
     }
-    const languageChanger = () =>{
+    const languageChanger = () => {
       var language = document.getElementById("google_translate_element").value;
       var selectField = document.querySelector("#google_translate_element select");
-      for(var i =0;i<selectField.children.length;i++){
+      for (var i = 0; i < selectField.children.length; i++) {
         var option = selectField.children[i];
-        if(option.value==language){
-          selectField.selectedIndex=i;
+        if (option.value == language) {
+          selectField.selectedIndex = i;
           selectField.dispatchEvent(new Event('change'));
           break;
         }
       }
     }
-    </script>
-                  <!-- Google translator JS code ends -->
+  </script>
+  <!-- Google translator JS code ends -->
 
-    <script>
-      // for disabling the keyboard 
-      document.getElementById("ramTextarea").readOnly = true;
+  <script>
+    // for disabling the keyboard 
+    document.getElementById("ramTextarea").readOnly = true;
 
-      var userInput = "";
+    var userInput = "";
 
-      function appendCharacter(char) {
+    function appendCharacter(char) {
 
-        var textarea = document.getElementById("ramTextarea");
+      var textarea = document.getElementById("ramTextarea");
 
-        textarea.value += char;
+      textarea.value += char;
 
-        userInput+=char;
+      userInput += char;
 
-        var lastThreeWords = userInput.slice(-3);
+      var lastThreeWords = userInput.slice(-3);
 
-        if(lastThreeWords === "RAM"){
-          userInput="";
-          textarea.value=""
-          axios
-            .get("https://ramjikisena.onrender.com/increment")
-            .then(function (response) {
-              // Update the current count on the client side
-              document.getElementById("currentCount").innerText =
-                response.data.newCount;
+      if (lastThreeWords === "RAM") {
+        userInput = "";
+        textarea.value = ""
+        axios
+          .get("https://ramjikisena.onrender.com/increment")
+          .then(function (response) {
+            // Update the current count on the client side
+            document.getElementById("currentCount").innerText =
+              response.data.newCount;
 
-                //Updating the total Count
-                document.getElementById("totalCount").innerText =
-                response.data.totalCount;
+            //Updating the total Count
+            document.getElementById("totalCount").innerText =
+              response.data.totalCount;
 
-                //updating mala count
-                document.getElementById("malaCount").innerText =
-                response.data.mala;
+            //updating mala count
+            document.getElementById("malaCount").innerText =
+              response.data.mala;
 
-              // Update the textarea with 'राम'
-              var count = response.data.newCount;
-              // console.log(count);
-      for (var i = 0; i < count; i++) {
-        textarea.value += " राम";
+            // Update the textarea with 'राम'
+            var count = response.data.newCount;
+            // console.log(count);
+            for (var i = 0; i < count; i++) {
+              textarea.value += " राम";
+            }
+          })
+          .catch(function (error) {
+            console.error("Error incrementing count:", error);
+          });
       }
-            })
-            .catch(function (error) {
-              console.error("Error incrementing count:", error);
-            });
-        }
 
-        // console.log(lastThreeWords);
-      }
-    
-      const saveButton = document.querySelector(".save-button");
-      saveButton.addEventListener("click",function(){
-        axios.get("https://ramjikisena.onrender.com/save")
-        .then(function(response){
+      // console.log(lastThreeWords);
+    }
+
+    const saveButton = document.querySelector(".save-button");
+    saveButton.addEventListener("click", function () {
+      axios.get("https://ramjikisena.onrender.com/save")
+        .then(function (response) {
           var textarea = document.getElementById("ramTextarea");
-          textarea.value="";
+          textarea.value = "";
           // Updating previous count
           document.getElementById("prevCount").innerText = response.data.prevCount;
 
           // Updating current count
           document.getElementById("currentCount").innerText = response.data.newCount;
         })
-      })
+    })
 
-   
 
-    </script>
-  </body>
+
+  </script>
+
+ 
+</body>
+
 </html>
