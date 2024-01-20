@@ -302,6 +302,7 @@ footer{
   margin-bottom: 6px;
   color: #B22222;
   font-weight: 450;
+  font-size: 17px;
 }
 .impTemples-content .text-div{
   margin-top: 20px;
@@ -314,7 +315,8 @@ footer{
 .impTemples-content p{
   margin-top: 10px;
   color: #B22222;
-  /* font-weight: 300; */
+  font-family: gilroy medium;
+  font-size: 16px;
 }
 
 /* mission css */
@@ -323,7 +325,7 @@ footer{
   width: 100%;
   background-color: white;
   padding-top: 10px;
-  padding: 40px;
+  padding: 20px 40px;
 }
 
 .mission-content h1{
@@ -337,8 +339,7 @@ footer{
 .mission-content p{
   font-size: 18px;
   color: #B22222;
-
-  text-align: center;
+  text-align: left;
 }
 
 /* glory css */
@@ -348,7 +349,7 @@ footer{
   width: 100%;
   background-color: white;
   padding-top: 10px;
-  padding: 40px;
+  padding: 20px 40px;
 }
 
 .glory-content h1{
@@ -362,7 +363,7 @@ footer{
 .glory-content p{
   font-size: 18px;
   color: #B22222;
-  font-weight: 450;
+  font-family: Gilroy medium;
 }
 
 /* feedback css */
@@ -371,7 +372,7 @@ footer{
   width: 100%;
   background-color: white;
   padding-top: 10px;
-  padding: 40px;
+  padding: 20px 40px;
 }
 
 .feedback-content h1{
@@ -385,7 +386,7 @@ footer{
 .feedback-content p{
   font-size: 18px;
   color: #B22222;
-  font-weight: 450;
+  font-family: gilroy medium;
   line-height: 1.8;
 }
 .feedback-content h5{
@@ -393,22 +394,14 @@ footer{
   font-size: 17px;
   text-align: center;
   color: #B22222;
-  font-weight: 600;
+  font-family: gilroy medium;
 }
 .feedback-content .feedback-form{
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
-.feedback-form input{
-  border: 1px solid black;
-}
-.feedback-form button{
-  color: white;
-  background-color: rgb(226, 111, 16);
-  padding: 5px;
-  border-radius: 5px;
-}
+
 
 /* contact css */
 .contact-content{
@@ -428,9 +421,9 @@ footer{
 }
 
 .contact-content p{
-  font-size: 18px;
+  font-family: gilroy medium;
+  font-size: 17px;
   color: #B22222;
-  font-weight: 450;
   line-height: 1.8;
 }
 .contact-content h2{
@@ -441,11 +434,11 @@ footer{
 
 /* about css */
 .about-content{
-  min-height: 100%;
+  max-height: 100%;
   width: 100%;
   background-color: white;
   padding-top: 10px;
-  padding: 40px;
+  padding: 20px 40px;
 }
 
 .about-content h1{
@@ -462,23 +455,21 @@ footer{
   font-weight: 550;
   line-height: 1.8;
 }
-.about-content img{
-  height: 400px;
-}
+
 .about-img {
   display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.about-img-1{
-  display: flex;
-  justify-content: center;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   gap: 10px;
   margin-top: 40px;
 }
-.about-img-1 span{
+
+.about-img img{
+  height: 450px;
+}
+
+.about-img span{
   font-size: 40px;
   font-weight: 600;
   color: #B22222;
@@ -528,13 +519,12 @@ footer{
   color: #B22222;
 }
 .about-sir img{
-  height: 300px;
+  height: 200px;
 }
 .lekhanHistory-content{
   max-height: 60vh;
   width: 100%;
-  padding-top: 10px;
-  padding: 40px;
+  padding: 20px 40px;
   overflow-y: auto;
   background-color: white;
 }
@@ -567,7 +557,7 @@ footer{
   width: 100%;
   background-color: white;
   padding-top: 10px;
-  padding: 40px;
+  padding: 20px 40px;
   text-align: center;
 }
 
@@ -694,12 +684,21 @@ tr:nth-child(even) {
     height: 200px;
     border-radius: 50px;
   }
+  .contact-content p{
+    font-size: 13px;
+  }
+  .contact-content h2{
+    font-size: 15px;
+  }
+  .about-content h1{
+    font-size: 35px;
+  }
   .about-content img{
     height: 300px;
     object-fit: cover;
   }
   .about-sir img{
-    height: 200px;
+    height:150px;
   }
   .about-content .about-sir{
     padding: 5px;
@@ -714,7 +713,10 @@ tr:nth-child(even) {
     gap: 20px;
     padding: 20px ;
   }
-  .about-img-1 span{
+  .about-img img{
+    width: 100%;
+  }
+  .about-img span{
     font-size: 30px;
   }
   .contact-chandra{
@@ -723,6 +725,13 @@ tr:nth-child(even) {
   .contact-chandra span{
     font-size: 16px;
   }
+  .impTemples-content{
+        padding: 20px 40px;
+  }
+  .impTemples-content h1{
+    font-size: 25px;
+}
+
 }
 
 @media screen and (max-width: 410px) {
@@ -781,10 +790,8 @@ tr:nth-child(even) {
   .about-img{
     margin-top: 20px;
   }
-  .about-img img{
-    height: 250px;
-  }
-  .about-img-1 span{
+ 
+  .about-img span{
     font-size: 23px;
   }
   .contact-chandra span{
@@ -804,7 +811,39 @@ tr:nth-child(even) {
     font-size: 15px;
   }
   .about-sir img{
-    height: 150px;
+    height: 100px;
   }
-
+  .impTemples-content h2{
+    font-size: 15px;
+  }
+  .impTemples-content h4{
+    font-size: 15px;
+  }
+  .impTemples-content p{
+    font-size: 13px;
+    line-height: 2;
+  }
+  .mission-content h1{
+    font-size: 25px;
+  }
+  .mission-content p{
+    font-size: 13px;
+  }
+  .glory-content h1{
+    font-size: 25px;
+  }
+  .glory-content p{
+    font-size: 13px;
+    font-family: gilroy medium;
+  }
+  .feedback-content h1{
+    font-size: 25px;
+  }
+  .feedback-content p{
+    font-size: 13px;
+  }
+  .feedback-content h2{
+    font-size: 15px;
+    margin-top: 20px;
+  }
 }

@@ -47,7 +47,7 @@
           </div>
 
         <div class="contact-content">
-            <h1>Contact</h1>
+            <h1>Contact Us</h1>
             <p>We thank all of you devotees for staying connected with Ramji Ki Sena. By the great grace of Lord Ram ji,
                 we got the company of all of you. The main objective of the Ramji Ki Sena website is to get the name of
                 Shri Ram propogate and written. The founder of this website is Mr. Chandra Shekhar . Ramji Ki Sena
@@ -56,10 +56,10 @@
             </p>
             <h2>
                 <br>
-                For any queries and questions ,please contact:
+                For any queries and questions, please contact:
                 <br><br>
                 DIRECTOR & FOUNDER <br>
-                Shri Chandra Shekhar Ji Acharya <br>
+                 Shri Chandra Shekhar Ji Acharya <br>
                 M.P Nagar (M.P.)  <br>
                 Cell no : +91-9584922444 <br>
                 Email id: ramjikisena@gmail.com
@@ -73,6 +73,31 @@
             <a href=""><i class="ri-youtube-fill"></i> Youtube</a>
         </footer>
     </div>
+
+     <!-- Google translator JS code starts -->
+  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: "en"
+      }, 'google_translate_element');
+    }
+    const languageChanger = () => {
+      var language = document.getElementById("google_translate_element").value;
+      var selectField = document.querySelector("#google_translate_element select");
+      for (var i = 0; i < selectField.children.length; i++) {
+        var option = selectField.children[i];
+        if (option.value == language) {
+          selectField.selectedIndex = i;
+          selectField.dispatchEvent(new Event('change'));
+          break;
+        }
+      }
+    }
+  </script>
+  <!-- Google translator JS code ends -->
+  
 </body>
 
 </html>
