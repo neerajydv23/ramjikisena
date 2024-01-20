@@ -199,9 +199,14 @@ html,body{
   border-radius: 5px;
   padding: 10px 20px;
   transition: 0.5s all; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
 }
 .container .row-4 button:active{
     transform: scale(0.7); 
+    box-shadow: 0 0 15px rgba(167, 166, 166, 0.7);
+    background-color: #B22222;
+    color: #f1f1f1;
 }
 footer{
   margin-top: 40px;
