@@ -1,88 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ramjikisena</title>
-    <link rel="stylesheet" href="/stylesheets/style.css" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css"
-      rel="stylesheet"
-    />
-    <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ramjikisena</title>
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body>
-    <div class="main">
-  
-            <div class="nav-1">
-              <h1 class="marquee">
-                Helpline :
-                <a href=""><i class="ri-phone-fill"></i> +91-9981122493 </a>
-              </h1>
-            </div>
-            
-        <div class="nav-2">
-          <div class="left">
-            <img src="/images/ramjikisena_logo.jpeg" alt="">
-            <a href="/profile">Ramji Ki Sena</a>
-          </div>
-          <div class="right">
-            <a href="/profile">Home</a>
-            <a href="/about">About</a>
-            <a href="/contact">Contact</a>
-          </div>
-        </div>
-        
-  
-        <div class="ramji-photo">  
-          <video src="/images/ram mandir video.mp4" autoplay loop muted></video>
-        </div>
-  
-        <div class="goto-div">
-          <h1>Daily Darshan & Ram naam Meditation 👉</h1>
-          <div class="goto-div-items">
-            <a href="/impTemples">🚩 Important temples of Ayodhya</a>
-            <a href="/mission">🎯 Our Mission </a>
-            <a href="/glory">📖 Glory of Ram naam</a>
-            <a href="/feedback">✍️ Writing experience & feedback</a>
-          </div>
-        </div>
-  
+  <div class="main">
 
+    <div class="nav-1">
+      <h1 class="marquee">
+        Helpline :
+        <a href=""><i class="ri-phone-fill"></i> +91-9981122493 </a>
+      </h1>
+    </div>
 
-        <div class="w-full h-screen bg-center bg-cover bg-[url('https://ramnaambank.com/images/backgroundimg.jpg')] flex items-center justify-center">
-            <div class="w-full md:w-[50%] lg:w-[40%] xl:w-[30%]  px-6 py-8 rounded-[30px]">
-                <h1 class="text-3xl mb-6 text-center font-semibold text-zinc-700 capitalize tracking-tighter leading-none">नये सदस्यता के लिए रजिस्टर करें/ New User Registration Form
-                </h1>
-        
-                <% if (error && error.length > 0) { %>
-                    <p class="flash-error" style="color: red; font-weight: 400; text-transform: capitalize; margin: 7px 0; text-align: center;">
-                      <%= error %>
-                    </p>
-                  <% } %>
-                
-        
-                <form action="/register" method="post">
-                    <input class="border-2 rounded-md mt-4 w-full px-3 py-2" type="text" name="username" placeholder="यूजर लॉगिन आइडी / User Login id">
-                    <input class="border-2 rounded-md mt-4 w-full px-3 py-2" type="text" name="fullname" placeholder="पूरा नाम / Full Name">
-                    <input class="border-2 rounded-md mt-4 w-full px-3 py-2" type="text" name="city" placeholder="शहर / City">
-                    <input class="border-2 rounded-md mt-4 w-full px-3 py-2" type="number" name="contact" placeholder="मोबाइल नंबर.*/Mobile No.*" required>
-                    <input class="border-2 rounded-md mt-4 w-full px-3 py-2" type="password" name="password" placeholder="पासवर्ड/Password">
-                    <input class="border-2 rounded-full mt-4 w-full px-3 py-2 bg-[#5B1801] text-white" type="submit" value="Submit">
-                   
-                </form>
-                <a class="block mt-7 text-sm px-3 py-2 border-2 rounded-full font-semibold text-white text-center bg-[#5B1801]" href="/">Home</a>
-            </div>
+    <nav>
+      <div id="slidebar">
+        <div id="close">
+          <i class="ri-close-fill" style="color: white;"></i>
         </div>
 
-  
-        <footer>
-          <a href=""><i class="ri-facebook-fill"></i> Facebook</a>
-          <a href=""><i class="ri-twitter-fill"></i> Twitter</a>
-          <a href=""><i class="ri-youtube-fill"></i> Youtube</a>
-        </footer>
+        <div id="text">
+          <a href="/profile">Home</a>
+          <a href="/about">About</a>
+          <a href="/register">Register</a>
+          <a href="/contact">Contact</a>
+        </div>
       </div>
 
+      <div class="nav-2">
+        <div class="left">
+          <img src="/images/ramjikisena_logo.jpeg" alt="">
+          <a href="/profile">Ramji Ki Sena</a>
+        </div>
+        <div class="right">
+          <a href="/profile">Home</a>
+          <a href="/about">About</a>
+          <a href="/contact">Contact</a>
+          <div id="icon">
+            <i id="menu" class="ri-menu-5-fill"></i>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+
+    <div class="ramji-photo">
+      <video src="/images/ram mandir video.mp4" autoplay loop muted></video>
+    </div>
+
+    <div class="goto-div">
+      <h1>Daily Darshan & Ram naam Meditation 👉</h1>
+      <div class="goto-div-items">
+        <a href="/impTemples">🚩 Important temples of Ayodhya</a>
+        <a href="/mission">🎯 Our Mission </a>
+        <a href="/glory">📖 Glory of Ram naam</a>
+        <a href="/feedback">✍️ Writing experience & feedback</a>
+      </div>
+    </div>
+
+
+
+    <div
+      class="w-full h-screen bg-center bg-cover bg-[url('https://ramnaambank.com/images/backgroundimg.jpg')] flex items-center justify-center">
+      <div class="w-full md:w-[50%] lg:w-[40%] xl:w-[30%]  px-6 py-8 rounded-[30px]">
+        <h1 class="text-3xl mb-6 text-center font-semibold text-zinc-700 capitalize tracking-tighter leading-none">नये
+          सदस्यता के लिए रजिस्टर करें/ New User Registration Form
+        </h1>
+
+        <% if (error && error.length> 0) { %>
+          <p class="flash-error"
+            style="color: red; font-weight: 400; text-transform: capitalize; margin: 7px 0; text-align: center;">
+            <%= error %>
+          </p>
+          <% } %>
+
+
+            <form action="/register" method="post">
+              <input class="border-2 rounded-md mt-4 w-full px-3 py-2" type="text" name="username"
+                placeholder="यूजर लॉगिन आइडी / User Login id">
+              <input class="border-2 rounded-md mt-4 w-full px-3 py-2" type="text" name="fullname"
+                placeholder="पूरा नाम / Full Name">
+              <input class="border-2 rounded-md mt-4 w-full px-3 py-2" type="text" name="city" placeholder="शहर / City">
+              <input class="border-2 rounded-md mt-4 w-full px-3 py-2" type="number" name="contact"
+                placeholder="मोबाइल नंबर.*/Mobile No.*" required>
+              <input class="border-2 rounded-md mt-4 w-full px-3 py-2" type="password" name="password"
+                placeholder="पासवर्ड/Password">
+              <input class="border-2 rounded-full mt-4 w-full px-3 py-2 bg-[#5B1801] text-white" type="submit"
+                value="Submit">
+
+            </form>
+            <a class="block mt-7 text-sm px-3 py-2 border-2 rounded-full font-semibold text-white text-center bg-[#5B1801]"
+              href="/">Home</a>
+      </div>
+    </div>
+
+
+    <footer>
+      <a href=""><i class="ri-facebook-fill"></i> Facebook</a>
+      <a href=""><i class="ri-twitter-fill"></i> Twitter</a>
+      <a href=""><i class="ri-youtube-fill"></i> Youtube</a>
+    </footer>
+  </div>
+
+  <script src="/javascripts/navbar.js"></script>
 
 </body>
+
 </html>

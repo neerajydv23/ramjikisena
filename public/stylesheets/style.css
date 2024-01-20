@@ -74,12 +74,13 @@ html,body{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 30px;
+  padding: 20px ;
   background-color: white;
   color: #6D1E1E;
 }
+
 .nav-2 img{
-  height: 50px;
+  height: 65px;
   border-radius: 50%;
 }
 .nav-2 .left{
@@ -103,6 +104,54 @@ html,body{
   background-color: #6D1E1E;
   padding: 5px 12px;
   border-radius: 5px;
+}
+.nav-2 .right i{
+  display: none;
+}
+#slidebar {
+  width: 30vw;
+  height: 60vh;
+  background-color: #6D1E1E;
+  position: fixed;
+  right: 0;
+  padding: 5vw 2vw;
+  transform: translateY(-200%);
+  transition: all cubic-bezier(0.19, 1, 0.22, 1) 1s;
+  z-index: 88;
+}
+#slidebar a{
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 7vw;
+  color: white;
+}
+nav #text {
+  display: flex;
+  flex-direction: column;
+}
+@media (max-width: 600px) {
+  .nav-2 .right i{
+      display: inline-block;
+      font-size: 5vw;
+      display: block;
+  } 
+  .nav-2 .right a{
+      display: none;
+      /* font-size: 1.5vw; */
+  }
+   #slidebar{
+      width: 30vw;
+      height: 33vh;
+      right: 0;
+      flex-direction: column;
+transition: all cubic-bezier(0.19, 1, 0.22, 1) 1s;
+
+  }
+    #slidebar a {
+      font-size: 12px;
+      line-height: 7vw;
+  }
 }
 
 .ramji-photo{
@@ -739,6 +788,9 @@ tr:nth-child(even) {
 }
 
 @media screen and (max-width: 410px) {
+  .nav-1{
+    padding: 8px;
+  }
   .nav-1 h1{
     font-size: 10px;
     gap: 2px;
@@ -747,10 +799,13 @@ tr:nth-child(even) {
     padding: 10px;
   }
   .nav-2 .left{
-    gap: 5px;
+    gap: 8px;
   }
   .nav-2 .left a{
-    font-size: 15px;
+    font-size: 17px;
+  }
+  .nav-2 .left img{
+    height: 53px;
   }
   .nav-2 .right{
     gap: 3px;
@@ -857,4 +912,8 @@ tr:nth-child(even) {
     font-size: 15px;
     margin-top: 20px;
   }
+  #slidebar{
+    width: 30vw;
+    height: 24vh;
+}
 }
