@@ -54,19 +54,31 @@
                 <table border="1">
                     <thead>
                       <tr style="color: #B22222;">
+                        <th>Rank</th>
                         <th>Name</th>
                         <th>Today's Count</th>
                         <th>Total Count</th>
                       </tr>
                     </thead>
                     <tbody id="userTableBody">
-                      <% allUsers.forEach(function(user) { %>
+                      <!-- <% allUsers.forEach(function(user) { %>
                         <tr>
                           <td><%= user.name %></td>
                           <td><%= user.dailyCounts.length > 0 ? user.dailyCounts[user.dailyCounts.length - 1].count : 0 %></td>
                           <td><%= user.totalCount %></td>
                         </tr>
-                      <% }); %>
+                      <% }); %> -->
+
+                      <% const sortedUsers = allUsers.slice().sort((a, b) => b.totalCount - a.totalCount); %>
+      
+                      <% sortedUsers.forEach(function(user,index) {  %>
+                      <tr>
+                          <td><%= index + 1 %></td>
+                          <td><%= user.name %></td>
+                          <td><%= user.dailyCounts.length > 0 ? user.dailyCounts[user.dailyCounts.length - 1].count : 0 %></td>
+                          <td><%= user.totalCount %></td>
+                      </tr>
+                  <% }); %> 
                     </tbody>
                   </table>
             </div>

@@ -243,6 +243,7 @@ html,body{
   color: rgba(120,50,5,.8);
 }
 
+
 .save-button span{
   margin: 10px 0;
   font-size: 20px;
@@ -679,7 +680,7 @@ tr:nth-child(even) {
     font-size: 14px;
   }
   .container .row-4{
-    gap: 10px;
+    gap: 20px;
   }
   .container .row-4 button{
     font-size: 37px;
@@ -793,6 +794,9 @@ tr:nth-child(even) {
     padding: 4px 8px ;
     text-align: center;
     font-size: 12px;
+  }
+  .a-button{
+    font-weight: 900;
   }
   .about-img{
     margin-top: 20px;
