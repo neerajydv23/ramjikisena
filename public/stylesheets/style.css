@@ -604,11 +604,11 @@ th {
 tr:nth-child(even) {
   background-color: #f9f9f9;
 }
-.input-search input{
+/* .input-search input{
   border: 2px solid black;
   padding: 5px;
   border-radius: 5px;
-}
+} */
 @media screen and (max-width: 604px) {
   .nav-1 h1{
     font-size: 14px;
