@@ -16,7 +16,6 @@
 <body>
   <div class="main">
 
-
     <div class="nav-1">
       <h1 class="marquee">
         Helpline :
@@ -113,7 +112,6 @@
           </div>
 
           <div class="mala-count flex flex-col items-center gap-2">
-            <!-- <h1>Rank amongst Ramnaam Bhakt</h1> -->
             <h1>Total Mala Count</h1>
             <span id="malaCount" class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold">
               <%=user.mala%>
@@ -132,9 +130,6 @@
           <div class="a-button" onclick="appendCharacter('A')"><button>I</button> </div>
           <div class="m-button" onclick="appendCharacter('M')"><button>म</button> </div>
 
-          <!-- <button class="r-button" onclick="appendCharacter('R')">र</button>
-          <button class="a-button" onclick="appendCharacter('A')">I</button>
-          <button class="m-button" onclick="appendCharacter('M')">म</button> -->
         </div>
 
         <div class="save-button flex justify-center mt-6 notranslate" style="cursor: pointer;">
@@ -201,17 +196,11 @@
       textarea.value += 'M';
     }
     
-// console.log(userInput);
-
-      // textarea.value += char;
-
-      // userInput += char;
-
       var lastThreeWords = userInput.slice(-3);
 
       if (lastThreeWords === "RAM") {
         userInput = "";
-        textarea.value = ""
+        textarea.value += " "
         axios
           .get("https://ramjikisena.online/increment")
           .then(function (response) {
@@ -228,11 +217,11 @@
               response.data.mala;
 
             // Update the textarea with 'राम'
-            var count = response.data.newCount;
+            // var count = response.data.newCount;
             // console.log(count);
-            for (var i = 0; i < count; i++) {
-              textarea.value += " राम";
-            }
+            // for (var i = 0; i < count; i++) {
+            //   textarea.value += " राम";
+            // }
           })
           .catch(function (error) {
             console.error("Error incrementing count:", error);
@@ -248,6 +237,8 @@
         .then(function (response) {
           var textarea = document.getElementById("ramTextarea");
           textarea.value = "";
+          userInput = "";
+          
           // Updating previous count
           document.getElementById("prevCount").innerText = response.data.prevCount;
 
@@ -257,11 +248,9 @@
     })
 
 
-
   </script>
   <script src="/javascripts/navbar.js"></script>
 
- 
 </body>
 
 </html>
