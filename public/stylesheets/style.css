@@ -532,6 +532,7 @@ footer{
 
 .about-img img{
   height: 450px;
+  object-position: top;
 }
 
 .about-img span{
@@ -772,6 +773,9 @@ tr:nth-child(even) {
   .contact-content h2{
     font-size: 15px;
   }
+  .about-content{
+    padding: 20px;
+  }
   .about-content h1{
     font-size: 35px;
   }
@@ -782,8 +786,8 @@ tr:nth-child(even) {
   .about-sir img{
     height:150px;
   }
-  .about-content .about-sir{
-    padding: 5px;
+  .about-content .about-sir {
+    padding: 5px 20px;
   }
   .about-sir h2{
     font-size: 17px;
@@ -813,16 +817,12 @@ tr:nth-child(even) {
   .impTemples-content h1{
     font-size: 25px;
 }
-
+.allDevotees-content{
+  padding: 20px ;
+}
 }
 
-/* @media screen and (max-width: 470px) {
-  #slidebar{
-    width: 30vw;
-    height: 26vh;
-}
 
-} */
 
 @media screen and (max-width: 433px) {
   #login-page{
@@ -914,13 +914,13 @@ tr:nth-child(even) {
   }
   .services-chandra{
     gap: 10px;
-    padding: 0px ;
+    padding: 20px ;
   }
   .services-chandra h6{
     font-size: 13px;
   }
   .about-content .about-sir{
-    padding: 0px;
+    padding: 20px;
   }
   .about-sir h2{
     font-size: 15px;
@@ -963,6 +963,9 @@ tr:nth-child(even) {
   }
  #slidebar{
     width: 110px;
+}
+.allDevotees-content{
+  padding: 20px 10px;
 }
   
 }
