@@ -86,7 +86,7 @@
     </div>
 
    
-    <div class="w-full h-screen bg-center bg-cover bg-[url('https://ramnaambank.com/images/backgroundimg.jpg')] flex items-center justify-center">
+    <div id="login-page" class="w-full h-screen bg-center bg-cover bg-[url('https://ramnaambank.com/images/backgroundimg.jpg')] flex items-center justify-center">
       <!-- <div class="w-full md:w-[50%] lg:w-[40%] xl:w-[30%] bg-white px-6 py-8 rounded-[30px] "> -->
         <div  class="w-full md:w-[50%] lg:w-[40%] xl:w-[30%] bg-[#FBAA01] border-4 border-#5B1801 px-6 py-8 rounded-[30px]" style="border-color: #5B1801;" >
           <h1 class="text-3xl text-center font-semibold text-zinc-700 capitalize tracking-tighter leading-2">राम नाम लेखन हेतु लॉगिन / रजिस्टर करे - Login/Register here</h1>
@@ -98,7 +98,7 @@
           <form action="/login" method="post">
               <input class="border-2 rounded-md mt-6 w-full px-3 py-2" type="text" name="username" placeholder="लॉगिन आईडी / Login id">
               <input class="border-2 rounded-md mt-4 w-full px-3 py-2" type="password" name="password" placeholder="पासवर्ड / Password">
-              <a class="mt-2 block text-sm font-semibold text-zinc-500 text-right" href="#">Forgot password?</a>
+              <a class="mt-2 block text-sm font-semibold text-zinc-500 text-right" href="/register">Forgot password?</a>
               <input class="border-2 rounded-full mt-4 w-full px-3 py-2 bg-[#5B1801] text-white" type="submit" value="लॉगिन / Login">
           </form>
           <a class="block mt-7 text-sm px-3 py-2 border-2 rounded-full font-semibold text-white text-center bg-[#5B1801]" href="/register">रजिस्टर / Register</a>
