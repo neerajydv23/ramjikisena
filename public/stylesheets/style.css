@@ -558,12 +558,10 @@ footer{
 }
 .services-chandra{
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
   padding: 20px 40px;
-  margin-top: 20px;
-  flex-wrap: wrap;
-  gap: 50px;
+  /* flex-wrap: wrap; */
+  gap: 15px;
 }
 
 .services-chandra h6{
@@ -675,6 +673,9 @@ tr:nth-child(even) {
   border-radius: 5px;
 } */
 @media screen and (max-width: 610px) {
+  .services-chandra .col{
+    width: 100%;
+  }
   #login-page{
     padding: 20px;
   }
@@ -793,10 +794,7 @@ tr:nth-child(even) {
     font-size: 17px;
   }
   .services-chandra{
-    /* flex-direction: column; */
-    justify-content: flex-start;
-    align-items: center;
-    gap: 20px;
+    /* gap: 20px; */
     padding: 20px ;
   }
   .about-img img{
