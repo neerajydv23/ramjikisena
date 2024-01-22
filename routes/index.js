@@ -24,7 +24,7 @@ router.get('/profile', isLoggedIn, async function(req, res, next) {
   res.render('profile',{user:req.user,userCount});
 });
 
-router.get('/allDevotees', async function(req, res, next) {
+router.get('/allDevotees', isLoggedIn, async function(req, res, next) {
   const user = await userModel.findOne({username:req.user.username});
   const allUsers = await userModel.find();
   res.render('allDevotees',{user,allUsers});
