@@ -160,14 +160,16 @@ nav #text {
   /* display: flex;
   justify-content: center;
   align-items: center; */
-  width: 100%;
+  /* width: 100%; */
+  height: 100vh;
   overflow: hidden;
 }
 
-.ramji-photo video {
+.ramji-photo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position:50% 20%;
 }
 
 .goto-div{
