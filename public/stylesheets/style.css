@@ -140,6 +140,10 @@ nav #text {
       display: none;
       /* font-size: 1.5vw; */
   }
+  .nav-2 #home-btn{
+    display: inline-block;
+    padding: 8px;
+  }
    #slidebar{
       width: 120px;
       height: 135px;
