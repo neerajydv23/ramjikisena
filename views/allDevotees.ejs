@@ -120,35 +120,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js" integrity="sha512-b94Z6431JyXY14iSXwgzeZurHHRNkLt9d6bAHt7BZT38eqV+GyngIi/tVye4jBKPYQ2lBdRs0glww4fmpuLRwA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    <!-- <script>
-
-        const inp = document.querySelector("#search-devotees");
-        const userTableBody = document.getElementById("userTableBody");
-
-            inp.addEventListener("input",function(){
-            axios.get(`https://ramjikisena.onrender.com/name/${inp.value}`)
-            .then(function(response){
-                // Clear existing table rows
-                userTableBody.innerHTML = "";
-
-                response.data.forEach(function (user) {
-            // Append new rows based on the search result
-            const newRow = document.createElement("tr");
-            newRow.innerHTML = `
-              <td>${user.name}</td>
-              <td>${user.dailyCounts.length > 0 ? user.dailyCounts[user.dailyCounts.length - 1].count : 0}</td>
-              <td>${user.totalCount}</td>
-            `;
-            userTableBody.appendChild(newRow);
-          });
-        })
-                .catch(function (error) {
-                    console.error("Error fetching search results:", error);
-                                     });
-    });
-            
-
-    </script> -->
+    
 
      <!-- Google translator JS code starts -->
   <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
