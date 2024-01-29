@@ -44,6 +44,9 @@ html,body{
   background-position: center;
 }
 
+#menu{
+  font-size: 20px;
+}
 
 .marquee {
   white-space: nowrap;
@@ -858,7 +861,7 @@ tr:nth-child(even) {
     height: 53px;
   }
   .nav-2 .right{
-    gap: 3px;
+    gap: 6px;
   }
   .nav-2 .right a{
     font-size: 8px;
