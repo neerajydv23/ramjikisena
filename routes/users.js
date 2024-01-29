@@ -32,10 +32,6 @@ const userSchema = mongoose.Schema({
     }},
     required: true
     },
-  prevCount:{
-    type:Number,
-    default:"0"
-  },
   currCount:{
     type:Number,
     default:"0"
@@ -46,7 +42,7 @@ const userSchema = mongoose.Schema({
   },
   rank:{
     type:Number,
-    default:"0"
+    // default:"0"
   },
   dailyCounts: [
     {

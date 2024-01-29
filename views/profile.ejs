@@ -93,10 +93,11 @@
 
 
         <div class="row-2 p-6  border-b-2">
+          
           <div class="previous-count flex flex-col items-center gap-2">
-            <h1>Previous Ramnaam count </h1>
+            <h1>Your Rank </h1>
             <span id="prevCount" class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold">
-              <%=user.prevCount%>
+              <%=user.rank%>
             </span>
           </div>
 
@@ -245,7 +246,7 @@
           userInput = "";
           
           // Updating previous count
-          document.getElementById("prevCount").innerText = response.data.prevCount;
+          // document.getElementById("prevCount").innerText = response.data.prevCount;
 
           // Updating current count
           document.getElementById("currentCount").innerText = response.data.newCount;

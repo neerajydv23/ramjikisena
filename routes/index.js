@@ -60,6 +60,19 @@ router.get('/increment', isLoggedIn, async function(req, res, next) {
     user.dailyCounts.push({ date: new Date(), count: 1 });
   }
 
+  // writing rank feature
+      // Fetch all users and sort them based on totalCount in descending order
+  const allUsers = await userModel.find();
+  const sortedUsers = allUsers.sort((a, b) => b.totalCount - a.totalCount);
+
+  // Iterate through sorted users and assign ranks
+  for (let i = 0; i < sortedUsers.length; i++) {
+    const userRank = sortedUsers[i];
+    userRank.rank = i + 1;
+    await userRank.save(); // Save the user with the updated rank
+  }
+
+
   await user.save();
 
   res.json({mala:user.mala,dailyCount: dailyCount,newCount:user.currCount,totalCount: user.totalCount});
@@ -68,11 +81,10 @@ router.get('/increment', isLoggedIn, async function(req, res, next) {
 router.get('/save', isLoggedIn, async function(req, res, next) {
   const user = await userModel.findOne({username:req.user.username});
 
-  user.prevCount =user.currCount;
   user.currCount=0;
   await user.save();
 
-  res.json({newCount:user.currCount,prevCount: user.prevCount});
+  res.json({newCount:user.currCount});
 });
 
 router.get('/lekhanHistory', async function(req,res){
