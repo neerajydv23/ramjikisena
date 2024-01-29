@@ -12,7 +12,14 @@ passport.use(new localStrategy(userModel.authenticate()))
 router.get('/', async function(req, res, next) {
   const userCount = (await userModel.find()).length;
 
-  res.render('index', {userCount,error: req.flash('error')});
+  const allUsers = await userModel.find();
+  let totalRamnaamCount = 0;
+
+  allUsers.forEach(user =>{
+    totalRamnaamCount += user.totalCount;
+  })
+
+  res.render('index', {userCount,totalRamnaamCount,error: req.flash('error')});
 });
 
 router.get('/register', function(req, res, next) {
