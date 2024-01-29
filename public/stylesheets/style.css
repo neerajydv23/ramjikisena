@@ -677,11 +677,14 @@ tr:nth-child(even) {
   margin-top: 40px;
   font-size: 25px;
 }
-/* .input-search input{
-  border: 2px solid black;
-  padding: 5px;
-  border-radius: 5px;
-} */
+/* gallery css */
+.gallery-content{
+  min-height: 100%;
+  width: 100%;
+  background-color: white;
+  padding-top: 10px;
+  padding: 40px;
+}
 @media screen and (max-width: 610px) {
   .services-chandra .col{
     width: 100%;

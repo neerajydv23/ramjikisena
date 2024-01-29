@@ -36,6 +36,9 @@ router.get('/allDevotees', isLoggedIn, async function(req, res, next) {
   const allUsers = await userModel.find();
   res.render('allDevotees',{user,allUsers});
 });
+router.get('/gallery', async function(req, res, next) {
+  res.render('gallery');
+});
 
 router.get('/name/:name', isLoggedIn, async function(req, res) {
   const regex = new RegExp(`^${req.params.name}`,'i');
