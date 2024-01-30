@@ -112,6 +112,34 @@ router.get('/impTemples', function(req,res){
 router.get('/mission', function(req,res){
   res.render('mission');
 })
+router.get('/forgot', function(req,res){
+  res.render('forgot',{error: req.flash('error')});
+})
+router.post('/forgot', async function(req, res, next) {
+  const { username, contact } = req.body;
+
+  try {
+    // Check if the provided username and phone number match the registered details
+    const user = await userModel.findOne({ username, contact });
+
+    if (user) {
+      // If the user is found, log them in without password verification
+      req.login(user, function(err) {
+        if (err) { return next(err); }
+        return res.redirect('/profile');
+      });
+    } else {
+      // If no user is found, display an error message
+      req.flash('error', 'Invalid username or phone number');
+      return res.redirect('/forgot');
+    }
+  } catch (err) {
+    // Handle any errors that occur during the process
+    console.error('Error:', err);
+    req.flash('error', 'An error occurred. Please try again later.');
+    return res.redirect('/forgot');
+  }
+});
 
 router.get('/about', function(req,res){
   res.render('about');
@@ -150,7 +178,7 @@ router.post('/register', function(req, res, next) {
   })
   .catch(function (err) {
     // Handle registration failure (e.g., username/email already taken)
-    req.flash('error', 'Registration failed. Please choose a different username or email.');
+    req.flash('error', 'Please choose a different Login Id or try removing spaces from Login Id.');
     res.redirect('/');
   });
 });

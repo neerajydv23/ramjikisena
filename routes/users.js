@@ -19,8 +19,17 @@ Connection();
 
 const userSchema = mongoose.Schema({
   username:{
-    type : String,
-    unique:true
+    type: String,
+        unique: true,
+        required: true,
+        trim: true, // Automatically trims whitespace from both ends
+        validate: {
+            validator: function(value) {
+                // Check if the username contains any whitespace
+                return !/\s/.test(value);
+            },
+            message: 'Username must not contain spaces'
+        }
   },
   name:String,
   city:String,
