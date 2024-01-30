@@ -18,7 +18,10 @@ Connection();
 
 
 const userSchema = mongoose.Schema({
-  username: String,
+  username:{
+    type : String,
+    unique:true
+  },
   name:String,
   city:String,
   password:String,
