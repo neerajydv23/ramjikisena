@@ -57,9 +57,11 @@ router.get('/increment', isLoggedIn, async function(req, res, next) {
 
 
   // Find or create the daily count for today
-  const today = new Date().toDateString();  // new date object bana rha current date ka
+    // new date object bana rha current date ka
+  const today = new Date().toDateString();  
 
-  const dailyCount = user.dailyCounts.find((entry) => entry.date.toDateString() === today); // date jo barabar hai aaj ke 
+  // date jo barabar hai aaj ke 
+  const dailyCount = user.dailyCounts.find((entry) => entry.date.toDateString() === today); 
 
 
   if (dailyCount) {

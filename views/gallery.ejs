@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ramjikisena</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="/stylesheets/style.css" />
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet" />
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
@@ -39,6 +40,7 @@
           <a href="/about">About</a>
           <a href="/register">Register</a>
           <a href="/contact">Contact</a>
+          <a href="/gallery">Gallery</a>
         </div>
       </div>
 
@@ -72,17 +74,56 @@
             </div>
           </div>
 
-        <div class="gallery-content">
-           
+          <div class="gallery-content">
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                    <img src="/images/gallery-1.jpeg" alt="" style="object-position: top;">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/images/aboutImg1.jpeg" alt="">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="/images/Ayodhya Ramji Photo.jpeg" alt="">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="/images/ramji-slider-1.jpeg" alt="">
+                                </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
         </div>
        
 
         <footer>
-          <a href="https://www.facebook.com/chandrashekhar.singh.104"><i class="ri-facebook-fill"></i> Facebook</a>
-          
+          <a href="https://www.facebook.com/chandrashekhar.singh.104"><i class="ri-facebook-fill"></i> Facebook</a>    
           <a href="https://www.youtube.com/@GandhialayaVicharSevaSangh"><i class="ri-youtube-fill"></i> Youtube</a>
         </footer>
     </div>
+
+    <!-- Swiper js cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            spaceBetween: 30,
+            centeredSlides: true,
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            grabCursor:true,
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+    </script>
 
      <!-- Google translator JS code starts -->
   <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
