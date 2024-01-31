@@ -56,12 +56,21 @@ router.get('/increment', isLoggedIn, async function(req, res, next) {
   user.mala = (user.totalCount / 108).toFixed(2);
 
 
-  // Find or create the daily count for today
-    // new date object bana rha current date ka
-  const today = new Date().toDateString();  
+  // const today = new Date().toDateString();  
+  const todayString = new Date().toLocaleString(undefined, {timeZone: 'Asia/Kolkata'}); 
+  const today = new Date(todayString);
+  
 
-  // date jo barabar hai aaj ke 
-  const dailyCount = user.dailyCounts.find((entry) => entry.date.toDateString() === today); 
+  // const dailyCount = user.dailyCounts.find((entry) => entry.date.toDateString() === today);
+  
+  const dailyCount = user.dailyCounts.find((entry) =>{
+    const entryString = entry.date.toLocaleString(undefined, {timeZone: 'Asia/Kolkata'});
+    const entryDate = new Date(entryString);
+    return entryDate.toDateString() === today.toDateString(); 
+})
+  
+ 
+
 
 
   if (dailyCount) {
@@ -69,7 +78,7 @@ router.get('/increment', isLoggedIn, async function(req, res, next) {
     dailyCount.count += 1;
   } else {
     // If the entry for today doesn't exist, create a new entry
-    user.dailyCounts.push({ date: new Date(), count: 1 });
+    user.dailyCounts.push({ date: today, count: 1 });
   }
 
   // writing rank feature
