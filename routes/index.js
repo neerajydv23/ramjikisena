@@ -125,11 +125,11 @@ router.get('/forgot', function(req,res){
   res.render('forgot',{error: req.flash('error')});
 })
 router.post('/forgot', async function(req, res, next) {
-  const { username, contact } = req.body;
+  const { contact } = req.body;
 
   try {
     // Check if the provided username and phone number match the registered details
-    const user = await userModel.findOne({ username, contact });
+    const user = await userModel.findOne({ contact });
 
     if (user) {
       // If the user is found, log them in without password verification
@@ -139,7 +139,7 @@ router.post('/forgot', async function(req, res, next) {
       });
     } else {
       // If no user is found, display an error message
-      req.flash('error', 'Invalid username or phone number');
+      req.flash('error', 'Invalid phone number');
       return res.redirect('/forgot');
     }
   } catch (err) {
