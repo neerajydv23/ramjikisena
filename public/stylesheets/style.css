@@ -583,7 +583,7 @@ footer{
 .about-content .about-sir{
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
   padding: 20px;
   margin-top: 50px;
 }
@@ -593,7 +593,7 @@ footer{
   color: #B22222;
 }
 .about-sir img{
-  height: 200px;
+  height: 130px;
 }
 .lekhanHistory-content{
   max-height: 60vh;
@@ -702,6 +702,10 @@ tr:nth-child(even) {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+#milk-magic-icon{
+  height: 30px;
+  display: inline-block;
 }
 @media screen and (max-width: 610px) {
   .gallery-content{
@@ -819,13 +823,13 @@ tr:nth-child(even) {
     object-fit: cover;
   }
   .about-sir img{
-    height:150px;
+    height:80px;
   }
   .about-content .about-sir {
     padding: 5px 20px;
   }
   .about-sir h2{
-    font-size: 17px;
+    font-size: 14px;
   }
   .services-chandra{
     /* gap: 20px; */
@@ -952,13 +956,16 @@ tr:nth-child(even) {
     font-size: 13px;
   }
   .about-content .about-sir{
-    padding: 20px;
+    padding: 20px 10px;
   }
   .about-sir h2{
-    font-size: 15px;
+    font-size: 14px;
   }
   .about-sir img{
-    height: 100px;
+    height: 50px;
+  }
+  #milk-magic-icon{
+    height: 15px;
   }
   .impTemples-content h2{
     font-size: 15px;
