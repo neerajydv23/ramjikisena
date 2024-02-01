@@ -36,6 +36,10 @@ html,body{
   height: 100%;
   width: 100%;
 }
+a{
+  text-decoration: none;
+  color: white;
+}
 .main{
   min-height: 100vh;
   width: 100%;
@@ -53,6 +57,9 @@ html,body{
   overflow: hidden;
   animation: marquee 30s linear infinite;
   font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 @keyframes marquee {
@@ -70,6 +77,9 @@ html,body{
   color: white;
   padding: 15px 5px;
   overflow: hidden;
+}
+.nav-1 h1{
+  font-size: 17px;
 }
 
 
@@ -94,6 +104,8 @@ html,body{
 .nav-2 .left a{
   font-size: 25px;
   font-weight: 700;
+  text-decoration: none;
+  color: #6D1E1E;
 }
 
 .nav-2 .right{
@@ -202,6 +214,9 @@ nav #text {
   flex-wrap: wrap;
   justify-content: center;
 }
+.goto-div-items a{
+  color: white;
+}
 .index-content{
   height: 100%;
   width: 100%;
@@ -212,6 +227,8 @@ nav #text {
   width: 100%;
   display: flex;
   justify-content: space-between;
+}
+.ramji-slider-text h1{
   font-size: 25px;
   font-weight: 600;
   color: white;
@@ -223,12 +240,16 @@ nav #text {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  font-size: 17px;
-  font-weight: 600;
-  color: white;
   background-color: #6D1E1E;
   padding: 15px;
   margin-top: 10px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.count-info h3{
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
   text-align: center;
 }
 .main-content{
@@ -238,11 +259,21 @@ nav #text {
   justify-content: center;
   align-items: center;
   margin-top: 50px;
+  padding: 20px;
 }
 .container{
   min-height: 100%;
   width: 100%;
   background-color: #6D1E1E;
+  color: white;
+}
+.container .row-1{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  padding: 20px;
+  border-bottom: 2px solid #fff;
 }
 .container .row-1 h3{
   font-weight: 600;
@@ -252,29 +283,58 @@ nav #text {
   padding: 5px 7px ;
   border-radius: 5px;
 }
+.container .row-1-buttons{
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
 .container .row-2{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 10px;
+  gap: 15px;
+  padding: 20px;
+  border-bottom: 2px solid #fff;
 }
-/* .container .row-4 button{
-  font-size: 40px;
-  font-weight: 700;
-  background-color: #eaba4a;
-  border-radius: 5px;
-  padding: 10px 20px;
-  transition: 0.5s all; 
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-
+.row-2 .count-box{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
 }
-.container .row-4 button:active{
-    transform: scale(0.7); 
-    box-shadow: 0 0 15px rgba(167, 166, 166, 0.7);
-    background-color: #B22222;
-    color: #f1f1f1;
-} */
-
+.count-box h1{
+  font-size: 20px;
+}
+.row-2 .count-box-value{
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  font-weight: 600;
+  width: 100%;
+  color: red;
+}
+.container .row-3{
+  width: 100%;
+  padding: 20px;
+}
+.row-3 textarea{
+  width: 100%;
+  padding: 0.75rem;  
+  border: 1px solid #d1d5db; 
+  border-radius: 0.375rem; 
+  font-weight: 600;
+  color: #dc2626; 
+  outline: none; 
+}
+.row-3 textarea:focus{
+  border-color: #3b82f6;
+}
+.container .row-4{
+  display:flex;
+  justify-content: center;
+  gap: 20px;
+}
 .container .row-4 button{
   font-size: 50px;
   font-weight: 700;
@@ -308,7 +368,11 @@ nav #text {
   color: rgba(120,50,5,.8);
 }
 
-
+.container .save-button{
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
 .save-button span{
   margin: 10px 0;
   font-size: 20px;
@@ -347,10 +411,12 @@ footer{
   margin-top: 40px;
   padding: 10px;
   background-color: #6D1E1E;
-  color: white;
   display: flex;
   justify-content: center;
   gap: 40px;
+}
+footer a{
+  color: white;
 }
 
 
@@ -580,19 +646,29 @@ footer{
   color: #B22222;
   font-size: 17px;
 }
-.about-content .about-sir{
+.about-content .about-sponsor{
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
   margin-top: 50px;
 }
-.about-sir h2{
+.about-sponsor h2{
   font-size: 20px;
   font-weight: 600;
+  color: #5B1801;
+  margin-bottom: 10px;
+}
+.sponsor-name{
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.about-sponsor h6{
+  font-size: 18px;
   color: #B22222;
 }
-.about-sir img{
+.about-sponsor img{
   height: 130px;
 }
 .lekhanHistory-content{
@@ -707,6 +783,72 @@ tr:nth-child(even) {
   height: 30px;
   display: inline-block;
 }
+
+/* Login page CSS */
+.login-page{
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login-form{
+  height: 550px;
+  width: 500px;
+  padding: 50px 30px;
+  background-color: #FBAA01;
+  border-radius: 20px;
+}
+.login-form h1{
+  font-size: 30px;
+  color: #3F3F46;
+  font-weight: 900;
+  text-align: center;
+}
+.login-form input{
+  width: 100%;
+  padding: 8px;
+  margin-top: 20px;
+  border-radius: 10px;
+  border: 2px solid #ddd;
+  font-size: 16px;
+}
+.forgot-btn{
+  display: block;
+  margin-top: 10px;
+  text-align: right;
+  color: #71717A;
+}
+.login-btn{
+  color: white;
+  background-color: #5B1801 !important;
+  border: 1px solid #fff;
+}
+
+@media screen and (max-width: 433px){
+  .login-form{
+    height: 450px;
+    width: 350px;
+    padding: 20px;
+  }
+  .login-form h1{
+    font-size: 23px;
+    margin-bottom: 15px;
+  }
+  .login-form input{
+    padding: 8px;
+    margin-top: 15px;
+    font-size: 14px;
+  }
+  .forgot-btn{
+    font-size: 14px;
+    margin-top: 8px;
+  }
+  .login-btn{
+    font-size: 16px;
+  }
+}
+
 @media screen and (max-width: 610px) {
   .gallery-content{
     height: 400px;
@@ -714,19 +856,15 @@ tr:nth-child(even) {
   .services-chandra .col{
     width: 100%;
   }
-  #login-page{
-    padding: 20px;
-  }
-  #login-page h1{
-    font-size: 25px;
-    line-height: 1.5;
-  }
   #register-page{
     padding:  20px;
   }
   #register-page h1{
     margin-top: 40px;
     font-size: 25px;
+  }
+  .nav-1{
+    padding: 10px;
   }
   .nav-1 h1{
     font-size: 14px;
@@ -765,24 +903,20 @@ tr:nth-child(even) {
   .index-content{
     padding: 20px;
   }
-  
-  .ramji-slider-text{
+  .ramji-slider-text h1{
     font-size: 18px;
-    font-weight: 600;
-    color: white;
   }
-  .count-info{
-    text-align: center;
-    font-size: 12px;
+  .count-info{    
     padding: 8px;
-    margin-top: 10px;
+  }
+  .count-info h3{
+    font-size: 12px;
   }
   .container .row-1{
     flex-direction: column;
     gap: 20px;
   }
   .container .row-1 h3{
-    font-weight: 600;
     font-size: 14px;
   }
   .container .row-1 a{
@@ -792,6 +926,9 @@ tr:nth-child(even) {
   .container .row-2{
     justify-content: center;
     align-items: center;
+  }
+  .count-box h1{
+    font-size: 17px;
   }
   footer{
     gap: 20px;
@@ -822,14 +959,21 @@ tr:nth-child(even) {
     height: 300px;
     object-fit: cover;
   }
-  .about-sir img{
+  .about-sponsor img{
     height:80px;
   }
-  .about-content .about-sir {
+  .about-content .about-sponsor {
     padding: 5px 20px;
   }
-  .about-sir h2{
+  .sponsor-name{
+    gap: 4px;
+  }
+  .about-sponsor h6{
+    font-size: 13px;
+  }
+  .about-sponsor h2{
     font-size: 14px;
+    margin-bottom: 7px;
   }
   .services-chandra{
     /* gap: 20px; */
@@ -861,9 +1005,6 @@ tr:nth-child(even) {
 
 
 @media screen and (max-width: 433px) {
-  #login-page{
-    padding: 20px 10px;
-  }
   #register-page{
     padding: 20px;
   }
@@ -914,21 +1055,17 @@ tr:nth-child(even) {
   .index-content{
     padding: 20px 10px;
   }
-  .ramji-slider-text{
-    font-size: 14px;
+  .ramji-slider-text h1{
+    font-size: 13px;
   }
   .count-info{
-    text-align: center;
+    padding: 7px 3px;
+  }
+  .count-info h3{
     font-size: 8px;
-    padding: 7px;
-    margin-top: 10px;
   }
-  .container .row-1{
-    flex-direction: column;
-    gap: 20px;
-  }
-  .container .row-1 h3{
-    font-size: 14px;
+  .container .row-1-buttons{
+    flex-wrap: nowrap;
   }
   .container .row-1 a{
     padding: 4px 8px ;
@@ -955,17 +1092,21 @@ tr:nth-child(even) {
   .services-chandra h6{
     font-size: 13px;
   }
-  .about-content .about-sir{
+  .about-content .about-sponsor{
     padding: 20px 10px;
   }
-  .about-sir h2{
+  .about-sponsor h2{
     font-size: 14px;
+    margin-bottom: 5px;
   }
-  .about-sir img{
+  .about-sponsor h6{
+    font-size: 12px;
+  }
+  .about-sponsor img{
     height: 50px;
   }
   #milk-magic-icon{
-    height: 15px;
+    height: 17px;
   }
   .impTemples-content h2{
     font-size: 15px;
@@ -1007,4 +1148,11 @@ tr:nth-child(even) {
   padding: 20px 10px;
 }
   
+}
+
+@media screen and (max-width: 761px) {
+  .container .row-1{
+    flex-direction: column;
+    gap: 20px;
+  }
 }

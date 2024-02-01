@@ -12,7 +12,6 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
-  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
 
@@ -20,9 +19,10 @@
    
 
     <div class="nav-1">
-      <h1 class="marquee">
-        Jayshri Gayatri Food Products Pvt. Ltd. Milk Magic <img id="milk-magic-icon"  src="/images/milk-magic-icon.webp" alt="">
-      </h1>
+      <div class="marquee">
+        <h1>Jayshri Gayatri Food Products Pvt. Ltd. Milk Magic</h1>
+        <img id="milk-magic-icon"  src="/images/milk-magic-icon.webp" alt="">
+      </div>
     </div>
 
     <nav>
@@ -79,32 +79,30 @@
         <img src="/images/ramji-slider-1.webp" alt="">
         <div class="count-info">
           <h3>✍️ Total written Ramcount : <%=totalRamnaamCount%> </h3>
-          <h3>🎯 Total visited devotees : 100+</h3>
+          <h3>🎯 Total visited devotees : 1000+</h3>
           <h3>🎯 Total registered devotees : <%=userCount%> </h3>
         </div>
       </div>
     </div>
 
-   
-    <div id="login-page" class="w-full h-screen bg-center bg-cover bg-[url('https://ramnaambank.com/images/backgroundimg.jpg')] flex items-center justify-center">
-      <!-- <div class="w-full md:w-[50%] lg:w-[40%] xl:w-[30%] bg-white px-6 py-8 rounded-[30px] "> -->
-        <div  class="w-full md:w-[50%] lg:w-[40%] xl:w-[30%] bg-[#FBAA01] border-4 border-#5B1801 px-6 py-8 rounded-[30px]" style="border-color: #5B1801;" >
-          <h1 class="text-3xl text-center font-semibold text-zinc-700 capitalize tracking-tighter leading-2">राम नाम लेखन हेतु लॉगिन / रजिस्टर करे - Login/Register here</h1>
-  
-          <%if(error.length>0){ %>
-            <p class="flash-error" style="color: red;font-weight: 400;text-transform: capitalize;margin: 7px 0;text-align: center;"><%=error%></p>
-          <% } %>
-  
-          <form action="/login" method="post">
-              <input class="border-2 rounded-md mt-6 w-full px-3 py-2" type="text" name="username" placeholder="लॉगिन आईडी / Login id" required>
-              <input class="border-2 rounded-md mt-4 w-full px-3 py-2" type="password" name="password" placeholder="पासवर्ड / Password" required>
-              <a class="mt-2 block text-sm font-semibold text-zinc-500 text-right" href="/forgot">Login with Mobile Number ?</a>
-              <input class="border-2 rounded-full mt-4 w-full px-3 py-2 bg-[#5B1801] text-white" type="submit" value="लॉगिन / Login">
-          </form>
-          <a class="block mt-7 text-sm px-3 py-2 border-2 rounded-full font-semibold text-white text-center bg-[#5B1801]" href="/register">रजिस्टर / Register</a>
+    <div class="login-page">
+      <div class="login-form">
+
+        <h1>राम नाम लेखन हेतु लॉगिन / रजिस्टर करे - Login/Register here</h1>
+
+        <%if(error.length>0){ %>
+          <p class="flash-error" style="color: red;font-weight: 400;text-transform: capitalize;margin: 7px 0;text-align: center;"><%=error%></p>
+        <% } %>
+
+        <form action="/login" method="post">
+          <input type="text" name="username" placeholder="लॉगिन आईडी / Login id" required>
+          <input  type="password" name="password" placeholder="पासवर्ड / Password" required>
+          <a class="forgot-btn" href="/forgot">Login With Mobile Number ?</a>
+          <input class="login-btn" type="submit" value="लॉगिन / Login">
+      </form>
+          <a style="display: block;margin-top: 15px;padding: 8px;background-color: #5B1801;color: white;border-radius: 10px;border: 1px solid #fff;text-align: center;" href="/register">रजिस्टर / Register</a>
       </div>
-  </div>
-  
+    </div>
 
   <footer>
     <a href="https://www.facebook.com/chandrashekhar.singh.104"><i class="ri-facebook-fill"></i> Facebook</a>

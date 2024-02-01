@@ -10,16 +10,16 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
-  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>
   <div class="main">
 
     <div class="nav-1">
-      <h1 class="marquee">
-        Jayshri Gayatri Food Products Pvt. Ltd. Milk Magic <img id="milk-magic-icon"  src="/images/milk-magic-icon.webp" alt="">
-      </h1>
+      <div class="marquee">
+        <h1>Jayshri Gayatri Food Products Pvt. Ltd. Milk Magic</h1>
+        <img id="milk-magic-icon"  src="/images/milk-magic-icon.webp" alt="">
+      </div>
     </div>
 
     <nav>
@@ -72,11 +72,10 @@
     </div>
 
     <div class="main-content">
-      <div class="container text-white">
+      <div class="container">
 
-        <div class="row-1 flex items-center justify-between p-6 text-white border-b-2">
-          <h3>Jai Shri Ram - 🙎‍ <%=user.name%>
-          </h3>
+        <div class="row-1">
+          <h3>Jai Shri Ram - 🙎‍ <%=user.name%></h3>
           <h3>Welcome to Ramji Ki Sena</h3>
           <div class="row-1-buttons">
             <!-- Google translator HTML code starts -->
@@ -85,63 +84,61 @@
               <option value="hi">Hindi</option>
             </select>
             <!-- Google translator HTML code ends -->
+
             <a href="/lekhanHistory">Lekhan History</a>
             <a class="notranslate" href="/logout">Log Out</a>
           </div>
         </div>
 
 
-        <div class="row-2 p-6  border-b-2">
+        <div class="row-2">
 
-          <div class="previous-count flex flex-col items-center gap-2">
+          <div class="previous-count count-box ">
             <h1>Your Rank </h1>
-            <span id="prevCount" class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold">
+            <span id="prevCount" class="count-box-value">
               <%=user.rank%>
             </span>
           </div>
 
-          <div class="current-count flex flex-col items-center gap-2">
+          <div class="current-count count-box">
             <h1>Current Ramnaam count</h1>
-            <span id="currentCount" class="bg-white rounded-md w-full py-2 px-4  text-center font-semibold"
+            <span id="currentCount" class="count-box-value"
               style="color: #006600;">
               <%=user.currCount%>
             </span>
           </div>
 
-          <div class="total-count flex flex-col items-center gap-2">
+          <div class="total-count count-box">
             <h1>Total Ramnaam count</h1>
-            <span id="totalCount" class="bg-white rounded-md w-full py-2 px-4 text-center font-semibold"
+            <span id="totalCount" class="count-box-value"
               style="color: #0000FF;">
               <%=user.totalCount %>
             </span>
-
           </div>
 
-          <div class="mala-count flex flex-col items-center gap-2">
+          <div class="mala-count count-box">
             <h1>Total Mala Count</h1>
-            <span id="malaCount" class="bg-white rounded-md w-full py-2 px-4 text-red-500 text-center font-semibold">
+            <span id="malaCount" class="count-box-value">
               <%=user.mala%>
             </span>
           </div>
         </div>
 
-        <div class="row-3 p-6 w-full">
-          <textarea
-            class="w-full p-3 border border-gray-300 rounded-md font-semibold text-red-600 focus:outline-none focus:border-blue-500"
-            id="ramTextarea" name="ramTextarea" rows="6" cols="60" placeholder="यहाँ पर राम नाम लिखें..."></textarea>
+        <div class="row-3">
+          <textarea id="ramTextarea" name="ramTextarea" rows="6" cols="60" placeholder="यहाँ पर राम नाम लिखें..."></textarea>
         </div>
 
-        <div class="row-4 buttons flex justify-center gap-6 notranslate">
+        <div class="row-4 buttons notranslate">
           <div class="r-button" onclick="appendCharacter('R')"><button>र</button> </div>
           <div class="a-button" onclick="appendCharacter('A')"><button>I</button> </div>
           <div class="m-button" onclick="appendCharacter('M')"><button>म</button> </div>
 
         </div>
 
-        <div class="save-button flex justify-center mt-6 notranslate" style="cursor: pointer;">
-          <span><i class="ri-save-3-fill"></i>
-            Save</span>
+        <div class="save-button notranslate" style="cursor: pointer;">
+          <span><i class="ri-save-3-fill"></i>Save</span>
         </div>
+
       </div>
     </div>
 
