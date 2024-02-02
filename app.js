@@ -17,7 +17,7 @@ var app = express();
 app.use(cors());
 
 app.use(cors({
-  origin: 'https://ramnaambank.onrender.com',
+  origin: 'https://ramjikisena.online',
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
   optionsSuccessStatus: 204,
