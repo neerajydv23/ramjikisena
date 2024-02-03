@@ -188,6 +188,7 @@ nav i{
   @media screen and (max-width: 433px) {
     #slidebar{
         width: 140px;
+        top: 60px;
     }
     nav{
         padding: 20px ;
@@ -212,6 +213,10 @@ nav i{
     nav i{
         font-size: 16px;
     }
+    th, td {
+        /* padding: 5px; */
+        font-size: 11px; 
+      }
 
   }
 
