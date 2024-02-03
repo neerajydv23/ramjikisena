@@ -65,8 +65,17 @@ const userSchema = mongoose.Schema({
   mala:{
     type:Number,
     default:"0"
-  }
+  },
+  role: {
+    type: String,
+    default: 'user'
+},
+joiningDate: {
+  type: Date,
+  default: Date.now // Set the default value to the current date
+}
 });
+
 
 userSchema.plugin(plm);
 

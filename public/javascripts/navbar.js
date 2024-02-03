@@ -1,21 +1,3 @@
-// var menubtn = document.querySelector(".nav-2 .right i")
-// menubtn.addEventListener("click", function(){
-   
-//         var menupage = document.querySelector("#slidebar")
-//         if (flag = 1) {
-//             menupage.style.transform = "translateY(0)"
-//             flag = 0
-//         } 
-    
-// })
-// var close = document.querySelector("#slidebar #close i")
-// close.addEventListener("click", function () {
-//     var menupage = document.querySelector("#slidebar")
-
-//     menupage.style.transform = "translateY(-100%)"
-
-// })
-
 var flag = 1; // Initialize flag to 1
 
 var menubtn = document.querySelector(".nav-2 .right i");
