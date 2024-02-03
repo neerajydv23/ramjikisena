@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
+require('dotenv').config();
 const plm = require('passport-local-mongoose');
 
 
-// mongoose.connect("mongodb://127.0.0.1:27017/ramnaambank");
 const Connection = async () => {
-  const URL = 'mongodb+srv://yneeraj082r:jT5N0eg3sTUj0XFy@ramnaambank.vyriomp.mongodb.net/?retryWrites=true&w=majority';
+  const URL = process.env.DB_CONNECTION_STRING;
   
   try {
     await mongoose.connect(URL);
