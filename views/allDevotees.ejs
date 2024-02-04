@@ -2,27 +2,27 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ramjikisena</title>
-    <link rel="stylesheet" href="/stylesheets/style.css" />
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ramjikisena</title>
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
 </head>
 
 <body>
-    <div class="main">
-      
-      <div class="nav-1">
-        <div class="marquee">
-          <h1>Jayshri Gayatri Food Products Pvt. Ltd. Milk Magic</h1>
-          <img id="milk-magic-icon"  src="/images/milk-magic-icon.webp" alt="">
-        </div>
-      </div>
+  <div class="main">
 
-       <nav>
+    <div class="nav-1">
+      <div class="marquee">
+        <h1>Jayshri Gayatri Food Products Pvt. Ltd. Milk Magic</h1>
+        <img id="milk-magic-icon" src="/images/milk-magic-icon.webp" alt="">
+      </div>
+    </div>
+
+    <nav>
       <div id="slidebar">
         <div id="close">
           <i class="ri-close-fill" style="color: white;"></i>
@@ -53,36 +53,36 @@
       </div>
     </nav>
 
-          <div class="goto-div">
-            <h1>Daily Darshan & Ram naam Meditation 👉</h1>
-            <div class="goto-div-items">
-              <a href="/impTemples">🚩 Important temples of Ayodhya</a>
-              <a href="/mission">🎯 Our Mission </a>
-              <a href="/glory">📖 Glory of Ram naam</a>
-              <a href="/feedback">✍️ Writing experience & feedback</a>
-            </div>
-          </div>
+    <div class="goto-div">
+      <h1>Daily Darshan & Ram naam Meditation 👉</h1>
+      <div class="goto-div-items">
+        <a href="/impTemples">🚩 Important temples of Ayodhya</a>
+        <a href="/mission">🎯 Our Mission </a>
+        <a href="/glory">📖 Glory of Ram naam</a>
+        <a href="/feedback">✍️ Writing experience & feedback</a>
+      </div>
+    </div>
 
-        <div class="allDevotees-content">
+    <div class="allDevotees-content">
 
-            <h1>All Devotees</h1>
+      <h1>All Devotees</h1>
 
-            <!-- <div class="input-search">
+      <!-- <div class="input-search">
                 <input id="search-devotees" type="text" placeholder="Click here to search">
             </div> -->
 
-            <div class="devotees-table">
-                <table border="1">
-                    <thead>
-                      <tr style="color: #B22222;">
-                        <th>Rank</th>
-                        <th>Name</th>
-                        <th>Today's Count</th>
-                        <th>Total Count</th>
-                      </tr>
-                    </thead>
-                    <tbody id="userTableBody">
-                      <!-- <% allUsers.forEach(function(user) { %>
+      <div class="devotees-table">
+        <table border="1">
+          <thead>
+            <tr style="color: #B22222;">
+              <th>Rank</th>
+              <th>Name</th>
+              <!-- <th>Today's Count</th> -->
+              <th>Total Count</th>
+            </tr>
+          </thead>
+          <tbody id="userTableBody">
+            <!-- <% allUsers.forEach(function(user) { %>
                         <tr>
                           <td><%= user.name %></td>
                           <td><%= user.dailyCounts.length > 0 ? user.dailyCounts[user.dailyCounts.length - 1].count : 0 %></td>
@@ -90,14 +90,18 @@
                         </tr>
                       <% }); %> -->
 
-                      <% const sortedUsers = allUsers.slice().sort((a, b) => b.totalCount - a.totalCount); %>
-      
-                      <% sortedUsers.forEach(function(user,index) {  %>
-                      <tr>
-                          <td><%= index + 1 %></td>
-                          <td><%= user.name %></td>
-                          <!-- <td><%= user.dailyCounts.length > 0 ? user.dailyCounts[user.dailyCounts.length - 1].count : 0 %></td> -->
-                          <td>
+            <% const sortedUsers=allUsers.slice().sort((a, b)=> b.totalCount - a.totalCount); %>
+
+              <% sortedUsers.forEach(function(user,index) { %>
+                <tr>
+                  <td>
+                    <%= index + 1 %>
+                  </td>
+                  <td>
+                    <%= user.name %>
+                  </td>
+                  <!-- <td><%= user.dailyCounts.length > 0 ? user.dailyCounts[user.dailyCounts.length - 1].count : 0 %></td> -->
+                  <!-- <td>
                             <% if (user.dailyCounts && user.dailyCounts.length > 0) { 
                               const today = new Date().toLocaleDateString();
                               const todayCount = user.dailyCounts.find(entry => new Date(entry.date).toLocaleDateString() === today);
@@ -109,30 +113,35 @@
                             <% } else { %>
                               0
                             <% } %>
-                          </td>
-                          <td><%= user.totalCount %></td>
-                      </tr>
-                  <% }); %> 
-                    </tbody>
-                  </table>
-            </div>
-        </div>
-       
-
-        <footer>
-          <a href="https://www.facebook.com/chandrashekhar.singh.104"><i class="ri-facebook-fill"></i> Facebook</a>
-          
-          <a href="https://www.youtube.com/@GandhialayaVicharSevaSangh"><i class="ri-youtube-fill"></i> Youtube</a>
-        </footer>
+                          </td> -->
+                  <td>
+                    <%= user.totalCount %>
+                  </td>
+                </tr>
+                <% }); %>
+          </tbody>
+        </table>
+      </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js" integrity="sha512-b94Z6431JyXY14iSXwgzeZurHHRNkLt9d6bAHt7BZT38eqV+GyngIi/tVye4jBKPYQ2lBdRs0glww4fmpuLRwA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    
+    <footer>
+      <a href="https://www.facebook.com/chandrashekhar.singh.104"><i class="ri-facebook-fill"></i> Facebook</a>
 
-     <!-- Google translator JS code starts -->
-  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-  
+      <a href="https://www.youtube.com/@GandhialayaVicharSevaSangh"><i class="ri-youtube-fill"></i> Youtube</a>
+    </footer>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js"
+    integrity="sha512-b94Z6431JyXY14iSXwgzeZurHHRNkLt9d6bAHt7BZT38eqV+GyngIi/tVye4jBKPYQ2lBdRs0glww4fmpuLRwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+
+  <!-- Google translator JS code starts -->
+  <script type="text/javascript"
+    src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
   <script type="text/javascript">
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
@@ -153,7 +162,7 @@
     }
   </script>
   <!-- Google translator JS code ends -->
-  
+
   <script src="/javascripts/navbar.js"></script>
 
 </body>
