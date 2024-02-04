@@ -207,7 +207,7 @@
         userInput = "";
         textarea.value += " "
         axios
-          .get("https://api.ramjikisena.com/increment")
+          .get("https://ramjikisena.com/increment")
           .then(function (response) {
             // Update the current count on the client side
             document.getElementById("currentCount").innerText =
@@ -238,7 +238,7 @@
 
     const saveButton = document.querySelector(".save-button");
     saveButton.addEventListener("click", function () {
-      axios.get("https://api.ramjikisena.com/save")
+      axios.get("https://ramjikisena.com/save")
         .then(function (response) {
           var textarea = document.getElementById("ramTextarea");
           textarea.value = "";
