@@ -101,23 +101,17 @@
         </table>
       </div> -->
 
-      <div class="history-table">
-        <table>
-          <tbody>
-            <% var reversedCounts=user.dailyCounts.slice().reverse(); 
-              reversedCounts.forEach(function(dailyCount){ %>
-              <tr>
-                <td class="font-semibold">
-                  <%= dailyCount.date.toDateString() %>
-                </td>
-                <td>
-                  <%= dailyCount.count %>
-                </td>
-              </tr>
-              <% }); %>
-          </tbody>
-        </table>
-      </div>
+      <ul>
+        <% var reversedCounts = user.dailyCounts.slice().reverse();
+        reversedCounts.forEach(function(dailyCount){ %>
+            <li class="font-semibold">
+                <%= dailyCount.date.toDateString() %> : <%= dailyCount.count %>
+            </li>
+        <% 
+        }); 
+        %>
+    </ul>
+    
 
 
     </div>
