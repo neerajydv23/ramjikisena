@@ -20,7 +20,7 @@
     <div class="nav-1">
       <div class="marquee">
         <h1>Jayshri Gayatri Food Products Pvt. Ltd. Milk Magic</h1>
-        <img id="milk-magic-icon"  src="/images/milk-magic-icon.webp" alt="">
+        <img id="milk-magic-icon" src="/images/milk-magic-icon.webp" alt="">
       </div>
     </div>
 
@@ -56,7 +56,7 @@
     </nav>
 
 
-    <div class="ramji-photo">  
+    <div class="ramji-photo">
       <img src="/images/Ayodhya Ramji Photo.webp" alt="">
     </div>
 
@@ -77,18 +77,22 @@
         <h1>नये सदस्यता के लिए रजिस्टर करें/ New User Registration Form</h1>
 
         <%if(error.length>0){ %>
-          <p class="flash-error" style="color: red;font-weight: 400;text-transform: capitalize;margin: 7px 0;text-align: center;"><%=error%></p>
-        <% } %>
+          <p class="flash-error"
+            style="color: red;font-weight: 400;text-transform: capitalize;margin: 7px 0;text-align: center;">
+            <%=error%>
+          </p>
+          <% } %>
 
-        <form action="/register" method="post">
-          <input type="text" name="username" placeholder="यूजर लॉगिन आइडी / User Login id" required>
-          <input type="text" name="fullname" placeholder="पूरा नाम / Full Name">
-          <input type="text" name="city" placeholder="शहर / City">
-          <input type="number" name="contact" placeholder="मोबाइल नंबर.*/Mobile No.*" required>
-          <input type="password" name="password" placeholder="पासवर्ड/Password">
-          <input class="login-btn" type="submit" value="Register">  
-      </form>
-          <a style="display: block;margin-top: 10px;padding: 8px;background-color: #5B1801;color: white;border-radius: 10px;border: 1px solid #fff;text-align: center;" href="/">Go to Login</a>
+            <form action="/register" method="post">
+              <input type="text" name="username" placeholder="यूजर लॉगिन आइडी / User Login id" required>
+              <input type="text" name="fullname" placeholder="पूरा नाम / Full Name">
+              <input type="text" name="city" placeholder="शहर / City">
+              <input type="number" name="contact" placeholder="मोबाइल नंबर.*/Mobile No.*" required>
+              <input type="password" name="password" placeholder="पासवर्ड/Password">
+              <input class="login-btn" type="submit" value="Register">
+            </form>
+            <a style="display: block;margin-top: 10px;padding: 8px;background-color: #5B1801;color: white;border-radius: 10px;border: 1px solid #fff;text-align: center;"
+              href="/">Go to Login</a>
       </div>
     </div>
 
@@ -97,6 +101,9 @@
       <a href="https://www.facebook.com/chandrashekhar.singh.104"><i class="ri-facebook-fill"></i> Facebook</a>
       <a href="https://www.youtube.com/@GandhialayaVicharSevaSangh"><i class="ri-youtube-fill"></i> Youtube</a>
     </footer>
+    <div class="copyright">
+      <h2>Copyright © 2024 www.ramjikisena.com- Developed & Maintened  by I-NextEts</h2>
+    </div>
   </div>
 
   <script src="/javascripts/navbar.js"></script>
