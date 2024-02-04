@@ -76,7 +76,8 @@
        <% })%>
     </ul> -->
 
-      <div class="history-table">
+
+      <!-- <div class="history-table">
         <table border="1">
           <thead>
             <tr style="color: #B22222;">
@@ -85,18 +86,6 @@
             </tr>
           </thead>
           <tbody>
-
-            <!-- <% user.dailyCounts.forEach(function(dailyCount){ %>
-              <tr>
-                <td>
-                  <%= dailyCount.date.toDateString() %>
-                </td>
-                <td>
-                  <%= dailyCount.count %>
-                </td>
-              </tr>
-              <% })%> -->
-
             <% user.dailyCounts.sort(function(a, b) { return new Date(b.date) - new Date(a.date); }); 
             user.dailyCounts.forEach(function(dailyCount){ %>
               <tr>
@@ -108,11 +97,28 @@
                 </td>
               </tr>
               <% }); %>
+          </tbody>
+        </table>
+      </div> -->
 
-
+      <div class="history-table">
+        <table>
+          <tbody>
+            <% var reversedCounts=user.dailyCounts.slice().reverse(); 
+              reversedCounts.forEach(function(dailyCount){ %>
+              <tr>
+                <td class="font-semibold">
+                  <%= dailyCount.date.toDateString() %>
+                </td>
+                <td>
+                  <%= dailyCount.count %>
+                </td>
+              </tr>
+              <% }); %>
           </tbody>
         </table>
       </div>
+
 
     </div>
 
