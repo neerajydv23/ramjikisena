@@ -18,7 +18,7 @@ var app = express();
 app.use(cors());
 
 app.use(cors({
-  origin: 'https://ramjikisena.online',
+  origin: ['https://ramjikisena.online','https://ramjikisena.com','https://api.ramjikisena.com'],
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
   optionsSuccessStatus: 204,
@@ -30,9 +30,9 @@ app.set('view engine', 'ejs');
 
 app.use(flash());
 app.use(expressSession({
-  resave:false,
-  saveUninitialized:false,
-  secret:"hey"
+  resave: false,
+  saveUninitialized: false,
+  secret: "hey"
 }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -49,12 +49,12 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
