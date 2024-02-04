@@ -4,7 +4,7 @@ const plm = require('passport-local-mongoose');
 
 
 const Connection = async () => {
-  const URL = process.env.DB_CONNECTION_STRING;
+  const URL = `process.env.DB_CONNECTION_STRING`;
   
   try {
     await mongoose.connect(URL);
