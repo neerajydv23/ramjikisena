@@ -18,7 +18,7 @@ var app = express();
 app.use(cors());
 
 app.use(cors({
-  origin: ['https://ramjikisena.online','https://ramjikisena.com','https://api.ramjikisena.com'],
+  origin: 'https://ramjikisena.com',
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
   optionsSuccessStatus: 204,

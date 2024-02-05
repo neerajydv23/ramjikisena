@@ -10,80 +10,87 @@ const cors = require('cors');
 passport.use(new localStrategy(userModel.authenticate()))
 
 /* GET home page. */
-router.get('/', async function(req, res, next) {
+router.get('/', async function (req, res, next) {
   const userCount = (await userModel.find()).length;
 
   const allUsers = await userModel.find();
   let totalRamnaamCount = 0;
 
-  allUsers.forEach(user =>{
+  allUsers.forEach(user => {
     totalRamnaamCount += user.totalCount;
   })
 
-  res.render('index', {userCount,totalRamnaamCount,error: req.flash('error')});
+  res.render('index', { userCount, totalRamnaamCount, error: req.flash('error') });
 });
 
-router.get('/register', function(req, res, next) {
-  res.render('register', {error: req.flash('error')});
+router.get('/register', function (req, res, next) {
+  res.render('register', { error: req.flash('error') });
 });
 
-router.get('/profile', isLoggedIn, async function(req, res, next) {
+router.get('/profile', isLoggedIn, async function (req, res, next) {
   const userCount = (await userModel.find()).length;
-  res.render('profile',{user:req.user,userCount});
+  res.render('profile', { user: req.user, userCount });
 });
 
-router.get('/allDevotees', isLoggedIn, async function(req, res, next) {
-  const user = await userModel.findOne({username:req.user.username});
+router.get('/allDevotees', isLoggedIn, async function (req, res, next) {
+  const user = await userModel.findOne({ username: req.user.username });
   const allUsers = await userModel.find();
-  res.render('allDevotees',{user,allUsers});
+  res.render('allDevotees', { user, allUsers });
 });
-router.get('/gallery', async function(req, res, next) {
+router.get('/gallery', async function (req, res, next) {
   res.render('gallery');
 });
 
-router.get('/name/:name', isLoggedIn, async function(req, res) {
-  const regex = new RegExp(`^${req.params.name}`,'i');
-  const users = await userModel.find({name:regex});
+router.get('/name/:name', isLoggedIn, async function (req, res) {
+  const regex = new RegExp(`^${req.params.name}`, 'i');
+  const users = await userModel.find({ name: regex });
   res.json(users);
 });
 
 
-router.get('/increment', isLoggedIn, async function(req, res, next) {
-  const user = await userModel.findOne({username:req.user.username});
+router.get('/increment', isLoggedIn, async function (req, res, next) {
+  const user = await userModel.findOne({ username: req.user.username });
 
-  user.currCount +=1;
-  user.totalCount+=1;
+  user.currCount += 1;
+  user.totalCount += 1;
 
   user.mala = (user.totalCount / 108).toFixed(2);
 
-
-  // const today = new Date().toDateString();  
-  const todayString = new Date().toLocaleString(undefined, {timeZone: 'Asia/Kolkata'}); 
-  const today = new Date(todayString);
-  
-
-  // const dailyCount = user.dailyCounts.find((entry) => entry.date.toDateString() === today);
-  
-  const dailyCount = user.dailyCounts.find((entry) =>{
-    const entryString = entry.date.toLocaleString(undefined, {timeZone: 'Asia/Kolkata'});
-    const entryDate = new Date(entryString);
-    return entryDate.toDateString() === today.toDateString(); 
-})
-  
- 
+  // const todayString = new Date().toLocaleString(undefined, { timeZone: 'Asia/Kolkata' });
+  // const today = new Date(todayString);
 
 
+  // const hasEntryForToday = user.dailyCounts.some(entry => {
+  //   const entryString = entry.date.toLocaleString(undefined, { timeZone: 'Asia/Kolkata' });
+  //   const entryDate = new Date(entryString);
+  //   console.log(entryDate.toDateString());
+  //   console.log(today.toDateString());
+  //   return entryDate.toDateString() === today.toDateString();
+  // });
 
-  if (dailyCount) {
-    // If the entry for today exists, increment the count
-    dailyCount.count += 1;
-  } else {
-    // If the entry for today doesn't exist, create a new entry
-    user.dailyCounts.push({ date: today, count: 1 });
-  }
+  // console.log(hasEntryForToday);
+
+  // if (hasEntryForToday) {
+  //   user.dailyCounts[user.dailyCounts.length - 1].count++;
+  //   console.log('old user');
+  //   await user.save();
+  // } else {
+  //   user.dailyCounts.push({ date: today, count: 1 });
+  //   console.log('new user');
+  //   await user.save();
+  // }
+
+
+  await user.save();
+
+  res.json({ mala: user.mala, newCount: user.currCount, totalCount: user.totalCount });
+});
+
+router.get('/save', isLoggedIn, async function (req, res, next) {
+  const user = await userModel.findOne({ username: req.user.username });
+  user.currCount = 0;
 
   // writing rank feature
-      // Fetch all users and sort them based on totalCount in descending order
   const allUsers = await userModel.find();
   const sortedUsers = allUsers.sort((a, b) => b.totalCount - a.totalCount);
 
@@ -94,38 +101,28 @@ router.get('/increment', isLoggedIn, async function(req, res, next) {
     await userRank.save(); // Save the user with the updated rank
   }
 
-
   await user.save();
 
-  res.json({mala:user.mala,dailyCount: dailyCount,newCount:user.currCount,totalCount: user.totalCount});
+  res.json({ newCount: user.currCount });
 });
 
-router.get('/save', isLoggedIn, async function(req, res, next) {
-  const user = await userModel.findOne({username:req.user.username});
+router.get('/lekhanHistory', async function (req, res) {
+  const user = await userModel.findOne({ username: req.user.username });
 
-  user.currCount=0;
-  await user.save();
-
-  res.json({newCount:user.currCount});
-});
-
-router.get('/lekhanHistory', async function(req,res){
-  const user = await userModel.findOne({username:req.user.username});
- 
-  res.render('lekhanHistory',{user});
+  res.render('lekhanHistory', { user });
 })
 
-router.get('/impTemples', function(req,res){
+router.get('/impTemples', function (req, res) {
   res.render('impTemples');
 })
 
-router.get('/mission', function(req,res){
+router.get('/mission', function (req, res) {
   res.render('mission');
 })
-router.get('/forgot', function(req,res){
-  res.render('forgot',{error: req.flash('error')});
+router.get('/forgot', function (req, res) {
+  res.render('forgot', { error: req.flash('error') });
 })
-router.post('/forgot', async function(req, res, next) {
+router.post('/forgot', async function (req, res, next) {
   const { contact } = req.body;
 
   try {
@@ -134,7 +131,7 @@ router.post('/forgot', async function(req, res, next) {
 
     if (user) {
       // If the user is found, log them in without password verification
-      req.login(user, function(err) {
+      req.login(user, function (err) {
         if (err) { return next(err); }
         return res.redirect('/profile');
       });
@@ -151,23 +148,23 @@ router.post('/forgot', async function(req, res, next) {
   }
 });
 
-router.get('/about', function(req,res){
+router.get('/about', function (req, res) {
   res.render('about');
 })
 
-router.get('/glory', function(req,res){
+router.get('/glory', function (req, res) {
   res.render('glory');
 })
 
-router.get('/feedback', function(req,res){
+router.get('/feedback', function (req, res) {
   res.render('feedback');
 })
 
-router.get('/contact', function(req,res){
+router.get('/contact', function (req, res) {
   res.render('contact');
 })
 
-router.post('/register', function(req, res, next) {
+router.post('/register', function (req, res, next) {
 
   if (!req.body.username || !req.body.fullname || !req.body.password) {
     req.flash('error', 'All fields are required');
@@ -175,47 +172,47 @@ router.post('/register', function(req, res, next) {
   }
 
   const data = new userModel({
-    username:req.body.username,
-    city:req.body.city,
-    contact:req.body.contact,
-    name:req.body.fullname
+    username: req.body.username,
+    city: req.body.city,
+    contact: req.body.contact,
+    name: req.body.fullname
   })
-  userModel.register(data,req.body.password)
-  .then(function(){
-    passport.authenticate("local")(req,res,function(){
-      res.redirect("/profile");
+  userModel.register(data, req.body.password)
+    .then(function () {
+      passport.authenticate("local")(req, res, function () {
+        res.redirect("/profile");
+      })
     })
-  })
-  .catch(function (err) {
-    // Handle registration failure (e.g., username/email already taken)
-    req.flash('error', 'Please choose a different Login Id or try removing spaces from Login Id.');
-    res.redirect('/');
-  });
+    .catch(function (err) {
+      // Handle registration failure (e.g., username/email already taken)
+      req.flash('error', 'Please choose a different Login Id or try removing spaces from Login Id.');
+      res.redirect('/');
+    });
 });
 
 router.get('/admin/allUsers', async (req, res) => {
   try {
-      // Retrieve all users sorted by totalCount in descending order
-      const users = await userModel.find().sort({ totalCount: -1 });
+    // Retrieve all users sorted by totalCount in descending order
+    const users = await userModel.find().sort({ totalCount: -1 });
 
-      // Render the allUsers.ejs template with user data
-      res.render('admin/allUsers', { users });
+    // Render the allUsers.ejs template with user data
+    res.render('admin/allUsers', { users });
   } catch (error) {
-      console.error('Error fetching users:', error);
-      res.status(500).send('Internal Server Error');
+    console.error('Error fetching users:', error);
+    res.status(500).send('Internal Server Error');
   }
 });
 
-router.get('/admin/dashboard', async function(req,res){
+router.get('/admin/dashboard', async function (req, res) {
   const userCount = (await userModel.find()).length;
 
   const allUsers = await userModel.find();
   let totalRamnaamCount = 0;
 
-  allUsers.forEach(user =>{
+  allUsers.forEach(user => {
     totalRamnaamCount += user.totalCount;
   })
-  res.render('admin/dashboard',{userCount,totalRamnaamCount});
+  res.render('admin/dashboard', { userCount, totalRamnaamCount });
 })
 
 // router.post('/login', passport.authenticate("local",{
@@ -227,70 +224,70 @@ router.get('/admin/dashboard', async function(req,res){
 router.post('/login', passport.authenticate('local', {
   failureRedirect: '/',
   failureFlash: true
-}), function(req, res) {
+}), function (req, res) {
 
   if (req.user.role === 'admin') {
-      res.redirect('/admin/dashboard'); 
+    res.redirect('/admin/dashboard');
   } else {
-      res.redirect('/profile'); 
+    res.redirect('/profile');
   }
 });
 
 router.get('/admin/downloadUsers', async (req, res) => {
   try {
-      // Fetch all users from the database
-      const users = await userModel.find();
+    // Fetch all users from the database
+    const users = await userModel.find();
 
-      // Create a new workbook and worksheet
-      const workbook = new ExcelJS.Workbook();
-      const worksheet = workbook.addWorksheet('Users');
+    // Create a new workbook and worksheet
+    const workbook = new ExcelJS.Workbook();
+    const worksheet = workbook.addWorksheet('Users');
 
-      // Define worksheet headers
-      worksheet.columns = [
-          { header: 'Username', key: 'username', width: 20 },
-          { header: 'Name', key: 'name', width: 20 },
-          { header: 'City', key: 'city', width: 20 },
-          { header: 'Total Count', key: 'totalCount', width: 15 },
-          { header: 'Contact', key: 'contact', width: 15 }
-          // Add more columns as needed
-      ];
+    // Define worksheet headers
+    worksheet.columns = [
+      { header: 'Username', key: 'username', width: 20 },
+      { header: 'Name', key: 'name', width: 20 },
+      { header: 'City', key: 'city', width: 20 },
+      { header: 'Total Count', key: 'totalCount', width: 15 },
+      { header: 'Contact', key: 'contact', width: 15 }
+      // Add more columns as needed
+    ];
 
-      // Populate worksheet with user data
-      users.forEach(user => {
-          worksheet.addRow({
-              username: user.username,
-              name: user.name,
-              city: user.city,
-              totalCount: user.totalCount,
-              contact: user.contact
-              // Add more fields as needed
-          });
+    // Populate worksheet with user data
+    users.forEach(user => {
+      worksheet.addRow({
+        username: user.username,
+        name: user.name,
+        city: user.city,
+        totalCount: user.totalCount,
+        contact: user.contact
+        // Add more fields as needed
       });
+    });
 
-      // Set response headers
-      res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-      res.setHeader('Content-Disposition', 'attachment; filename="users.xlsx"');
+    // Set response headers
+    res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+    res.setHeader('Content-Disposition', 'attachment; filename="users.xlsx"');
 
-      // Serialize workbook to response
-      await workbook.xlsx.write(res);
+    // Serialize workbook to response
+    await workbook.xlsx.write(res);
 
-      // End response
-      res.end();
+    // End response
+    res.end();
   } catch (error) {
-      console.error('Error downloading users:', error);
-      res.status(500).send('Error downloading users');
+    console.error('Error downloading users:', error);
+    res.status(500).send('Error downloading users');
   }
 });
 
-router.get('/logout',function(req,res,next){
-  req.logout(function(err){
-    if(err){return next(err);}
+router.get('/logout', function (req, res, next) {
+  req.logout(function (err) {
+    if (err) { return next(err); }
     res.redirect('/');
   });
 })
 
-function isLoggedIn(req,res,next){
-  if(req.isAuthenticated()){
+function isLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) {
     return next();
   }
   res.redirect('/');

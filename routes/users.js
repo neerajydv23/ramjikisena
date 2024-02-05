@@ -54,11 +54,11 @@ const userSchema = mongoose.Schema({
   },
   rank:{
     type:Number,
-    // default:"0"
+    default:"108"
   },
   dailyCounts: [
     {
-      date: { type: Date, default: Date.now },
+      date: { type: Date},
       count: { type: Number, default: 0 },
     },
   ],
@@ -78,6 +78,7 @@ joiningDate: {
 
 
 userSchema.plugin(plm);
+
 
 
 module.exports = mongoose.model("user",userSchema);

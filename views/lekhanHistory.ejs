@@ -76,31 +76,6 @@
        <% })%>
     </ul> -->
 
-
-      <!-- <div class="history-table">
-        <table border="1">
-          <thead>
-            <tr style="color: #B22222;">
-              <th>Date</th>
-              <th>Total Count</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% user.dailyCounts.sort(function(a, b) { return new Date(b.date) - new Date(a.date); }); 
-            user.dailyCounts.forEach(function(dailyCount){ %>
-              <tr>
-                <td>
-                  <%= dailyCount.date.toDateString() %>
-                </td>
-                <td>
-                  <%= dailyCount.count %>
-                </td>
-              </tr>
-              <% }); %>
-          </tbody>
-        </table>
-      </div> -->
-
       <ul>
         <% var reversedCounts = user.dailyCounts.slice().reverse();
         reversedCounts.forEach(function(dailyCount){ %>
