@@ -212,47 +212,27 @@
         textarea.value += " "
 
         // Increment counts directly without waiting for response
-
-        // document.getElementById("currentCount").innerText =
-        //   parseInt(document.getElementById("currentCount").innerText) + 1;
-        // document.getElementById("totalCount").innerText =
-        //   parseInt(document.getElementById("totalCount").innerText) + 1;
-        // document.getElementById("malaCount").innerText =
-        //   (parseInt(document.getElementById("totalCount").innerText) / 108).toFixed(2);
-
-        // axios
-        //   .get("https://ramjikisena.com/increment")
-        //   .then(function (response) {
-        //     console.log("increment chala");
-        //     document.getElementById("currentCount").innerText =
-        //       response.data.newCount;
-
-        //     document.getElementById("totalCount").innerText =
-        //       response.data.totalCount;
-
-        //     document.getElementById("malaCount").innerText =
-        //       response.data.mala;
-
-        //   })
-        
-    fetch("https://ramjikisena.com/increment")
-      .then(function (response) {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
-      })
-      .then(function (data) {
-        console.log("increment chala");
         document.getElementById("currentCount").innerText =
-          data.newCount;
-
+          parseInt(document.getElementById("currentCount").innerText) + 1;
         document.getElementById("totalCount").innerText =
-          data.totalCount;
-
+          parseInt(document.getElementById("totalCount").innerText) + 1;
         document.getElementById("malaCount").innerText =
-          data.mala;
-      })
+          (parseInt(document.getElementById("totalCount").innerText) / 108).toFixed(2);
+
+        axios
+          .get("https://ramjikisena.com/increment")
+          .then(function (response) {
+            console.log("increment chala");
+            // document.getElementById("currentCount").innerText =
+            //   response.data.newCount;
+
+            // document.getElementById("totalCount").innerText =
+            //   response.data.totalCount;
+
+            // document.getElementById("malaCount").innerText =
+            //   response.data.mala;
+
+          })
           .catch(function (error) {
             console.error("Error incrementing count:", error);
           });
