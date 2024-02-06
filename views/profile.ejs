@@ -214,6 +214,7 @@
           .get("https://ramjikisena.com/increment")
           .then(function (response) {
             // Update the current count on the client side
+            console.log("increment chala");
             document.getElementById("currentCount").innerText =
               response.data.newCount;
 
@@ -238,6 +239,7 @@
     saveButton.addEventListener("click", function () {
       axios.get("https://ramjikisena.com/save")
         .then(function (response) {
+          console.log("save chala");
           var textarea = document.getElementById("ramTextarea");
           textarea.value = "";
           userInput = "";
