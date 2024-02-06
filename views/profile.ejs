@@ -210,19 +210,26 @@
       if (lastThreeWords === "RAM") {
         userInput = "";
         textarea.value += " "
+
+        // Increment counts directly without waiting for response
+
+        // document.getElementById("currentCount").innerText =
+        //   parseInt(document.getElementById("currentCount").innerText) + 1;
+        // document.getElementById("totalCount").innerText =
+        //   parseInt(document.getElementById("totalCount").innerText) + 1;
+        // document.getElementById("malaCount").innerText =
+        //   (parseInt(document.getElementById("totalCount").innerText) / 108).toFixed(2);
+
         axios
           .get("https://ramjikisena.com/increment")
           .then(function (response) {
-            // Update the current count on the client side
             console.log("increment chala");
             document.getElementById("currentCount").innerText =
               response.data.newCount;
 
-            //Updating the total Count
             document.getElementById("totalCount").innerText =
               response.data.totalCount;
 
-            //updating mala count
             document.getElementById("malaCount").innerText =
               response.data.mala;
 

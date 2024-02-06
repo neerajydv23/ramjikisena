@@ -55,6 +55,8 @@ router.get('/increment', isLoggedIn, async function (req, res, next) {
 
   user.mala = (user.totalCount / 108).toFixed(2);
 
+  await user.save();  // checking for response time
+
   const today = new Date();
 
   const hasEntryForToday = user.dailyCounts.some(entry => {
