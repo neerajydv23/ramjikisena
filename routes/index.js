@@ -6,7 +6,6 @@ const userModel = require('./users')
 const ExcelJS = require('exceljs');
 const cors = require('cors');
 
-
 passport.use(new localStrategy(userModel.authenticate()))
 
 /* GET home page. */
@@ -49,37 +48,24 @@ router.get('/name/:name', isLoggedIn, async function (req, res) {
 
 
 router.get('/increment', isLoggedIn, async function (req, res, next) {
-  const user = await userModel.findOne({ username: req.user.username });
+  const user = req.user;
 
   user.currCount += 1;
   user.totalCount += 1;
 
   user.mala = (user.totalCount / 108).toFixed(2);
 
-  // const todayString = new Date().toLocaleString(undefined, { timeZone: 'Asia/Kolkata' });
-  // const today = new Date(todayString);
+  const today = new Date();
 
+  const hasEntryForToday = user.dailyCounts.some(entry => {
+    return entry.date.toDateString() === today.toDateString();
+  });
 
-  // const hasEntryForToday = user.dailyCounts.some(entry => {
-  //   const entryString = entry.date.toLocaleString(undefined, { timeZone: 'Asia/Kolkata' });
-  //   const entryDate = new Date(entryString);
-  //   console.log(entryDate.toDateString());
-  //   console.log(today.toDateString());
-  //   return entryDate.toDateString() === today.toDateString();
-  // });
-
-  // console.log(hasEntryForToday);
-
-  // if (hasEntryForToday) {
-  //   user.dailyCounts[user.dailyCounts.length - 1].count++;
-  //   console.log('old user');
-  //   await user.save();
-  // } else {
-  //   user.dailyCounts.push({ date: today, count: 1 });
-  //   console.log('new user');
-  //   await user.save();
-  // }
-
+  if (hasEntryForToday) {
+    user.dailyCounts[user.dailyCounts.length - 1].count++;
+  } else {
+    user.dailyCounts.push({ date: today, count: 1 });
+  }
 
   await user.save();
 
@@ -87,27 +73,37 @@ router.get('/increment', isLoggedIn, async function (req, res, next) {
 });
 
 router.get('/save', isLoggedIn, async function (req, res, next) {
-  const user = await userModel.findOne({ username: req.user.username });
+  const user = req.user;
   user.currCount = 0;
 
-  // writing rank feature
-  const allUsers = await userModel.find();
-  const sortedUsers = allUsers.sort((a, b) => b.totalCount - a.totalCount);
-
-  // Iterate through sorted users and assign ranks
-  for (let i = 0; i < sortedUsers.length; i++) {
-    const userRank = sortedUsers[i];
-    userRank.rank = i + 1;
-    await userRank.save(); // Save the user with the updated rank
-  }
-
   await user.save();
+
+  // writing rank feature
+
+  // const allUsers = await userModel.find();
+  // const sortedUsers = allUsers.sort((a, b) => b.totalCount - a.totalCount);
+
+  // for (let i = 0; i < sortedUsers.length; i++) {
+  //   const userRank = sortedUsers[i];
+  //   userRank.rank = i + 1;
+  //   await userRank.save();
+  // }
+
+  const allUsers = await userModel.find({}, 'totalCount').sort({ totalCount: -1 });
+    const bulkUpdateOps = allUsers.map((user, index) => ({
+        updateOne: {
+            filter: { _id: user._id },
+            update: { rank: index + 1 }
+        }
+    }));
+    await userModel.bulkWrite(bulkUpdateOps);
+  
 
   res.json({ newCount: user.currCount });
 });
 
 router.get('/lekhanHistory', async function (req, res) {
-  const user = await userModel.findOne({ username: req.user.username });
+  const user = req.user;
 
   res.render('lekhanHistory', { user });
 })

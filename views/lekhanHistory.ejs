@@ -67,15 +67,9 @@
       </div>
     </div>
 
-    <div class="lekhanHistory-content">
+    <!-- <div class="lekhanHistory-content">
       <h1>Daily Ramnaam Counts</h1>
       <hr>
-      <!-- <ul>
-        <% user.dailyCounts.forEach(function(dailyCount){ %>
-            <li class="font-semibold"><%= dailyCount.date.toDateString() %> : <%= dailyCount.count %></li>
-       <% })%>
-    </ul> -->
-
       <ul>
         <% var reversedCounts = user.dailyCounts.slice().reverse();
         reversedCounts.forEach(function(dailyCount){ %>
@@ -86,10 +80,30 @@
         }); 
         %>
     </ul>
-    
-
-
-    </div>
+    </div> -->
+    <div class="lekhanHistory-content">
+      <h1>Daily Ramnaam Counts</h1>
+      <hr>
+  
+      <table>
+          <thead>
+              <tr>
+                  <th>Date</th>
+                  <th>Count</th>
+              </tr>
+          </thead>
+          <tbody>
+              <% var reversedCounts = user.dailyCounts.slice().reverse();
+              reversedCounts.forEach(function(dailyCount){ %>
+                  <tr>
+                      <td><%= dailyCount.date.toDateString() %></td>
+                      <td><%= dailyCount.count %></td>
+                  </tr>
+              <% }); %>
+          </tbody>
+      </table>
+  </div>
+  
 
     <footer>
       <a href="https://www.facebook.com/chandrashekhar.singh.104"><i class="ri-facebook-fill"></i> Facebook</a>

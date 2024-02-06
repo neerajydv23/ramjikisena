@@ -86,7 +86,7 @@
             </select>
             <!-- Google translator HTML code ends -->
 
-            <!-- <a href="/lekhanHistory">Lekhan History</a> -->
+            <a href="/lekhanHistory">Lekhan History</a>
             <a class="notranslate" href="/logout">Log Out</a>
           </div>
         </div>
@@ -242,10 +242,6 @@
           textarea.value = "";
           userInput = "";
 
-          // Updating previous count
-          // document.getElementById("prevCount").innerText = response.data.prevCount;
-
-          // Updating current count
           document.getElementById("currentCount").innerText = response.data.newCount;
         })
     })

@@ -77,19 +77,14 @@
             <tr style="color: #B22222;">
               <th>Rank</th>
               <th>Name</th>
-              <!-- <th>Today's Count</th> -->
+              <th>Today's Count</th>
               <th>Total Count</th>
             </tr>
           </thead>
           <tbody id="userTableBody">
-            <!-- <% allUsers.forEach(function(user) { %>
-                        <tr>
-                          <td><%= user.name %></td>
-                          <td><%= user.dailyCounts.length > 0 ? user.dailyCounts[user.dailyCounts.length - 1].count : 0 %></td>
-                          <td><%= user.totalCount %></td>
-                        </tr>
-                      <% }); %> -->
 
+             <!-- in future sort the array on the basis of rank so you search the user also -->
+         
             <% const sortedUsers=allUsers.slice().sort((a, b)=> b.totalCount - a.totalCount); %>
 
               <% sortedUsers.forEach(function(user,index) { %>
@@ -100,20 +95,18 @@
                   <td>
                     <%= user.name %>
                   </td>
-                  <!-- <td><%= user.dailyCounts.length > 0 ? user.dailyCounts[user.dailyCounts.length - 1].count : 0 %></td> -->
-                  <!-- <td>
-                            <% if (user.dailyCounts && user.dailyCounts.length > 0) { 
-                              const today = new Date().toLocaleDateString();
-                              const todayCount = user.dailyCounts.find(entry => new Date(entry.date).toLocaleDateString() === today);
-                              if (todayCount) { %>
-                                <%= todayCount.count %>
-                              <% } else { %>
-                                0
-                              <% } %>
-                            <% } else { %>
-                              0
-                            <% } %>
-                          </td> -->
+                  <td>
+                    <% if(user.dailyCounts && user.dailyCounts.length > 0){ %>
+                      <%const today = new Date();%>
+                    <% if(user.dailyCounts[user.dailyCounts.length-1].date.toDateString() == today.toDateString()){ %>
+                        <%=user.dailyCounts[user.dailyCounts.length-1].count; %>
+                    <%  }else{ %>
+                        <%=0%>
+                     <% } %>            
+                   <% } else{ %>
+                     <%=0 %>
+                   <% } %>
+                  </td>
                   <td>
                     <%= user.totalCount %>
                   </td>
