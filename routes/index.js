@@ -91,18 +91,6 @@ router.get('/increment', isLoggedIn, async function (req, res, next) {
 
   await user.save();
 
-  res.json({ mala: user.mala, newCount: user.currCount, totalCount: user.totalCount });
-});
-
-
-router.get('/save', isLoggedIn, async function (req, res, next) {
-
-  const user = req.user;
-  user.currCount = 0;
-  await user.save();
-
-  // writing rank feature
-
   const allUsers = await userModel.find({}, 'totalCount').sort({ totalCount: -1 });
   const bulkUpdateOps = allUsers.map((user, index) => ({
     updateOne: {
@@ -112,8 +100,29 @@ router.get('/save', isLoggedIn, async function (req, res, next) {
   }));
   await userModel.bulkWrite(bulkUpdateOps);
 
-  res.json({ currentCount: user.currCount, totalCount: user.totalCount, mala: user.mala });
+  res.json({ mala: user.mala, newCount: user.currCount, totalCount: user.totalCount });
 });
+
+
+// router.get('/save', isLoggedIn, async function (req, res, next) {
+
+//   const user = req.user;
+//   user.currCount = 0;
+//   await user.save();
+
+//   // writing rank feature
+
+//   const allUsers = await userModel.find({}, 'totalCount').sort({ totalCount: -1 });
+//   const bulkUpdateOps = allUsers.map((user, index) => ({
+//     updateOne: {
+//       filter: { _id: user._id },
+//       update: { rank: index + 1 }
+//     }
+//   }));
+//   await userModel.bulkWrite(bulkUpdateOps);
+
+//   res.json({ currentCount: user.currCount, totalCount: user.totalCount, mala: user.mala });
+// });
 
 router.get('/lekhanHistory', async function (req, res) {
   const user = req.user;
