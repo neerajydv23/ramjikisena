@@ -225,7 +225,7 @@
 
 
         axios
-          .get("http://localhost:3000/increment")
+          .get("https://ramjikisena.com/increment")
           .then(function (response) {
             console.log("increment chala");
             // document.getElementById("currentCount").innerText =
@@ -252,7 +252,7 @@
       const totalCountValue = totalCount.innerText;
       const malaCountValue = malaCount.innerText;
 
-      axios.post("http://localhost:3000/save", {
+      axios.post("https://ramjikisena.com/save", {
         currentCount: currentCountValue,
         totalCount: totalCountValue,
         malaCount: malaCountValue
@@ -268,7 +268,7 @@
         console.log(err);
       })
 
-      // axios.get("http://localhost:3000/save")
+      // axios.get("https://ramjikisena.com/save")
       //   .then(function (response) {
       //     console.log("save chala");
       //     var textarea = document.getElementById("ramTextarea");
