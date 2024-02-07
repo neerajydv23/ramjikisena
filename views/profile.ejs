@@ -247,7 +247,7 @@
 
     const saveButton = document.querySelector(".save-button");
     saveButton.addEventListener("click", function () {
-      axios.post('/updateCounts', {
+      axios.post('https://ramjikisena.com/updateCounts', {
         currentCount: parseInt(currentCount.innerText),
         totalCount: parseInt(totalCount.innerText),
         malaCount: parseFloat(malaCount.innerText)
