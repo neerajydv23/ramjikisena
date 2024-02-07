@@ -11,6 +11,26 @@ router.use(bodyParser.json());
 
 passport.use(new localStrategy(userModel.authenticate()))
 
+
+router.post('/save', isLoggedIn, async function(req, res) {
+  try {
+    const user = req.user;
+    const { currentCount, totalCount, malaCount } = req.body;
+
+    // user.currCount = currentCount;
+    user.totalCount = totalCount;
+    user.mala = malaCount;
+    user.currCount = 0;
+
+    await user.save();
+
+    res.json({ message: 'Counts and Mala updated successfully' });
+  } catch (error) {
+    console.error('Error updating counts and Mala:', error);
+    res.status(500).json({ error: 'An error occurred while updating counts and Mala' });
+  }
+});
+
 /* GET home page. */
 router.get('/', async function (req, res, next) {
   const userCount = (await userModel.find()).length;
@@ -74,24 +94,7 @@ router.get('/increment', isLoggedIn, async function (req, res, next) {
   res.json({ mala: user.mala, newCount: user.currCount, totalCount: user.totalCount });
 });
 
-router.post('/save', isLoggedIn, async function(req, res) {
-  try {
-    const user = req.user;
-    const { currentCount, totalCount, malaCount } = req.body;
 
-    // user.currCount = currentCount;
-    user.totalCount = totalCount;
-    user.mala = malaCount;
-    user.currCount = 0;
-
-    await user.save();
-
-    res.json({ message: 'Counts and Mala updated successfully' });
-  } catch (error) {
-    console.error('Error updating counts and Mala:', error);
-    res.status(500).json({ error: 'An error occurred while updating counts and Mala' });
-  }
-});
 router.get('/save', isLoggedIn, async function (req, res, next) {
 
   const user = req.user;
