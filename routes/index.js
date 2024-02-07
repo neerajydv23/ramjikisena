@@ -5,6 +5,9 @@ const localStrategy = require('passport-local');
 const userModel = require('./users')
 const ExcelJS = require('exceljs');
 const cors = require('cors');
+const bodyParser = require('body-parser'); // body-parser middleware
+router.use(bodyParser.json());
+
 
 passport.use(new localStrategy(userModel.authenticate()))
 
@@ -50,9 +53,9 @@ router.get('/name/:name', isLoggedIn, async function (req, res) {
 router.get('/increment', isLoggedIn, async function (req, res, next) {
   const user = req.user;
 
-  user.currCount +=1;
-  user.totalCount +=1;
-  user.mala = (user.totalCount/ 108).toFixed(2);
+  // user.currCount += 1;
+  // user.totalCount += 1;
+  // user.mala = (user.totalCount / 108).toFixed(2);
 
   const today = new Date();
 
@@ -71,29 +74,26 @@ router.get('/increment', isLoggedIn, async function (req, res, next) {
   res.json({ mala: user.mala, newCount: user.currCount, totalCount: user.totalCount });
 });
 
-// router.post('/updateCounts', isLoggedIn, async (req, res) => {
-//   try {
-//     const user = req.user;
+router.post('/save', isLoggedIn, async function(req, res) {
+  try {
+    const user = req.user;
+    const { currentCount, totalCount, malaCount } = req.body;
 
-//     user.currCount = req.body.currentCount;
-//     user.totalCount = req.body.totalCount;
-//     user.mala = req.body.malaCount;
+    // user.currCount = currentCount;
+    user.totalCount = totalCount;
+    user.mala = malaCount;
+    user.currCount = 0;
 
-//     await user.save();
+    await user.save();
 
-//     user.currCount = 0;
-//     await user.save();
-
-//     res.status(200).json({ message: 'Counts updated successfully' });
-
-//   } catch (error) {
-//     console.error('Error updating counts:', error);
-//     res.status(500).json({ error: 'Internal server error' });
-//   }
-// });
-
+    res.json({ message: 'Counts and Mala updated successfully' });
+  } catch (error) {
+    console.error('Error updating counts and Mala:', error);
+    res.status(500).json({ error: 'An error occurred while updating counts and Mala' });
+  }
+});
 router.get('/save', isLoggedIn, async function (req, res, next) {
-  
+
   const user = req.user;
   user.currCount = 0;
   await user.save();

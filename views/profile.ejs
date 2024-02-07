@@ -187,9 +187,9 @@
 
     var userInput = "";
 
-    // const currentCount = document.getElementById("currentCount");
-    // const totalCount = document.getElementById("totalCount");
-    // const malaCount = document.getElementById("malaCount");
+    let currentCount = document.getElementById("currentCount");
+    let totalCount = document.getElementById("totalCount");
+    let malaCount = document.getElementById("malaCount");
 
     function appendCharacter(char) {
 
@@ -219,23 +219,23 @@
 
         // Increment counts directly without waiting for response
 
-        // currentCount.innerText = parseInt(currentCount.innerText) + 1;
-        // totalCount.innerText = parseInt(totalCount.innerText) + 1;
-        // malaCount.innerText = (parseInt(document.getElementById("totalCount").innerText) / 108).toFixed(2);
+        currentCount.innerText = parseInt(currentCount.innerText) + 1;
+        totalCount.innerText = parseInt(totalCount.innerText) + 1;
+        malaCount.innerText = (parseInt(document.getElementById("totalCount").innerText) / 108).toFixed(2);
 
 
         axios
-          .get("https://ramjikisena.com/increment")
+          .get("http://localhost:3000/increment")
           .then(function (response) {
             console.log("increment chala");
-            document.getElementById("currentCount").innerText =
-              response.data.newCount;
+            // document.getElementById("currentCount").innerText =
+            //   response.data.newCount;
 
-            document.getElementById("totalCount").innerText =
-              response.data.totalCount;
+            // document.getElementById("totalCount").innerText =
+            //   response.data.totalCount;
 
-            document.getElementById("malaCount").innerText =
-              response.data.mala;
+            // document.getElementById("malaCount").innerText =
+            //   response.data.mala;
 
           })
           .catch(function (error) {
@@ -247,31 +247,36 @@
 
     const saveButton = document.querySelector(".save-button");
     saveButton.addEventListener("click", function () {
-      // axios.post('/updateCounts', {
-      //   currentCount: parseInt(currentCount.innerText),
-      //   totalCount: parseInt(totalCount.innerText),
-      //   malaCount: parseFloat(malaCount.innerText)
-      // })
-      //   .then(response => {
-      //     currentCount.innerText =0;
-      //     console.log('Counts updated successfully');
+
+      const currentCountValue = currentCount.innerText;
+      const totalCountValue = totalCount.innerText;
+      const malaCountValue = malaCount.innerText;
+
+      axios.post("http://localhost:3000/save", {
+        currentCount: currentCountValue,
+        totalCount: totalCountValue,
+        malaCount: malaCountValue
+      }).then(function (response) {
+        console.log(response);
+
+        var textarea = document.getElementById("ramTextarea");
+        textarea.value = "";
+        userInput = "";
+        document.getElementById("currentCount").innerText = 0;
+
+      }).catch(function (err) {
+        console.log(err);
+      })
+
+      // axios.get("http://localhost:3000/save")
+      //   .then(function (response) {
+      //     console.log("save chala");
+      //     var textarea = document.getElementById("ramTextarea");
+      //     textarea.value = "";
+      //     userInput = "";
+
+      //     document.getElementById("currentCount").innerText = 0
       //   })
-      //   .catch(error => {
-      //     console.error('Error updating counts:', error);
-      //   });
-      //   currentCount.innerText=0;
-
-      axios.get("https://ramjikisena.com/save")
-        .then(function (response) {
-          console.log("save chala");
-          var textarea = document.getElementById("ramTextarea");
-          textarea.value = "";
-          userInput = "";
-
-          document.getElementById("currentCount").innerText = 0
-          // document.getElementById("currentCount").innerText = response.data.currentCount; 
-          
-        })
 
     })
 
