@@ -252,7 +252,7 @@
       const totalCountValue = totalCount.innerText;
       const malaCountValue = malaCount.innerText;
 
-      axios.post("https://ramjikisena.com/save", {
+      axios.post("/save", {
         currentCount: currentCountValue,
         totalCount: totalCountValue,
         malaCount: malaCountValue
