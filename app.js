@@ -8,8 +8,7 @@ var logger = require('morgan');
 const expressSession = require('express-session')
 const flash = require('connect-flash');
 
-const bodyParser = require('body-parser'); // body-parser middleware
-app.use(bodyParser.json());
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
