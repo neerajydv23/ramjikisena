@@ -50,11 +50,6 @@ router.get('/name/:name', isLoggedIn, async function (req, res) {
 router.get('/increment', isLoggedIn, async function (req, res, next) {
   const user = req.user;
 
-  user.currCount += 1;
-  user.totalCount += 1;
-
-  user.mala = (user.totalCount / 108).toFixed(2);
-
   const today = new Date();
 
   const hasEntryForToday = user.dailyCounts.some(entry => {
@@ -72,34 +67,45 @@ router.get('/increment', isLoggedIn, async function (req, res, next) {
   res.json({ mala: user.mala, newCount: user.currCount, totalCount: user.totalCount });
 });
 
+router.post('/updateCounts', isLoggedIn, async (req, res) => {
+  try {
+    const user = req.user;
+
+    user.currCount = req.body.currentCount;
+    user.totalCount = req.body.totalCount;
+    user.mala = req.body.malaCount;
+
+    await user.save();
+
+    user.currCount = 0;
+    await user.save();
+
+    res.status(200).json({ message: 'Counts updated successfully' });
+
+  } catch (error) {
+    console.error('Error updating counts:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
 router.get('/save', isLoggedIn, async function (req, res, next) {
+  
   const user = req.user;
   user.currCount = 0;
-
   await user.save();
 
   // writing rank feature
 
-  // const allUsers = await userModel.find();
-  // const sortedUsers = allUsers.sort((a, b) => b.totalCount - a.totalCount);
-
-  // for (let i = 0; i < sortedUsers.length; i++) {
-  //   const userRank = sortedUsers[i];
-  //   userRank.rank = i + 1;
-  //   await userRank.save();
-  // }
-
   const allUsers = await userModel.find({}, 'totalCount').sort({ totalCount: -1 });
-    const bulkUpdateOps = allUsers.map((user, index) => ({
-        updateOne: {
-            filter: { _id: user._id },
-            update: { rank: index + 1 }
-        }
-    }));
-    await userModel.bulkWrite(bulkUpdateOps);
-  
+  const bulkUpdateOps = allUsers.map((user, index) => ({
+    updateOne: {
+      filter: { _id: user._id },
+      update: { rank: index + 1 }
+    }
+  }));
+  await userModel.bulkWrite(bulkUpdateOps);
 
-  res.json({ newCount: user.currCount });
+  res.json({ currentCount: user.currCount, totalCount: user.totalCount, mala: user.mala });
 });
 
 router.get('/lekhanHistory', async function (req, res) {
