@@ -50,6 +50,10 @@ router.get('/name/:name', isLoggedIn, async function (req, res) {
 router.get('/increment', isLoggedIn, async function (req, res, next) {
   const user = req.user;
 
+  user.currCount +=1;
+  user.totalCount +=1;
+  user.mala = (user.totalCount/ 108).toFixed(2);
+
   const today = new Date();
 
   const hasEntryForToday = user.dailyCounts.some(entry => {
@@ -67,26 +71,26 @@ router.get('/increment', isLoggedIn, async function (req, res, next) {
   res.json({ mala: user.mala, newCount: user.currCount, totalCount: user.totalCount });
 });
 
-router.post('/updateCounts', isLoggedIn, async (req, res) => {
-  try {
-    const user = req.user;
+// router.post('/updateCounts', isLoggedIn, async (req, res) => {
+//   try {
+//     const user = req.user;
 
-    user.currCount = req.body.currentCount;
-    user.totalCount = req.body.totalCount;
-    user.mala = req.body.malaCount;
+//     user.currCount = req.body.currentCount;
+//     user.totalCount = req.body.totalCount;
+//     user.mala = req.body.malaCount;
 
-    await user.save();
+//     await user.save();
 
-    user.currCount = 0;
-    await user.save();
+//     user.currCount = 0;
+//     await user.save();
 
-    res.status(200).json({ message: 'Counts updated successfully' });
+//     res.status(200).json({ message: 'Counts updated successfully' });
 
-  } catch (error) {
-    console.error('Error updating counts:', error);
-    res.status(500).json({ error: 'Internal server error' });
-  }
-});
+//   } catch (error) {
+//     console.error('Error updating counts:', error);
+//     res.status(500).json({ error: 'Internal server error' });
+//   }
+// });
 
 router.get('/save', isLoggedIn, async function (req, res, next) {
   
