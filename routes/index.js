@@ -5,9 +5,6 @@ const localStrategy = require('passport-local');
 const userModel = require('./users')
 const ExcelJS = require('exceljs');
 const cors = require('cors');
-const bodyParser = require('body-parser'); // body-parser middleware
-router.use(bodyParser.json());
-
 
 passport.use(new localStrategy(userModel.authenticate()))
 
