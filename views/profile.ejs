@@ -265,7 +265,7 @@
         document.getElementById("currentCount").innerText = 0;
 
         // Make the second Axios request here
-        axios.get("https://ramjikisena.com/dailyCount")
+        axios.get("/dailyCount")
           .then(function (response) {
             console.log("dailyCounts successful");
           })
