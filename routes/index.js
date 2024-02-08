@@ -12,21 +12,44 @@ passport.use(new localStrategy(userModel.authenticate()))
 router.post('/save', isLoggedIn, async function(req, res) {
   try {
     const user = req.user;
-    const { currentCount, totalCount, malaCount } = req.body;
+    const { totalCount, malaCount } = req.body;
 
-    // user.currCount = currentCount;
     user.totalCount = totalCount;
     user.mala = malaCount;
     user.currCount = 0;
 
     await user.save();
 
-    res.json({ message: 'Counts and Mala updated successfully' });
+    const today = new Date();
+
+    const hasEntryForToday = user.dailyCounts.some(entry => {
+      return entry.date.toDateString() === today.toDateString();
+    });
+
+    if (hasEntryForToday) {
+      user.dailyCounts[user.dailyCounts.length - 1].count++;
+    } else {
+      user.dailyCounts.push({ date: today, count: 1 });
+    }
+
+    await user.save();
+
+    const allUsers = await userModel.find({}, 'totalCount').sort({ totalCount: -1 });
+    const bulkUpdateOps = allUsers.map((userDoc, index) => ({
+      updateOne: {
+        filter: { _id: userDoc._id },
+        update: { rank: index + 1 }
+      }
+    }));
+    await userModel.bulkWrite(bulkUpdateOps);
+
+    res.json({ message: 'Counts, Mala, and Daily Counts updated successfully' });
   } catch (error) {
-    console.error('Error updating counts and Mala:', error);
-    res.status(500).json({ error: 'An error occurred while updating counts and Mala' });
+    console.error('Error updating counts, Mala, and Daily Counts:', error);
+    res.status(500).json({ error: 'An error occurred while updating counts, Mala, and Daily Counts' });
   }
 });
+
 
 /* GET home page. */
 router.get('/', async function (req, res, next) {
@@ -67,38 +90,34 @@ router.get('/name/:name', isLoggedIn, async function (req, res) {
 });
 
 
-router.get('/increment', isLoggedIn, async function (req, res, next) {
-  const user = req.user;
+// router.get('/increment', isLoggedIn, async function (req, res, next) {
+//   const user = req.user;
 
-  // user.currCount += 1;
-  // user.totalCount += 1;
-  // user.mala = (user.totalCount / 108).toFixed(2);
+//   const today = new Date();
 
-  const today = new Date();
+//   const hasEntryForToday = user.dailyCounts.some(entry => {
+//     return entry.date.toDateString() === today.toDateString();
+//   });
 
-  const hasEntryForToday = user.dailyCounts.some(entry => {
-    return entry.date.toDateString() === today.toDateString();
-  });
+//   if (hasEntryForToday) {
+//     user.dailyCounts[user.dailyCounts.length - 1].count++;
+//   } else {
+//     user.dailyCounts.push({ date: today, count: 1 });
+//   }
 
-  if (hasEntryForToday) {
-    user.dailyCounts[user.dailyCounts.length - 1].count++;
-  } else {
-    user.dailyCounts.push({ date: today, count: 1 });
-  }
+//   await user.save();
 
-  await user.save();
+//   const allUsers = await userModel.find({}, 'totalCount').sort({ totalCount: -1 });
+//   const bulkUpdateOps = allUsers.map((user, index) => ({
+//     updateOne: {
+//       filter: { _id: user._id },
+//       update: { rank: index + 1 }
+//     }
+//   }));
+//   await userModel.bulkWrite(bulkUpdateOps);
 
-  const allUsers = await userModel.find({}, 'totalCount').sort({ totalCount: -1 });
-  const bulkUpdateOps = allUsers.map((user, index) => ({
-    updateOne: {
-      filter: { _id: user._id },
-      update: { rank: index + 1 }
-    }
-  }));
-  await userModel.bulkWrite(bulkUpdateOps);
-
-  res.json({ mala: user.mala, newCount: user.currCount, totalCount: user.totalCount });
-});
+//   res.json({ mala: user.mala, newCount: user.currCount, totalCount: user.totalCount });
+// });
 
 
 // router.get('/save', isLoggedIn, async function (req, res, next) {
