@@ -76,10 +76,10 @@ router.get('/name/:name', isLoggedIn, async function (req, res) {
 });
 
 
- router.get('/dailyCount', isLoggedIn, async function (req, res, next) {
-
-  const user = req.user;
-  const today = new Date();
+router.get('/dailyCount', isLoggedIn, async function (req, res, next) {
+  try {
+    const user = req.user;
+    const today = new Date();
 
     const hasEntryForToday = user.dailyCounts.some(entry => {
       return entry.date.toDateString() === today.toDateString();
@@ -93,9 +93,13 @@ router.get('/name/:name', isLoggedIn, async function (req, res) {
 
     await user.save();
 
-    res.json( { message: "dailyCounts updated succesfully"});
+    res.json({ message: "dailyCounts updated successfully" });
+  } catch (error) {
+    console.error('Error updating dailyCounts:', error);
+    res.status(500).json({ error: 'An error occurred while updating dailyCounts' });
+  }
+});
 
- });
 
 
 // router.get('/increment', isLoggedIn, async function (req, res, next) {
