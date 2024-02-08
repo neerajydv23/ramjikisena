@@ -264,14 +264,19 @@
         userInput = "";
         document.getElementById("currentCount").innerText = 0;
 
+        // Make the second Axios request here
+        axios.get("https://ramjikisena.com/dailyCount")
+          .then(function (response) {
+            console.log("dailyCounts successful");
+          })
+          .catch(function (err) {
+            console.log(err);
+          });
+
       }).catch(function (err) {
         console.log(err);
-      })
+      });
 
-      axios.get("https://ramjikisena.com/dailyCount")
-        .then(function (response) {
-          console.log("dailyCounts succesfull");
-        })
 
       // axios.get("https://ramjikisena.com/save")
       //   .then(function (response) {
