@@ -224,23 +224,23 @@
         malaCount.innerText = (parseInt(document.getElementById("totalCount").innerText) / 108).toFixed(2);
 
 
-        axios
-          .get("https://ramjikisena.com/increment")
-          .then(function (response) {
-            console.log("increment chala");
-            // document.getElementById("currentCount").innerText =
-            //   response.data.newCount;
+        // axios
+        //   .get("https://ramjikisena.com/increment")
+        //   .then(function (response) {
+        //     console.log("increment chala");
+        //     document.getElementById("currentCount").innerText =
+        //       response.data.newCount;
 
-            // document.getElementById("totalCount").innerText =
-            //   response.data.totalCount;
+        //     document.getElementById("totalCount").innerText =
+        //       response.data.totalCount;
 
-            // document.getElementById("malaCount").innerText =
-            //   response.data.mala;
+        //     document.getElementById("malaCount").innerText =
+        //       response.data.mala;
 
-          })
-          .catch(function (error) {
-            console.error("Error incrementing count:", error);
-          });
+        //   })
+        //   .catch(function (error) {
+        //     console.error("Error incrementing count:", error);
+        //   });
       }
 
     }
