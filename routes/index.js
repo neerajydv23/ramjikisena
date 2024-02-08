@@ -12,7 +12,7 @@ passport.use(new localStrategy(userModel.authenticate()))
 router.post('/save', isLoggedIn, async function(req, res) {
   try {
     const user = req.user;
-    const { totalCount, malaCount } = req.body;
+    const { currentCount, totalCount, malaCount } = req.body;
 
     user.totalCount = totalCount;
     user.mala = malaCount;
@@ -25,7 +25,7 @@ router.post('/save', isLoggedIn, async function(req, res) {
     });
 
     if (hasEntryForToday) {
-      user.dailyCounts[user.dailyCounts.length - 1].count++;
+      user.dailyCounts[user.dailyCounts.length - 1].count+=currentCount;
     } else {
       user.dailyCounts.push({ date: today, count: 1 });
     }
