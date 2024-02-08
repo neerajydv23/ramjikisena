@@ -27,7 +27,7 @@ router.post('/save', isLoggedIn, async function(req, res) {
     if (hasEntryForToday) {
       user.dailyCounts[user.dailyCounts.length - 1].count+=parseInt(currentCount);
     } else {
-      user.dailyCounts.push({ date: today, count: 1 });
+      user.dailyCounts.push({ date: today, count: parseInt(currentCount) });
     }
 
     await user.save();
