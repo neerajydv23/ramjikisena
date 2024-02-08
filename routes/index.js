@@ -20,20 +20,6 @@ router.post('/save', isLoggedIn, async function(req, res) {
 
     await user.save();
 
-    const today = new Date();
-
-    const hasEntryForToday = user.dailyCounts.some(entry => {
-      return entry.date.toDateString() === today.toDateString();
-    });
-
-    if (hasEntryForToday) {
-      user.dailyCounts[user.dailyCounts.length - 1].count++;
-    } else {
-      user.dailyCounts.push({ date: today, count: 1 });
-    }
-
-    await user.save();
-
     const allUsers = await userModel.find({}, 'totalCount').sort({ totalCount: -1 });
     const bulkUpdateOps = allUsers.map((userDoc, index) => ({
       updateOne: {
@@ -43,9 +29,9 @@ router.post('/save', isLoggedIn, async function(req, res) {
     }));
     await userModel.bulkWrite(bulkUpdateOps);
 
-    res.json({ message: 'Counts, Mala, and Daily Counts updated successfully' });
+    res.json({ message: 'Counts, Mala updated successfully' });
   } catch (error) {
-    console.error('Error updating counts, Mala, and Daily Counts:', error);
+    console.error('Error updating counts, Mala :', error);
     res.status(500).json({ error: 'An error occurred while updating counts, Mala, and Daily Counts' });
   }
 });
@@ -88,6 +74,28 @@ router.get('/name/:name', isLoggedIn, async function (req, res) {
   const users = await userModel.find({ name: regex });
   res.json(users);
 });
+
+
+ router.get('/dailyCount', isLoggedIn, async function (req, res, next) {
+
+  const user = req.user;
+  const today = new Date();
+
+    const hasEntryForToday = user.dailyCounts.some(entry => {
+      return entry.date.toDateString() === today.toDateString();
+    });
+
+    if (hasEntryForToday) {
+      user.dailyCounts[user.dailyCounts.length - 1].count++;
+    } else {
+      user.dailyCounts.push({ date: today, count: 1 });
+    }
+
+    await user.save();
+
+    res.json( { message: "dailyCounts updated succesfully"});
+
+ });
 
 
 // router.get('/increment', isLoggedIn, async function (req, res, next) {
