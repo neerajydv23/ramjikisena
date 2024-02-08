@@ -18,6 +18,18 @@ router.post('/save', isLoggedIn, async function(req, res) {
     user.mala = malaCount;
     user.currCount = 0;
 
+    // Update dailyCounts
+    const today = new Date();
+    const hasEntryForToday = user.dailyCounts.some(entry => {
+      return entry.date.toDateString() === today.toDateString();
+    });
+
+    if (hasEntryForToday) {
+      user.dailyCounts[user.dailyCounts.length - 1].count++;
+    } else {
+      user.dailyCounts.push({ date: today, count: 1 });
+    }
+
     await user.save();
 
     const allUsers = await userModel.find({}, 'totalCount').sort({ totalCount: -1 });
@@ -29,9 +41,9 @@ router.post('/save', isLoggedIn, async function(req, res) {
     }));
     await userModel.bulkWrite(bulkUpdateOps);
 
-    res.json({ message: 'Counts, Mala updated successfully' });
+    res.json({ message: 'Counts, Mala, and Daily Counts updated successfully' });
   } catch (error) {
-    console.error('Error updating counts, Mala :', error);
+    console.error('Error updating counts, Mala, and Daily Counts:', error);
     res.status(500).json({ error: 'An error occurred while updating counts, Mala, and Daily Counts' });
   }
 });
@@ -76,29 +88,29 @@ router.get('/name/:name', isLoggedIn, async function (req, res) {
 });
 
 
-router.get('/dailyCount', isLoggedIn, async function (req, res, next) {
-  try {
-    const user = req.user;
-    const today = new Date();
+// router.get('/dailyCount', isLoggedIn, async function (req, res, next) {
+//   try {
+//     const user = req.user;
+//     const today = new Date();
 
-    const hasEntryForToday = user.dailyCounts.some(entry => {
-      return entry.date.toDateString() === today.toDateString();
-    });
+//     const hasEntryForToday = user.dailyCounts.some(entry => {
+//       return entry.date.toDateString() === today.toDateString();
+//     });
 
-    if (hasEntryForToday) {
-      user.dailyCounts[user.dailyCounts.length - 1].count++;
-    } else {
-      user.dailyCounts.push({ date: today, count: 1 });
-    }
+//     if (hasEntryForToday) {
+//       user.dailyCounts[user.dailyCounts.length - 1].count++;
+//     } else {
+//       user.dailyCounts.push({ date: today, count: 1 });
+//     }
 
-    await user.save();
+//     await user.save();
 
-    res.json({ message: "dailyCounts updated successfully" });
-  } catch (error) {
-    console.error('Error updating dailyCounts:', error);
-    res.status(500).json({ error: 'An error occurred while updating dailyCounts' });
-  }
-});
+//     res.json({ message: "dailyCounts updated successfully" });
+//   } catch (error) {
+//     console.error('Error updating dailyCounts:', error);
+//     res.status(500).json({ error: 'An error occurred while updating dailyCounts' });
+//   }
+// });
 
 
 
