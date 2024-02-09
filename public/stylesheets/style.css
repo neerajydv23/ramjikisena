@@ -145,7 +145,7 @@
 
  #slidebar {
    width: 120px;
-   height: 229px;
+   height: 256px;
    background-color: #6D1E1E;
    position: fixed;
    right: 0;
@@ -163,6 +163,7 @@
    color: white;
    border-bottom: 1px solid #fff;
    text-align: center;
+   padding-bottom: 1px;
  }
 
  nav #text {

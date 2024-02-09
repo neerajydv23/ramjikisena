@@ -1,27 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ramjikisena</title>
   <link rel="stylesheet" href="/stylesheets/style.css" />
-  <link
-      href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css"
-      rel="stylesheet"
-    />
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
 </head>
+
 <body>
 
   <div class="main">
-   
+
 
     <div class="nav-1">
       <div class="marquee">
         <h1>Jayshri Gayatri Food Products Pvt. Ltd. Milk Magic</h1>
-        <img id="milk-magic-icon"  src="/images/milk-magic-icon.webp" alt="">
+        <img id="milk-magic-icon" src="/images/milk-magic-icon.webp" alt="">
       </div>
     </div>
 
@@ -37,6 +36,7 @@
           <a href="/register">Register</a>
           <a href="/contact">Contact</a>
           <a href="/gallery">Gallery</a>
+          <a href="" id="whatsappShare">Share via WhatsApp</a>
         </div>
       </div>
 
@@ -56,7 +56,7 @@
       </div>
     </nav>
 
-    <div class="ramji-photo">  
+    <div class="ramji-photo">
       <img src="/images/Ayodhya Ramji Photo.webp" alt="">
     </div>
 
@@ -78,9 +78,11 @@
         </div>
         <img src="/images/ramji-slider-1.webp" alt="">
         <div class="count-info">
-          <h3>✍️ Total written Ramcount : <%=totalRamnaamCount%> </h3>
+          <h3>✍️ Total written Ramcount : <%=totalRamnaamCount%>
+          </h3>
           <h3>🎯 Total visited devotees : 1000+</h3>
-          <h3>🎯 Total registered devotees : <%=userCount%> </h3>
+          <h3>🎯 Total registered devotees : <%=userCount%>
+          </h3>
         </div>
       </div>
     </div>
@@ -91,33 +93,38 @@
         <h1>राम नाम लेखन हेतु लॉगिन / रजिस्टर करे - Login/Register here</h1>
 
         <%if(error.length>0){ %>
-          <p class="flash-error" style="color: red;font-weight: 400;text-transform: capitalize;margin: 7px 0;text-align: center;"><%=error%></p>
-        <% } %>
+          <p class="flash-error"
+            style="color: red;font-weight: 400;text-transform: capitalize;margin: 7px 0;text-align: center;">
+            <%=error%>
+          </p>
+          <% } %>
 
-        <form action="/login" method="post">
-          <input type="text" name="username" placeholder="लॉगिन आईडी / Login id" required>
-          <input  type="password" name="password" placeholder="पासवर्ड / Password" required>
-          <a class="forgot-btn" href="/forgot">Login With Mobile Number ?</a>
-          <input class="login-btn" type="submit" value="लॉगिन / Login">
-      </form>
-          <a style="display: block;margin-top: 15px;padding: 8px;background-color: #5B1801;color: white;border-radius: 10px;border: 1px solid #fff;text-align: center;" href="/register">रजिस्टर / Register</a>
+            <form action="/login" method="post">
+              <input type="text" name="username" placeholder="लॉगिन आईडी / Login id" required>
+              <input type="password" name="password" placeholder="पासवर्ड / Password" required>
+              <a class="forgot-btn" href="/forgot">Login With Mobile Number ?</a>
+              <input class="login-btn" type="submit" value="लॉगिन / Login">
+            </form>
+            <a style="display: block;margin-top: 15px;padding: 8px;background-color: #5B1801;color: white;border-radius: 10px;border: 1px solid #fff;text-align: center;"
+              href="/register">रजिस्टर / Register</a>
       </div>
     </div>
 
-  <footer>
-    <a href="https://www.facebook.com/chandrashekhar.singh.104"><i class="ri-facebook-fill"></i> Facebook</a>
-    <a href="https://www.youtube.com/@GandhialayaVicharSevaSangh"><i class="ri-youtube-fill"></i> Youtube</a>
-  </footer>
+    <footer>
+      <a href="https://www.facebook.com/chandrashekhar.singh.104"><i class="ri-facebook-fill"></i> Facebook</a>
+      <a href="https://www.youtube.com/@GandhialayaVicharSevaSangh"><i class="ri-youtube-fill"></i> Youtube</a>
+    </footer>
 
-  <div class="copyright">
-    <h2>Copyright © 2024 www.ramjikisena.com- Developed & Maintained by I-NextEts</h2>
-  </div>
-  
+    <div class="copyright">
+      <h2>Copyright © 2024 www.ramjikisena.com- Developed & Maintained by I-NextEts</h2>
+    </div>
+
   </div>
 
 
   <script src="/javascripts/navbar.js"></script>
+  <script src="/javascripts/inviteFriends.js"></script>
 
-  
 </body>
+
 </html>
