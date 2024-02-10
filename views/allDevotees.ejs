@@ -93,10 +93,10 @@
                   <td style="color: red;">
                     <%= index + 1 %>
                   </td>
-                  <td>
+                  <td style="color: orange;">
                     <%= user.name %>
                   </td>
-                  <td>
+                  <td style="color: blue;">
                     <% if(user.dailyCounts && user.dailyCounts.length> 0){ %>
                       <%const today=new Date();%>
                         <% if(user.dailyCounts[user.dailyCounts.length-1].date.toDateString()==today.toDateString()){ %>
@@ -108,7 +108,7 @@
                                     <%=0 %>
                                       <% } %>
                   </td>
-                  <td>
+                  <td style="color: green;">
                     <%= user.totalCount %>
                   </td>
                 </tr>
