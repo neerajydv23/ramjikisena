@@ -227,6 +227,8 @@
    font-size: 30px;
    font-weight: 500;
    text-align: center;
+   color: rgb(231 213 138);
+   text-shadow: 2px 2px black
  }
 
  .goto-div-items {
@@ -239,7 +241,8 @@
  }
 
  .goto-div-items a {
-   color: white;
+   /* color: white; */
+   color: rgb(244 223 135);
  }
 
  .index-content {
@@ -311,6 +314,7 @@
 
  .container .row-1 h3 {
    font-weight: 600;
+   color: rgb(244 223 135);
  }
 
  .container .row-1 a {
@@ -770,8 +774,10 @@
 
  .all-devotees a {
    background-color: #6D1E1E;
-   padding: 8px 12px;
-   border-radius: 5px;
+   padding: 9px 13px;
+   border-radius: 9px;
+   color: rgb(244 223 135);
+   text-shadow: 2px 2px black;
  }
 
  .allDevotees-content {
