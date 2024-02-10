@@ -261,7 +261,8 @@
  .ramji-slider-text h1 {
    font-size: 25px;
    font-weight: 600;
-   color: white;
+   color: orangered;
+   text-shadow: .5px .5px black;
  }
 
  .ramji-slider img {
