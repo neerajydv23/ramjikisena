@@ -76,16 +76,16 @@
         <table border="1">
           <thead>
             <tr style="color: #B22222;">
-              <th>Rank</th>
-              <th>Name</th>
-              <th>Today's Count</th>
-              <th>Total Count</th>
+              <th style="color: red;">Rank</th>
+              <th style="color: yellowgreen;">Name</th>
+              <th style="color: blue;">Today's Count</th>
+              <th style="color: green;">Total Count</th>
             </tr>
           </thead>
           <tbody id="userTableBody">
 
-             <!-- in future sort the array on the basis of rank so you search the user also -->
-         
+            <!-- in future sort the array on the basis of rank so you search the user also -->
+
             <% const sortedUsers=allUsers.slice().sort((a, b)=> b.totalCount - a.totalCount); %>
 
               <% sortedUsers.forEach(function(user,index) { %>
@@ -97,16 +97,16 @@
                     <%= user.name %>
                   </td>
                   <td>
-                    <% if(user.dailyCounts && user.dailyCounts.length > 0){ %>
-                      <%const today = new Date();%>
-                    <% if(user.dailyCounts[user.dailyCounts.length-1].date.toDateString() == today.toDateString()){ %>
-                        <%=user.dailyCounts[user.dailyCounts.length-1].count; %>
-                    <%  }else{ %>
-                        <%=0%>
-                     <% } %>            
-                   <% } else{ %>
-                     <%=0 %>
-                   <% } %>
+                    <% if(user.dailyCounts && user.dailyCounts.length> 0){ %>
+                      <%const today=new Date();%>
+                        <% if(user.dailyCounts[user.dailyCounts.length-1].date.toDateString()==today.toDateString()){ %>
+                          <%=user.dailyCounts[user.dailyCounts.length-1].count; %>
+                            <% }else{ %>
+                              <%=0%>
+                                <% } %>
+                                  <% } else{ %>
+                                    <%=0 %>
+                                      <% } %>
                   </td>
                   <td>
                     <%= user.totalCount %>
