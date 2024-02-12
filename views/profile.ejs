@@ -68,7 +68,8 @@
         <a href="/feedback">✍️ Writing experience & feedback</a>
       </div>
 
-      <audio id="bgMusic" src="/audios/bgaudio-1.mp3" controls autoplay loop></audio>
+      <audio id="bgMusic" controls autoplay loop></audio>
+      <!-- <audio id="bgMusic" src="/audios/bgaudio-1.mp3" controls autoplay loop></audio> -->
 
     </div>
 
@@ -86,6 +87,16 @@
               <option value="hi">Hindi</option>
             </select>
             <!-- Google translator HTML code ends -->
+
+            <select id="musicSelect">
+              <option value="none">No Music</option>
+              <option value="/audios/bgaudio-1.mp3">Music 1</option>
+              <option value="/audios/haridhun.mp3">Music 2</option>
+              <option value="/audios/heyram.mp3">Music 3</option>
+              <option value="/audios/ramdhun.mp3">Music 4</option>
+              <option value="/audios/ramnamkirtan.mp3">Music 5</option>
+              <option value="/audios/sitaram.mp3">Music 6</option>
+            </select>
 
             <a href="/lekhanHistory">Lekhan History</a>
             <a class="notranslate" href="/logout">Log Out</a>
@@ -224,24 +235,6 @@
         totalCount.innerText = parseInt(totalCount.innerText) + 1;
         malaCount.innerText = (parseInt(document.getElementById("totalCount").innerText) / 108).toFixed(2);
 
-
-        // axios
-        //   .get("https://ramjikisena.com/increment")
-        //   .then(function (response) {
-        //     console.log("increment chala");
-        //     document.getElementById("currentCount").innerText =
-        //       response.data.newCount;
-
-        //     document.getElementById("totalCount").innerText =
-        //       response.data.totalCount;
-
-        //     document.getElementById("malaCount").innerText =
-        //       response.data.mala;
-
-        //   })
-        //   .catch(function (error) {
-        //     console.error("Error incrementing count:", error);
-        //   });
       }
 
     }
@@ -258,7 +251,7 @@
         totalCount: totalCountValue,
         malaCount: malaCountValue
       }).then(function (response) {
-        console.log(response);
+        // console.log(response);
 
         var textarea = document.getElementById("ramTextarea");
         textarea.value = "";
@@ -269,16 +262,6 @@
         console.log(err);
       });
 
-
-      // axios.get("https://ramjikisena.com/save")
-      //   .then(function (response) {
-      //     console.log("save chala");
-      //     var textarea = document.getElementById("ramTextarea");
-      //     textarea.value = "";
-      //     userInput = "";
-
-      //     document.getElementById("currentCount").innerText = 0
-      //   })
 
     })
 
@@ -298,7 +281,7 @@
 
   <script src="/javascripts/navbar.js"></script>
   <script src="/javascripts/inviteFriends.js"></script>
-
+  <script src="/javascripts/bgMusic.js"></script>
 
 </body>
 
