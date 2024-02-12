@@ -282,6 +282,17 @@
 
     })
 
+    window.addEventListener('beforeunload', function (e) {
+      // Check if the user has entered any text in the textarea
+      var textarea = document.getElementById("ramTextarea");
+      if (textarea.value !== "") {
+        // Display confirmation dialog
+        const confirmationMessage = 'Please save your progress. Unsaved changes will be lost';
+        e.returnValue = confirmationMessage;
+        return confirmationMessage;
+      }
+    });
+
 
   </script>
 
