@@ -373,6 +373,7 @@
    font-weight: 600;
    color: #dc2626;
    outline: none;
+   resize: none;
  }
 
  .row-3 textarea:focus {
