@@ -64,7 +64,7 @@
  .marquee {
    white-space: nowrap;
    overflow: hidden;
-   animation: marquee 30s linear infinite;
+   animation: marquee 23s linear infinite;
    font-weight: 600;
    display: flex;
    align-items: center;
@@ -79,6 +79,11 @@
    100% {
      transform: translateX(0%);
    }
+ }
+
+ .footer-marquee {
+   padding: 2px !important;
+   padding-bottom: 10px !important;
  }
 
  .nav-1 {
