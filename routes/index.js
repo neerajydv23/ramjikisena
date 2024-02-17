@@ -9,7 +9,7 @@ const cors = require('cors');
 passport.use(new localStrategy(userModel.authenticate()))
 
 
-router.post('/save', isLoggedIn, async function(req, res) {
+router.post('/save', isLoggedIn, async function (req, res) {
   try {
     const user = req.user;
     const { currentCount, totalCount, malaCount } = req.body;
@@ -25,7 +25,7 @@ router.post('/save', isLoggedIn, async function(req, res) {
     });
 
     if (hasEntryForToday) {
-      user.dailyCounts[user.dailyCounts.length - 1].count+=parseInt(currentCount);
+      user.dailyCounts[user.dailyCounts.length - 1].count += parseInt(currentCount);
     } else {
       user.dailyCounts.push({ date: today, count: parseInt(currentCount) });
     }
@@ -164,7 +164,7 @@ router.get('/name/:name', isLoggedIn, async function (req, res) {
 //   res.json({ currentCount: user.currCount, totalCount: user.totalCount, mala: user.mala });
 // });
 
-router.get('/lekhanHistory', async function (req, res) {
+router.get('/lekhanHistory', isLoggedIn, async function (req, res) {
   const user = req.user;
 
   res.render('lekhanHistory', { user });
@@ -248,7 +248,7 @@ router.post('/register', function (req, res, next) {
     });
 });
 
-router.get('/admin/allUsers', async (req, res) => {
+router.get('/admin/allUsers', isAdmin, async (req, res) => {
   try {
     // Retrieve all users sorted by totalCount in descending order
     const users = await userModel.find().sort({ totalCount: -1 });
@@ -261,7 +261,7 @@ router.get('/admin/allUsers', async (req, res) => {
   }
 });
 
-router.get('/admin/dashboard', async function (req, res) {
+router.get('/admin/dashboard', isAdmin, async function (req, res) {
   const userCount = (await userModel.find()).length;
 
   const allUsers = await userModel.find();
@@ -291,7 +291,7 @@ router.post('/login', passport.authenticate('local', {
   }
 });
 
-router.get('/admin/downloadUsers', async (req, res) => {
+router.get('/admin/downloadUsers', isAdmin, async (req, res) => {
   try {
     // Fetch all users from the database
     const users = await userModel.find();
@@ -351,5 +351,9 @@ function isLoggedIn(req, res, next) {
   res.redirect('/');
 }
 
+function isAdmin(req, res, next) {
+  if (req.isAuthenticated() && req.user.role === 'admin') return next();
+  res.redirect('/');
+}
 
 module.exports = router;
