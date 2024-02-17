@@ -64,7 +64,7 @@
  .marquee {
    white-space: nowrap;
    overflow: hidden;
-   animation: marquee 23s linear infinite;
+   animation: marquee 14s linear infinite;
    font-weight: 600;
    display: flex;
    align-items: center;
