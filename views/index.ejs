@@ -46,7 +46,7 @@
           <a href="/profile">Ramji Ki Sena</a>
         </div>
         <div class="right">
-          <a id="home-btn" href="/profile">Home</a>
+          <a id="home-btn" href="">Login</a>
           <a href="/about">About</a>
           <a href="/contact">Contact</a>
           <div id="icon">
@@ -126,7 +126,16 @@
     </div> -->
 
   </div>
-
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var loginBtn = document.getElementById("home-btn");
+      var container = document.querySelector(".login-page");
+      loginBtn.addEventListener("click", function (event) {
+        event.preventDefault();
+        container.scrollIntoView({ behavior: "smooth" });
+      });
+    });
+  </script>
 
   <script src="/javascripts/navbar.js"></script>
   <script src="/javascripts/inviteFriends.js"></script>

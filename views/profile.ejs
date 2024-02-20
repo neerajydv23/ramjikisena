@@ -109,28 +109,28 @@
         <div class="row-2">
 
           <div class="previous-count count-box ">
-            <h1 style="color: rgb(249, 70, 5); text-shadow: 1px 1px black;">Your Rank </h1>
+            <h1 style="color: #FFFDD0; text-shadow: 1px 1px black;">Your Rank </h1>
             <span id="prevCount" class="count-box-value">
               <%=user.rank%>
             </span>
           </div>
 
           <div class="current-count count-box">
-            <h1 style="color: rgb(11, 198, 11); text-shadow: 1px 1px black;">Current Ramnaam count</h1>
+            <h1 style="color: #FFFDD0; text-shadow: 1px 1px black;">Current Ramnaam count</h1>
             <span id="currentCount" class="count-box-value" style="color: #006600;">
               <%=user.currCount%>
             </span>
           </div>
 
           <div class="total-count count-box">
-            <h1 style="color: rgb(78, 220, 239); text-shadow: 1px 1px black;">Total Ramnaam count</h1>
+            <h1 style="color: #FFFDD0; text-shadow: 1px 1px black;">Total Ramnaam count</h1>
             <span id="totalCount" class="count-box-value" style="color: #0000FF;">
               <%=user.totalCount %>
             </span>
           </div>
 
           <div class="mala-count count-box">
-            <h1 style="color: rgb(249, 70, 5); text-shadow: 1px 1px black;">Total Mala Count</h1>
+            <h1 style="color: #FFFDD0; text-shadow: 1px 1px black;">Total Mala Count</h1>
             <span id="malaCount" class="count-box-value">
               <%=user.mala%>
             </span>
@@ -138,7 +138,7 @@
         </div>
 
         <div class="row-3">
-          <textarea id="ramTextarea" name="ramTextarea" rows="6" cols="60"
+          <textarea class="notranslate" id="ramTextarea" name="ramTextarea" rows="6" cols="60"
             placeholder="यहाँ पर राम नाम लिखें..."></textarea>
         </div>
 
@@ -149,8 +149,8 @@
 
         </div>
 
-        <div class="save-button notranslate" style="cursor: pointer;">
-          <span><i class="ri-save-3-fill"></i>Save</span>
+        <div id="saveBtn" class="save-button notranslate" style="cursor: pointer;">
+          <span id="saveBtn"><i class="ri-save-3-fill"></i>Save</span>
         </div>
 
       </div>
@@ -158,7 +158,7 @@
 
     <!-- Update the loading spinner to cover the entire screen -->
     <div id="loadingOverlay" style="display: none;">
-      <span>🚩 Aapka Ram Naam Save Horaha Hai 🚩</span>
+      <span class="notranslate">🚩 आपका रामनाम धन सेव हो रहा है। 🚩</span>
       <div class="spinner-box">
         <div class="three-quarter-spinner"></div>
       </div>
@@ -330,15 +330,18 @@
       });
     });
 
-
-    window.addEventListener('beforeunload', function (e) {
-      // Check if the user has entered any text in the textarea
-      var textarea = document.getElementById("ramTextarea");
-      if (textarea.value !== "") {
-        // Display confirmation dialog
-        const confirmationMessage = 'Please save your progress. Unsaved changes will be lost';
-        e.returnValue = confirmationMessage;
-        return confirmationMessage;
+    document.addEventListener("click", (e) => {
+      if (e.target.tagName === 'A' && e.target.id !== "saveBtn") {
+        // Check if there's content in the textarea
+        var textarea = document.getElementById("ramTextarea");
+        if (textarea.value.trim() !== "") {
+          var loggedInUsername = "<%= user.name %>";
+          // Customize the alert message
+          var alertMessage = "।। जय श्री राम ।। " + loggedInUsername + " जी आपका रामनाम धन Save नहीं हुआ है, कृपया Save करें / Your Ramnaam is not saved. Please save!";
+          // Alert the user to save their progress before navigating
+          alert(alertMessage);
+          e.preventDefault(); // Prevent the default behavior of the link
+        }
       }
     });
 

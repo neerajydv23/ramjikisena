@@ -47,7 +47,7 @@
           <a href="/profile">Ramji Ki Sena</a>
         </div>
         <div class="right">
-          <a id="home-btn" href="/profile">Home</a>
+          <a id="home-btn" href="">Register</a>
           <a href="/about">About</a>
           <a href="/contact">Contact</a>
           <div id="icon">
@@ -114,7 +114,16 @@
       <h2>Copyright © 2024 www.ramjikisena.com- Developed & Maintained by I-NextEts</h2>
     </div> -->
   </div>
-
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var registerBtn = document.getElementById("home-btn");
+      var container = document.querySelector(".login-page");
+      registerBtn.addEventListener("click", function (event) {
+        event.preventDefault();
+        container.scrollIntoView({ behavior: "smooth" });
+      });
+    });
+  </script>
   <script src="/javascripts/navbar.js"></script>
   <script src="/javascripts/inviteFriends.js"></script>
 

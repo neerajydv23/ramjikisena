@@ -1,27 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ramjikisena</title>
   <link rel="stylesheet" href="/stylesheets/style.css" />
-  <link
-      href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css"
-      rel="stylesheet"
-    />
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
 </head>
+
 <body>
 
   <div class="main">
-   
+
 
     <div class="nav-1">
       <div class="marquee">
         <h1>Jayshri Gayatri Food Products Pvt. Ltd. Milk Magic</h1>
-        <img id="milk-magic-icon"  src="/images/milk-magic-icon.webp" alt="">
+        <img id="milk-magic-icon" src="/images/milk-magic-icon.webp" alt="">
       </div>
     </div>
 
@@ -47,7 +46,7 @@
           <a href="/profile">Ramji Ki Sena</a>
         </div>
         <div class="right">
-          <a id="home-btn" href="/profile">Home</a>
+          <a id="home-btn" href="/">Login</a>
           <a href="/about">About</a>
           <a href="/contact">Contact</a>
           <div id="icon">
@@ -61,31 +60,35 @@
       <div style="height: 450px;" class="login-form">
         <h1>Enter Contact Number For Login / नंबर दर्ज करें</h1>
         <%if(error.length>0){ %>
-          <p class="flash-error" style="color: red;font-weight: 400;text-transform: capitalize;margin: 7px 0;text-align: center;"><%=error%></p>
-        <% } %>
+          <p class="flash-error"
+            style="color: red;font-weight: 400;text-transform: capitalize;margin: 7px 0;text-align: center;">
+            <%=error%>
+          </p>
+          <% } %>
 
-        <form action="/forgot" method="post">
-          <input type="number" name="contact" placeholder="मोबाइल नंबर.*/Mobile No.*" required >
-          <a class="forgot-btn" href="/">Login with password ?</a>
-          <input class="login-btn" type="submit" value="लॉगिन / Login">
-      </form>
-          <a style="display: block;margin-top: 15px;padding: 8px;background-color: #5B1801;color: white;border-radius: 10px;border: 1px solid #fff;text-align: center;" href="/register">रजिस्टर / Register</a>
+            <form action="/forgot" method="post">
+              <input type="number" name="contact" placeholder="मोबाइल नंबर.*/Mobile No.*" required>
+              <a class="forgot-btn" href="/">Login with password ?</a>
+              <input class="login-btn" type="submit" value="लॉगिन / Login">
+            </form>
+            <a style="display: block;margin-top: 15px;padding: 8px;background-color: #5B1801;color: white;border-radius: 10px;border: 1px solid #fff;text-align: center;"
+              href="/register">रजिस्टर / Register</a>
       </div>
     </div>
-   
 
-  <footer>
-    <a href="https://www.facebook.com/chandrashekhar.singh.104"><i class="ri-facebook-fill"></i> Facebook</a>
-    <a href="https://www.youtube.com/@GandhialayaVicharSevaSangh"><i class="ri-youtube-fill"></i> Youtube</a>
-  </footer>
-  <div class="nav-1 footer-marquee">
-    <div class="marquee">
-      <h1>Jayshri Gayatri Food Products Pvt. Ltd. Milk Magic</h1>
-      <img id="milk-magic-icon" src="/images/milk-magic-icon.webp" alt="">
+
+    <footer>
+      <a href="https://www.facebook.com/chandrashekhar.singh.104"><i class="ri-facebook-fill"></i> Facebook</a>
+      <a href="https://www.youtube.com/@GandhialayaVicharSevaSangh"><i class="ri-youtube-fill"></i> Youtube</a>
+    </footer>
+    <div class="nav-1 footer-marquee">
+      <div class="marquee">
+        <h1>Jayshri Gayatri Food Products Pvt. Ltd. Milk Magic</h1>
+        <img id="milk-magic-icon" src="/images/milk-magic-icon.webp" alt="">
+      </div>
     </div>
-  </div>
 
-  <!-- <div class="copyright">
+    <!-- <div class="copyright">
       <h2>Copyright © 2024 www.ramjikisena.com- Developed & Maintained by I-NextEts</h2>
     </div> -->
 
@@ -95,6 +98,7 @@
   <script src="/javascripts/navbar.js"></script>
   <script src="/javascripts/inviteFriends.js"></script>
 
-  
+
 </body>
+
 </html>
