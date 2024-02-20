@@ -20,9 +20,12 @@ router.post('/save', isLoggedIn, async function (req, res) {
 
     // Update dailyCounts
     const today = new Date();
-    const hasEntryForToday = user.dailyCounts.some(entry => {
-      return entry.date.toDateString() === today.toDateString();
-    });
+    // const hasEntryForToday = user.dailyCounts.some(entry => {
+    //   return entry.date.toDateString() === today.toDateString();
+    // });
+    const hasEntryForToday = user.dailyCounts &&
+    user.dailyCounts.length > 0 &&
+    user.dailyCounts[user.dailyCounts.length - 1].date.toDateString() === today.toDateString();
 
     if (hasEntryForToday) {
       user.dailyCounts[user.dailyCounts.length - 1].count += parseInt(currentCount);

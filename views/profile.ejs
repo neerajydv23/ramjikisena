@@ -5,11 +5,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ramjikisena</title>
+  <link rel="stylesheet" href="/stylesheets/loadingSpinner.css">
   <link rel="stylesheet" href="/stylesheets/style.css" />
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet" />
   <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+
 </head>
 
 <body>
@@ -29,7 +31,7 @@
         </div>
 
         <div id="text">
-          <a href="/profile">Home</a>
+          <a id="scroll-to-ramcount" href="">Home</a>
           <a href="/about">About</a>
           <a href="/register">Register</a>
           <a href="/contact">Contact</a>
@@ -154,6 +156,15 @@
       </div>
     </div>
 
+    <!-- Update the loading spinner to cover the entire screen -->
+    <div id="loadingOverlay" style="display: none;">
+      <span>🚩 Aapka Ram Naam Save Horaha Hai 🚩</span>
+      <div class="spinner-box">
+        <div class="three-quarter-spinner"></div>
+      </div>
+    </div>
+
+
     <div class="all-devotees notranslate">
       <a href="/allDevotees">ALL DEVOTEES</a>
     </div>
@@ -202,6 +213,16 @@
   <!-- Google translator JS code ends -->
 
   <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var homeButton = document.getElementById("home-btn");
+      var container = document.querySelector(".container");
+      homeButton.addEventListener("click", function (event) {
+        event.preventDefault();
+        container.scrollIntoView({ behavior: "smooth" });
+      });
+    });
+  </script>
+  <script>
     // for disabling the keyboard 
     document.getElementById("ramTextarea").readOnly = true;
 
@@ -235,8 +256,6 @@
         userInput = "";
         textarea.value += " "
 
-
-
         // Increment counts directly without waiting for response
 
         currentCount.innerText = parseInt(currentCount.innerText) + 1;
@@ -247,8 +266,41 @@
 
     }
 
+    // const saveButton = document.querySelector(".save-button");
+    // saveButton.addEventListener("click", function () {
+
+    //   const currentCountValue = currentCount.innerText;
+    //   const totalCountValue = totalCount.innerText;
+    //   const malaCountValue = malaCount.innerText;
+
+    //   axios.post("/save", {
+    //     currentCount: currentCountValue,
+    //     totalCount: totalCountValue,
+    //     malaCount: malaCountValue
+    //   }).then(function (response) {
+    //     // console.log(response);
+
+    //     var textarea = document.getElementById("ramTextarea");
+    //     textarea.value = "";
+    //     userInput = "";
+    //     document.getElementById("currentCount").innerText = 0;
+
+    //   }).catch(function (err) {
+    //     console.log(err);
+    //   });
+
+
+    // })
+
     const saveButton = document.querySelector(".save-button");
+    const loadingOverlay = document.getElementById("loadingOverlay");
+
     saveButton.addEventListener("click", function () {
+      // Show loading overlay
+      loadingOverlay.style.display = "flex"; // Display as flex to center the spinner
+
+      // Disable the save button during the loading period
+      saveButton.disabled = true;
 
       const currentCountValue = currentCount.innerText;
       const totalCountValue = totalCount.innerText;
@@ -259,7 +311,11 @@
         totalCount: totalCountValue,
         malaCount: malaCountValue
       }).then(function (response) {
-        // console.log(response);
+        // Hide loading overlay after 5 seconds
+        setTimeout(function () {
+          loadingOverlay.style.display = "none";
+          saveButton.disabled = false; // Enable the save button after loading
+        }, 3000);
 
         var textarea = document.getElementById("ramTextarea");
         textarea.value = "";
@@ -268,10 +324,12 @@
 
       }).catch(function (err) {
         console.log(err);
+        // Hide loading overlay and enable save button on error
+        loadingOverlay.style.display = "none";
+        saveButton.disabled = false;
       });
+    });
 
-
-    })
 
     window.addEventListener('beforeunload', function (e) {
       // Check if the user has entered any text in the textarea
