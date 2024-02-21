@@ -24,8 +24,8 @@ router.post('/save', isLoggedIn, async function (req, res) {
     //   return entry.date.toDateString() === today.toDateString();
     // });
     const hasEntryForToday = user.dailyCounts &&
-    user.dailyCounts.length > 0 &&
-    user.dailyCounts[user.dailyCounts.length - 1].date.toDateString() === today.toDateString();
+      user.dailyCounts.length > 0 &&
+      user.dailyCounts[user.dailyCounts.length - 1].date.toDateString() === today.toDateString();
 
     if (hasEntryForToday) {
       user.dailyCounts[user.dailyCounts.length - 1].count += parseInt(currentCount);
@@ -80,96 +80,21 @@ router.get('/allDevotees', isLoggedIn, async function (req, res, next) {
   const allUsers = await userModel.find();
   res.render('allDevotees', { user, allUsers });
 });
+
+
 router.get('/gallery', async function (req, res, next) {
   res.render('gallery');
 });
 
-router.get('/name/:name', isLoggedIn, async function (req, res) {
-  const regex = new RegExp(`^${req.params.name}`, 'i');
-  const users = await userModel.find({ name: regex });
+router.get('/user/:name', isLoggedIn, async function (req, res) {
+  const val = req.params.name;
+  const users = await userModel.find({ name: new RegExp('^' + val, 'i') });
   res.json(users);
 });
 
 
-// router.get('/dailyCount', isLoggedIn, async function (req, res, next) {
-//   try {
-//     const user = req.user;
-//     const today = new Date();
-
-//     const hasEntryForToday = user.dailyCounts.some(entry => {
-//       return entry.date.toDateString() === today.toDateString();
-//     });
-
-//     if (hasEntryForToday) {
-//       user.dailyCounts[user.dailyCounts.length - 1].count++;
-//     } else {
-//       user.dailyCounts.push({ date: today, count: 1 });
-//     }
-
-//     await user.save();
-
-//     res.json({ message: "dailyCounts updated successfully" });
-//   } catch (error) {
-//     console.error('Error updating dailyCounts:', error);
-//     res.status(500).json({ error: 'An error occurred while updating dailyCounts' });
-//   }
-// });
-
-
-
-// router.get('/increment', isLoggedIn, async function (req, res, next) {
-//   const user = req.user;
-
-//   const today = new Date();
-
-//   const hasEntryForToday = user.dailyCounts.some(entry => {
-//     return entry.date.toDateString() === today.toDateString();
-//   });
-
-//   if (hasEntryForToday) {
-//     user.dailyCounts[user.dailyCounts.length - 1].count++;
-//   } else {
-//     user.dailyCounts.push({ date: today, count: 1 });
-//   }
-
-//   await user.save();
-
-//   const allUsers = await userModel.find({}, 'totalCount').sort({ totalCount: -1 });
-//   const bulkUpdateOps = allUsers.map((user, index) => ({
-//     updateOne: {
-//       filter: { _id: user._id },
-//       update: { rank: index + 1 }
-//     }
-//   }));
-//   await userModel.bulkWrite(bulkUpdateOps);
-
-//   res.json({ mala: user.mala, newCount: user.currCount, totalCount: user.totalCount });
-// });
-
-
-// router.get('/save', isLoggedIn, async function (req, res, next) {
-
-//   const user = req.user;
-//   user.currCount = 0;
-//   await user.save();
-
-//   // writing rank feature
-
-//   const allUsers = await userModel.find({}, 'totalCount').sort({ totalCount: -1 });
-//   const bulkUpdateOps = allUsers.map((user, index) => ({
-//     updateOne: {
-//       filter: { _id: user._id },
-//       update: { rank: index + 1 }
-//     }
-//   }));
-//   await userModel.bulkWrite(bulkUpdateOps);
-
-//   res.json({ currentCount: user.currCount, totalCount: user.totalCount, mala: user.mala });
-// });
-
 router.get('/lekhanHistory', isLoggedIn, async function (req, res) {
   const user = req.user;
-
   res.render('lekhanHistory', { user });
 })
 
@@ -276,12 +201,6 @@ router.get('/admin/dashboard', isAdmin, async function (req, res) {
   res.render('admin/dashboard', { userCount, totalRamnaamCount });
 })
 
-// router.post('/login', passport.authenticate("local",{
-//   failureRedirect:"/",
-//   successRedirect:"/profile",
-//   failureFlash:true
-// }),function(req,res,next){
-// });
 router.post('/login', passport.authenticate('local', {
   failureRedirect: '/',
   failureFlash: true

@@ -10,6 +10,37 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+  <style>
+    tbody tr:hover {
+      background-color: #B22222;
+    }
+
+    tbody tr:hover td {
+      color: rgb(244 223 135) !important;
+    }
+
+    /* .pagination {
+      display: inline-block;
+    }
+
+    .pagination span {
+      color: black;
+      float: left;
+      padding: 8px 16px;
+      text-decoration: none;
+    }
+
+    .pagination span.active {
+      background-color: #4CAF50;
+      color: white;
+      border-radius: 5px;
+    }
+
+    .pagination span:hover:not(.active) {
+      background-color: #ddd;
+      border-radius: 5px;
+    } */
+  </style>
 </head>
 
 <body>
@@ -68,9 +99,10 @@
 
       <h1>All Devotees</h1>
 
-      <!-- <div class="input-search">
-                <input id="search-devotees" type="text" placeholder="Click here to search">
-            </div> -->
+      <div class="input-search">
+        <input id="search-devotees" type="text" placeholder="Click to search users"
+          style="padding: 10px 15px;border-radius: 10px;">
+      </div>
 
       <div class="devotees-table">
         <table border="1">
@@ -91,7 +123,7 @@
               <% sortedUsers.forEach(function(user,index) { %>
                 <tr>
                   <td style="color: red;">
-                    <%= index + 1 %>
+                    <%= user.rank %>
                   </td>
                   <td style="color: orange;">
                     <%= user.name %>
@@ -116,6 +148,13 @@
           </tbody>
         </table>
       </div>
+      <!-- <div class="pagination">
+        <span>&laquo;</span>
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>&raquo;</span>
+      </div> -->
     </div>
 
 
@@ -140,7 +179,42 @@
     integrity="sha512-b94Z6431JyXY14iSXwgzeZurHHRNkLt9d6bAHt7BZT38eqV+GyngIi/tVye4jBKPYQ2lBdRs0glww4fmpuLRwA=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+  <script>
+    document.querySelector("#search-devotees")
+      .addEventListener("input", function () {
+        var typed = this.value.trim();
+        if (typed.length > 0) {
+          axios.get(`/user/${typed}`)
+            .then(response => {
+              var clutter = "";
+              response.data.forEach(user => {
+                clutter += `
+                <tr>
+                  <td style="color: red;">
+                    ${user.rank}
+                  </td>
+                  <td style="color: orange;">
+                    ${user.name}
+                  </td>
+                  <td style="color: blue;">
+                    ${user.dailyCounts.length > 0 ? user.dailyCounts[user.dailyCounts.length - 1].count : 0}
+                  </td>
+                  <td style="color: green;">
+                    ${user.totalCount}
+                  </td>
+                </tr>
+              `;
+              });
+              document.querySelector("#userTableBody").innerHTML = clutter;
+            })
+            .catch(error => {
+              console.error('Error searching users:', error);
+              // Handle errors if any
+            });
+        }
+      });
 
+  </script>
 
   <!-- Google translator JS code starts -->
   <script type="text/javascript"
