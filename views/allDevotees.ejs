@@ -180,6 +180,7 @@
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <script>
+
     document.querySelector("#search-devotees")
       .addEventListener("input", function () {
         var typed = this.value.trim();
@@ -188,30 +189,54 @@
             .then(response => {
               var clutter = "";
               response.data.forEach(user => {
-                clutter += `
-                <tr>
-                  <td style="color: red;">
-                    ${user.rank}
-                  </td>
-                  <td style="color: orange;">
-                    ${user.name}
-                  </td>
-                  <td style="color: blue;">
-                    ${user.dailyCounts.length > 0 ? user.dailyCounts[user.dailyCounts.length - 1].count : 0}
-                  </td>
-                  <td style="color: green;">
-                    ${user.totalCount}
-                  </td>
-                </tr>
-              `;
+                const today = new Date();
+                const lastCount = user.dailyCounts.length > 0 ? user.dailyCounts[user.dailyCounts.length - 1].count : 0;
+                const lastDate = user.dailyCounts.length > 0 ? new Date(user.dailyCounts[user.dailyCounts.length - 1].date) : null;
+
+                if (lastDate && lastDate.toDateString() === today.toDateString()) {
+                  clutter += `
+              <tr>
+                <td style="color: red;">
+                  ${user.rank}
+                </td>
+                <td style="color: orange;">
+                  ${user.name}
+                </td>
+                <td style="color: blue;">
+                  ${lastCount}
+                </td>
+                <td style="color: green;">
+                  ${user.totalCount}
+                </td>
+              </tr>`;
+                } else {
+                  clutter += `
+              <tr>
+                <td style="color: red;">
+                  ${user.rank}
+                </td>
+                <td style="color: orange;">
+                  ${user.name}
+                </td>
+                <td style="color: blue;">
+                  0
+                </td>
+                <td style="color: green;">
+                  ${user.totalCount}
+                </td>
+              </tr>`;
+                }
               });
               document.querySelector("#userTableBody").innerHTML = clutter;
             })
             .catch(error => {
               console.error('Error searching users:', error);
-              // Handle errors if any
             });
         }
+        else {
+          window.location.href = '/allDevotees';
+        }
+
       });
 
   </script>
