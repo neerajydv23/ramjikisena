@@ -46,15 +46,14 @@ const userSchema = mongoose.Schema({
     },
   currCount:{
     type:Number,
-    default:"0"
+    default:0
   },
   totalCount:{
     type:Number,
-    default:"0"
+    default:0
   },
   rank:{
-    type:Number,
-    default:"108"
+    type:Number
   },
   dailyCounts: [
     {
@@ -64,7 +63,7 @@ const userSchema = mongoose.Schema({
   ],
   mala:{
     type:Number,
-    default:"0"
+    default:0
   },
   role: {
     type: String,
@@ -72,10 +71,21 @@ const userSchema = mongoose.Schema({
 },
 joiningDate: {
   type: Date,
-  default: Date.now // Set the default value to the current date
+  default: Date.now 
 }
 });
 
+userSchema.pre('save', async function(next) {
+  try {
+    if (this.isNew) {
+      const count = await this.constructor.countDocuments();
+      this.rank = count+1;
+    }
+    next();
+  } catch (error) {
+    next(error);
+  }
+});
 
 userSchema.plugin(plm);
 

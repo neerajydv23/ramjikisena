@@ -296,6 +296,17 @@
     const loadingOverlay = document.getElementById("loadingOverlay");
 
     saveButton.addEventListener("click", function () {
+
+      var textarea = document.getElementById("ramTextarea");
+      var textareaValueCheck = textarea.value.trim();
+
+      // Check if the textarea is empty
+      if (textareaValueCheck === "") {
+        var loggedInUsername = "<%= user.name %>";
+        alert(`कृपया सेव बटन पर क्लिक करने से पहले राम नाम लिखें ${loggedInUsername} जी `);
+        return;
+      }
+
       // Show loading overlay
       loadingOverlay.style.display = "flex"; // Display as flex to center the spinner
 

@@ -14,15 +14,13 @@ router.post('/save', isLoggedIn, async function (req, res) {
     const user = req.user;
     const { currentCount, totalCount, malaCount } = req.body;
 
-    user.totalCount = totalCount;
-    user.mala = malaCount;
+    user.totalCount += parseInt(currentCount);
+    user.mala = user.totalCount !== 0 ? (user.totalCount / 108).toFixed(2) : '0.00';
     user.currCount = 0;
 
     // Update dailyCounts
     const today = new Date();
-    // const hasEntryForToday = user.dailyCounts.some(entry => {
-    //   return entry.date.toDateString() === today.toDateString();
-    // });
+   
     const hasEntryForToday = user.dailyCounts &&
       user.dailyCounts.length > 0 &&
       user.dailyCounts[user.dailyCounts.length - 1].date.toDateString() === today.toDateString();
