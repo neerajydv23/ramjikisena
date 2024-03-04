@@ -1382,6 +1382,10 @@
    .row-2 .count-box {
      width: 100%;
    }
+
+   .container .row-4 {
+     gap: 24px;
+   }
  }
 
  @media screen and (max-width: 761px) {
