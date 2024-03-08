@@ -241,7 +241,10 @@ router.post('/register', async function (req, res, next) {
     const data = await userModel.create({ username, name, city, contact, password })
 
     const token = await data.generateToken();
-    res.cookie('token', token, { httpOnly: true }); // Set token as a cookie
+    res.cookie('token', token, { 
+      httpOnly: true,
+      expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000) // 7 days
+    }); // Set token as a cookie
     res.redirect('/'); // Redirect to / page
   }
   catch (error) {
@@ -279,7 +282,10 @@ router.post('/login', async function (req, res, next) {
     if (user) {
      
       const token = await userExist.generateToken();
-      res.cookie('token', token, { httpOnly: true }); // Set token as a cookie
+      res.cookie('token', token, { 
+        httpOnly: true,
+        expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000) // 7 days
+      }); // Set token as a cookie
 
       if (userExist.role === 'admin') {
         res.redirect('/admin/dashboard');
@@ -320,7 +326,10 @@ router.post('/forgot', async function (req, res, next) {
 
     if (user) {
       const token = await user.generateToken();
-      res.cookie('token', token, { httpOnly: true });
+      res.cookie('token', token, { 
+        httpOnly: true ,
+        expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000) // 7 days
+      });
       if (user.role === 'admin') {
         return res.redirect('/admin/dashboard');
       } else {
