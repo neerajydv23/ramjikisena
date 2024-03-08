@@ -31,7 +31,7 @@
         </div>
 
         <div id="text">
-          <a href="/profile">Home</a>
+          <a href="/">Home</a>
           <a href="/about">About</a>
           <a href="/register">Register</a>
           <a href="/contact">Contact</a>
@@ -44,7 +44,7 @@
       <div class="nav-2">
         <div class="left">
           <img src="/images/ramjikisena_logo.webp" alt="">
-          <a href="/profile">Ramji Ki Sena</a>
+          <a href="/">Ramji Ki Sena</a>
         </div>
         <div class="right">
           <a id="home-btn" href="">Register</a>
@@ -85,16 +85,16 @@
           </p>
           <% } %>
 
-            <form action="/register" method="post">
-              <input type="text" name="username" placeholder="यूजर लॉगिन आइडी / User Login id" required>
-              <input type="text" name="fullname" placeholder="पूरा नाम / Full Name">
-              <input type="text" name="city" placeholder="शहर / City">
-              <input type="number" name="contact" placeholder="मोबाइल नंबर.*/Mobile No.*" required>
-              <input type="password" name="password" placeholder="पासवर्ड/Password">
-              <input class="login-btn" type="submit" value="Register">
-            </form>
-            <a style="display: block;margin-top: 10px;padding: 8px;background-color: #5B1801;color: white;border-radius: 10px;border: 1px solid #fff;text-align: center;"
-              href="/">Go to Login</a>
+        <form action="/register" method="post">
+          <input type="text" name="username" placeholder="यूजर लॉगिन आइडी / User Login id" required>
+          <input type="text" name="name" placeholder="पूरा नाम / Full Name" required>
+          <input type="text" name="city" placeholder="शहर / City" required>
+          <input type="number" name="contact" placeholder="मोबाइल नंबर.*/Mobile No.*" required>
+          <input type="password" name="password" placeholder="पासवर्ड/Password" required>
+          <input class="login-btn" type="submit" value="Register">
+        </form>
+        <a style="display: block;margin-top: 10px;padding: 8px;background-color: #5B1801;color: white;border-radius: 10px;border: 1px solid #fff;text-align: center;"
+          href="/login">Go to Login</a>
       </div>
     </div>
 

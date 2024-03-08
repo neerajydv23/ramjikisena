@@ -9,15 +9,10 @@ const expressSession = require('express-session')
 const flash = require('connect-flash');
 
 
-
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-const passport = require('passport');
 
 var app = express();
-
-// Use the cors middleware
-app.use(cors());
 
 app.use(cors({
   origin: 'https://ramjikisena.com',
@@ -34,12 +29,8 @@ app.use(flash());
 app.use(expressSession({
   resave: false,
   saveUninitialized: false,
-  secret: "hey"
+  secret: process.env.EXPRESS_SESSION_SECRET
 }));
-app.use(passport.initialize());
-app.use(passport.session());
-passport.serializeUser(usersRouter.serializeUser());
-passport.deserializeUser(usersRouter.deserializeUser());
 
 app.use(logger('dev'));
 app.use(express.json());

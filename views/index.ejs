@@ -2,20 +2,20 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ramjikisena</title>
+  <link rel="stylesheet" href="/stylesheets/loadingSpinner.css">
   <link rel="stylesheet" href="/stylesheets/style.css" />
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet" />
   <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+
 </head>
 
 <body>
-
   <div class="main">
-
 
     <div class="nav-1">
       <div class="marquee">
@@ -31,7 +31,7 @@
         </div>
 
         <div id="text">
-          <a href="/profile">Home</a>
+          <a id="scroll-to-ramcount" href="">Home</a>
           <a href="/about">About</a>
           <a href="/register">Register</a>
           <a href="/contact">Contact</a>
@@ -43,10 +43,10 @@
       <div class="nav-2">
         <div class="left">
           <img src="/images/ramjikisena_logo.webp" alt="">
-          <a href="/profile">Ramji Ki Sena</a>
+          <a href="/">Ramji Ki Sena</a>
         </div>
         <div class="right">
-          <a id="home-btn" href="">Login</a>
+          <a id="home-btn" href="/">Home</a>
           <a href="/about">About</a>
           <a href="/contact">Contact</a>
           <div id="icon">
@@ -55,6 +55,7 @@
         </div>
       </div>
     </nav>
+
 
     <div class="ramji-photo">
       <img src="/images/Ayodhya Ramji Photo.webp" alt="">
@@ -68,77 +69,299 @@
         <a href="/glory">📖 Glory of Ram naam</a>
         <a href="/feedback">✍️ Writing experience & feedback</a>
       </div>
+
+      <audio id="bgMusic" controls autoplay loop></audio>
+
+
     </div>
 
-    <div class="index-content">
-      <div class="ramji-slider">
-        <div class="ramji-slider-text">
-          <h1>🚩जय श्री राम</h1>
-          <h1>🚩जय श्री हनुमान</h1>
-        </div>
-        <img src="/images/ramji-slider-1.webp" alt="">
-        <div class="count-info">
-          <h3>✍️ Total written Ramcount : <%=totalRamnaamCount%>
+    <div class="main-content">
+      <div class="container">
+
+        <div class="row-1">
+          <h3>Jai Shri Ram - 🙎‍ <%=user.name%>
           </h3>
-          <h3>🎯 Total visited devotees : 1000+</h3>
-          <h3>🎯 Total registered devotees : <%=userCount%>
-          </h3>
+          <h3>Welcome to Ramji Ki Sena</h3>
+          <div class="row-1-buttons">
+            <!-- Google translator HTML code starts -->
+            <select onchange="languageChanger()" id="google_translate_element" class="text-black">
+              <option value="en">English</option>
+              <option value="hi">Hindi</option>
+            </select>
+            <!-- Google translator HTML code ends -->
+
+            <select id="musicSelect" class="notranslate">
+              <option value="none">कोई भजन नहीं</option>
+              <option value="/audios/bgaudio-1.mp3">राम धुन 1</option>
+              <option value="/audios/haridhun.mp3">राम धुन 2</option>
+              <option value="/audios/heyram.mp3">राम धुन 3</option>
+              <option value="/audios/ramdhun.mp3">राम धुन 4</option>
+              <option value="/audios/ramnamkirtan.mp3">राम धुन 5</option>
+              <option value="/audios/sitaram.mp3">राम धुन 6</option>
+            </select>
+
+            <a href="/lekhanHistory">Lekhan History</a>
+            <a class="notranslate" href="/logout">Log Out</a>
+          </div>
         </div>
+
+
+        <div class="row-2">
+
+          <div class="previous-count count-box ">
+            <h1 style="color: #FFFDD0; text-shadow: 1px 1px black;">Your Rank </h1>
+            <span id="prevCount" class="count-box-value">
+              <%=user.rank%>
+            </span>
+          </div>
+
+          <div class="current-count count-box">
+            <h1 style="color: #FFFDD0; text-shadow: 1px 1px black;">Current Ramnaam count</h1>
+            <span id="currentCount" class="count-box-value" style="color: #006600;">
+              <%=user.currCount%>
+            </span>
+          </div>
+
+          <div class="total-count count-box">
+            <h1 style="color: #FFFDD0; text-shadow: 1px 1px black;">Total Ramnaam count</h1>
+            <span id="totalCount" class="count-box-value" style="color: #0000FF;">
+              <%=user.totalCount %>
+            </span>
+          </div>
+
+          <div class="mala-count count-box">
+            <h1 style="color: #FFFDD0; text-shadow: 1px 1px black;">Total Mala Count</h1>
+            <span id="malaCount" class="count-box-value">
+              <%=user.mala%>
+            </span>
+          </div>
+        </div>
+
+        <div class="row-3">
+          <textarea class="notranslate" id="ramTextarea" name="ramTextarea" rows="6" cols="60"
+            placeholder="यहाँ पर राम नाम लिखें..."></textarea>
+        </div>
+
+        <div class="row-4 buttons notranslate">
+          <div class="r-button" onclick="appendCharacter('R')"><button>र</button> </div>
+          <div class="a-button" onclick="appendCharacter('A')"><button>I</button> </div>
+          <div class="m-button" onclick="appendCharacter('M')"><button>म</button> </div>
+
+        </div>
+
+        <div id="saveBtn" class="save-button notranslate" style="cursor: pointer;">
+          <span id="saveBtn"><i class="ri-save-3-fill"></i>Save</span>
+        </div>
+
       </div>
     </div>
 
-    <div class="login-page">
-      <div class="login-form">
-
-        <h1>राम नाम लेखन हेतु लॉगिन / रजिस्टर करे - Login/Register here</h1>
-
-        <%if(error.length>0){ %>
-          <p class="flash-error"
-            style="color: red;font-weight: 400;text-transform: capitalize;margin: 7px 0;text-align: center;">
-            <%=error%>
-          </p>
-          <% } %>
-
-            <form action="/login" method="post">
-              <input type="text" name="username" placeholder="लॉगिन आईडी / Login id" required>
-              <input type="password" name="password" placeholder="पासवर्ड / Password" required>
-              <a class="forgot-btn" href="/forgot">Login With Mobile Number ?</a>
-              <input class="login-btn" type="submit" value="लॉगिन / Login">
-            </form>
-            <a style="display: block;margin-top: 15px;padding: 8px;background-color: #5B1801;color: white;border-radius: 10px;border: 1px solid #fff;text-align: center;"
-              href="/register">रजिस्टर / Register</a>
+    <!-- Update the loading spinner to cover the entire screen -->
+    <div id="loadingOverlay" style="display: none;">
+      <span class="notranslate">🚩 आपका रामनाम धन सेव हो रहा है। 🚩</span>
+      <div class="spinner-box">
+        <div class="three-quarter-spinner"></div>
       </div>
     </div>
 
-    <footer>
-      <a href="https://www.facebook.com/chandrashekhar.singh.104"><i class="ri-facebook-fill"></i> Facebook</a>
-      <a href="https://www.youtube.com/@GandhialayaVicharSevaSangh"><i class="ri-youtube-fill"></i> Youtube</a>
-    </footer>
 
-    <div class="nav-1 footer-marquee">
+    <div class="all-devotees notranslate">
+      <a href="/allDevotees">ALL DEVOTEES</a>
+    </div>
+
+    <!-- adding nav-1 above copyright for sponsor marquee -->
+
+    <div class="nav-1" style="margin-top: 20px;">
       <div class="marquee">
         <h1>Jayshri Gayatri Food Products Pvt. Ltd. Milk Magic</h1>
         <img id="milk-magic-icon" src="/images/milk-magic-icon.webp" alt="">
       </div>
     </div>
-    <!-- <div class="copyright">
+    <!-- <div class="copyright" style="margin-top: 10px;">
       <h2>Copyright © 2024 www.ramjikisena.com- Developed & Maintained by I-NextEts</h2>
     </div> -->
 
   </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.5/axios.min.js"
+    integrity="sha512-TjBzDQIDnc6pWyeM1bhMnDxtWH0QpOXMcVooglXrali/Tj7W569/wd4E8EDjk1CwOAOPSJon1VfcEt1BI4xIrA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <!-- Google translator JS code starts -->
+  <script type="text/javascript"
+    src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: "en"
+      }, 'google_translate_element');
+    }
+    const languageChanger = () => {
+      var language = document.getElementById("google_translate_element").value;
+      var selectField = document.querySelector("#google_translate_element select");
+      for (var i = 0; i < selectField.children.length; i++) {
+        var option = selectField.children[i];
+        if (option.value == language) {
+          selectField.selectedIndex = i;
+          selectField.dispatchEvent(new Event('change'));
+          break;
+        }
+      }
+    }
+  </script>
+  <!-- Google translator JS code ends -->
+
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      var loginBtn = document.getElementById("home-btn");
-      var container = document.querySelector(".login-page");
-      loginBtn.addEventListener("click", function (event) {
+      var homeButton = document.getElementById("home-btn");
+      var container = document.querySelector(".container");
+      homeButton.addEventListener("click", function (event) {
         event.preventDefault();
         container.scrollIntoView({ behavior: "smooth" });
       });
     });
   </script>
+  <script>
+    // for disabling the keyboard 
+    document.getElementById("ramTextarea").readOnly = true;
+
+    var userInput = "";
+
+    let currentCount = document.getElementById("currentCount");
+    let totalCount = document.getElementById("totalCount");
+    let malaCount = document.getElementById("malaCount");
+
+    function appendCharacter(char) {
+
+      var textarea = document.getElementById("ramTextarea");
+      textarea.scrollTop = textarea.scrollHeight;
+
+      // pls work
+
+      if (char === 'R' && (userInput === '' || userInput.endsWith('M'))) {
+        userInput += char;
+        textarea.value += 'र';
+      } else if (userInput.endsWith('R') && char === 'A') {
+        userInput += char;
+        textarea.value += 'ा';
+      } else if (userInput.endsWith('A') && char === 'M') {
+        userInput += char;
+        textarea.value += 'म';
+      }
+
+      var lastThreeWords = userInput.slice(-3);
+
+      if (lastThreeWords === "RAM") {
+        userInput = "";
+        textarea.value += " "
+
+        // Increment counts directly without waiting for response
+
+        currentCount.innerText = parseInt(currentCount.innerText) + 1;
+        totalCount.innerText = parseInt(totalCount.innerText) + 1;
+        malaCount.innerText = (parseInt(document.getElementById("totalCount").innerText) / 108).toFixed(2);
+
+      }
+
+    }
+
+    // const saveButton = document.querySelector(".save-button");
+    // saveButton.addEventListener("click", function () {
+
+    //   const currentCountValue = currentCount.innerText;
+    //   const totalCountValue = totalCount.innerText;
+    //   const malaCountValue = malaCount.innerText;
+
+    //   axios.post("/save", {
+    //     currentCount: currentCountValue,
+    //     totalCount: totalCountValue,
+    //     malaCount: malaCountValue
+    //   }).then(function (response) {
+    //     // console.log(response);
+
+    //     var textarea = document.getElementById("ramTextarea");
+    //     textarea.value = "";
+    //     userInput = "";
+    //     document.getElementById("currentCount").innerText = 0;
+
+    //   }).catch(function (err) {
+    //     console.log(err);
+    //   });
+
+
+    // })
+
+    const saveButton = document.querySelector(".save-button");
+    const loadingOverlay = document.getElementById("loadingOverlay");
+
+    saveButton.addEventListener("click", function () {
+
+      var textarea = document.getElementById("ramTextarea");
+      var textareaValueCheck = textarea.value.trim();
+
+      // Check if the textarea is empty
+      if (textareaValueCheck === "") {
+        var loggedInUsername = "<%= user.name %>";
+        alert(`कृपया सेव बटन पर क्लिक करने से पहले राम नाम लिखें ${loggedInUsername} जी `);
+        return;
+      }
+
+      // Show loading overlay
+      loadingOverlay.style.display = "flex"; // Display as flex to center the spinner
+
+      // Disable the save button during the loading period
+      saveButton.disabled = true;
+
+      const currentCountValue = currentCount.innerText;
+      const totalCountValue = totalCount.innerText;
+      const malaCountValue = malaCount.innerText;
+
+      axios.post("/save", {
+        currentCount: currentCountValue,
+        totalCount: totalCountValue,
+        malaCount: malaCountValue
+      }).then(function (response) {
+        // Hide loading overlay after 5 seconds
+        setTimeout(function () {
+          loadingOverlay.style.display = "none";
+          saveButton.disabled = false; // Enable the save button after loading
+        }, 3000);
+
+        var textarea = document.getElementById("ramTextarea");
+        textarea.value = "";
+        userInput = "";
+        document.getElementById("currentCount").innerText = 0;
+
+      }).catch(function (err) {
+        console.log(err);
+        // Hide loading overlay and enable save button on error
+        loadingOverlay.style.display = "none";
+        saveButton.disabled = false;
+      });
+    });
+
+    document.addEventListener("click", (e) => {
+      if (e.target.tagName === 'A' && e.target.id !== "saveBtn") {
+        // Check if there's content in the textarea
+        var textarea = document.getElementById("ramTextarea");
+        if (textarea.value.trim() !== "") {
+          var loggedInUsername = "<%= user.name %>";
+          // Customize the alert message
+          var alertMessage = "।। जय श्री राम ।। " + loggedInUsername + " जी आपका रामनाम धन Save नहीं हुआ है, कृपया Save करें / Your Ramnaam is not saved. Please save!";
+          // Alert the user to save their progress before navigating
+          alert(alertMessage);
+          e.preventDefault(); // Prevent the default behavior of the link
+        }
+      }
+    });
+
+
+  </script>
 
   <script src="/javascripts/navbar.js"></script>
   <script src="/javascripts/inviteFriends.js"></script>
+  <script src="/javascripts/bgMusic.js"></script>
 
 </body>
 

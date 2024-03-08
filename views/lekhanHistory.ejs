@@ -29,7 +29,7 @@
         </div>
 
         <div id="text">
-          <a href="/profile">Home</a>
+          <a href="/">Home</a>
           <a href="/about">About</a>
           <a href="/register">Register</a>
           <a href="/contact">Contact</a>
@@ -41,10 +41,10 @@
       <div class="nav-2">
         <div class="left">
           <img src="/images/ramjikisena_logo.webp" alt="">
-          <a href="/profile">Ramji Ki Sena</a>
+          <a href="/">Ramji Ki Sena</a>
         </div>
         <div class="right">
-          <a id="home-btn" href="/profile">Home</a>
+          <a id="home-btn" href="/">Home</a>
           <a href="/about">About</a>
           <a href="/contact">Contact</a>
           <div id="icon">
@@ -82,6 +82,8 @@
         %>
     </ul>
     </div> -->
+  
+
     <div class="lekhanHistory-content">
       <h1>Daily Ramnaam Counts</h1>
       <hr>
@@ -94,6 +96,7 @@
           </tr>
         </thead>
         <tbody>
+
           <% var reversedCounts=user.dailyCounts.slice().reverse(); reversedCounts.forEach(function(dailyCount){ %>
             <tr>
               <td style="color: orange;">
@@ -151,6 +154,7 @@
   </script>
   <!-- Google translator JS code ends -->
 
+  
   <script src="/javascripts/navbar.js"></script>
   <script src="/javascripts/inviteFriends.js"></script>
 
